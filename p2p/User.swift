@@ -28,5 +28,4 @@ public class User: Mappable {
 
 extension User {
     
-   
 }
