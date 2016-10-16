@@ -48,4 +48,74 @@ class Tutor: User {
     }
 }
 
+extension Tutor {
+    static func get(tutor id: String, completion: @escaping P2PObjectCompletionBlock) {
+        P2PManager.sharedInstance.sessionManager.request(TutorRouter.get(id: id)).responseObject { (response: DataResponse<Tutor>) in
+            completion(response.result.value!, response.result.error);
+        }
+    }
+    
+    static func getAll(at location: (Double, Double), for subject: String, completion: @escaping P2PObjectCompletionBlock) {
+        P2PManager.sharedInstance.sessionManager.request(TutorRouter.getAllWith(location: location, subject: subject)).responseObject { (response: DataResponse<Tutor>) in
+            completion(response.result.value!, response.result.error);
+        }
+    }
+    
+    static func getReviews(for tutor: String, completion: @escaping P2PArrayCompletionBlock) {
+        P2PManager.sharedInstance.sessionManager.request(TutorRouter.getReviews(id: tutor)).responseArray { (response: DataResponse<[Review]>) in
+            completion(response.result.value!, response.result.error);
+        }
+    }
+    
+    func getReviews(completion: @escaping P2PArrayCompletionBlock) {
+        Tutor.getReviews(for: self.id!, completion: completion)
+    }
+    
+    private enum TutorRouter: URLRequestConvertible {
+        case get(id: String)
+        case getAllWith(location: (Double, Double), subject: String)
+        case getReviews(id: String)
+        
+        var method: HTTPMethod {
+            switch self {
+            case .get:
+                return .get
+            case .getAllWith:
+                return .get
+            case .getReviews:
+                return .get
+            }
+        }
+        
+        var path: String {
+            switch self {
+            case .get(let id):
+                return "/tutors/\(id)"
+            case .getAllWith:
+                return "/tutors"
+            case .getReviews(let id):
+                return "/tutors/\(id)/reviews"
+            }
+        }
+        
+        // MARK: URLRequestConvertible
+        
+        func asURLRequest() throws -> URLRequest {
+            let url = try P2PBaseURL.asURL()
+            
+            var urlRequest = URLRequest(url: url.appendingPathComponent(path))
+            urlRequest.httpMethod = method.rawValue
+            
+            switch self {
+            case .getAllWith(let location, let subject):
+                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["long": location.0, "lat": location.1, "subject": subject])
+            default:
+                break
+            }
+            
+            return urlRequest
+        }
+    }
+}
+
  

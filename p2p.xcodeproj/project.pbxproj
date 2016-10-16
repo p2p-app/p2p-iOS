@@ -19,6 +19,7 @@
 		09E10CA21DB4174900F231F3 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CA11DB4174900F231F3 /* Session.swift */; };
 		09E10CA41DB41D5B00F231F3 /* P2PManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CA31DB41D5B00F231F3 /* P2PManager.swift */; };
 		09E10CAA1DB4287500F231F3 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CA91DB4287500F231F3 /* Utility.swift */; };
+		09E10CAC1DB4325300F231F3 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CAB1DB4325300F231F3 /* Review.swift */; };
 		96CD21C9093331747A660579 /* Pods_p2p.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50EA13756132EAFAEC7FDAE5 /* Pods_p2p.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		09E10CA11DB4174900F231F3 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		09E10CA31DB41D5B00F231F3 /* P2PManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P2PManager.swift; sourceTree = "<group>"; };
 		09E10CA91DB4287500F231F3 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		09E10CAB1DB4325300F231F3 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		50EA13756132EAFAEC7FDAE5 /* Pods_p2p.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_p2p.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C8CF3FC0347B59ED44B8F7 /* Pods-p2p.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-p2p.release.xcconfig"; path = "Pods/Target Support Files/Pods-p2p/Pods-p2p.release.xcconfig"; sourceTree = "<group>"; };
 		B954E7F8D394E4072864802A /* Pods-p2p.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-p2p.debug.xcconfig"; path = "Pods/Target Support Files/Pods-p2p/Pods-p2p.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				09E10C9D1DB4127100F231F3 /* User.swift */,
 				09E10C9F1DB414C600F231F3 /* Tutor.swift */,
 				09E10CA11DB4174900F231F3 /* Session.swift */,
+				09E10CAB1DB4325300F231F3 /* Review.swift */,
 			);
 			name = "p2p API";
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09E10CA41DB41D5B00F231F3 /* P2PManager.swift in Sources */,
+				09E10CAC1DB4325300F231F3 /* Review.swift in Sources */,
 				09E10CA01DB414C600F231F3 /* Tutor.swift in Sources */,
 				09E10C7D1DB40D1E00F231F3 /* ViewController.swift in Sources */,
 				09E10CA21DB4174900F231F3 /* Session.swift in Sources */,
