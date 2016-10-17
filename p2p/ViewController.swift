@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  p2p
+//  ui_stuff
 //
-//  Created by Amar Ramachandran on 10/16/16.
-//  Copyright © 2016 sfhacks. All rights reserved.
+//  Created by Arnav Gudibande on 10/16/16.
+//  Copyright © 2016 Arnav Gudibande. All rights reserved.
 //
 
 import UIKit

@@ -31,8 +31,8 @@ enum subjects {
 }
 
 class Tutor: User {
-    fileprivate(set) public var reviews: String?
-    fileprivate(set) public var subjects: String?
+    fileprivate(set) public var reviews: [Review]?
+    fileprivate(set) public var subjects: [String]?
     fileprivate(set) public var stars: Double?
     
     required init?(map: Map) {

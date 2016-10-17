@@ -21,7 +21,7 @@ class Session: Mappable {
     }
     
     public func mapping(map: Map) {
-        id                      <-  map["_id"]
+        id                      <-  map["id"]
         location.longitude      <-  map["location.0"]
         location.latitude       <-  map["location.1"]
         tutor                   <-  map["tutor"]
@@ -30,10 +30,6 @@ class Session: Mappable {
 }
 
 extension Session {
-    static func createSession(with tutor: Tutor, at location: (Double, Double), on time: Date, completion: @escaping P2PObjectCompletionBlock) {
-        createSession(with: tutor.id!, at: location, on: time, completion: completion)
-    }
-    
     static func createSession(with tutor: String, at location: (Double, Double), on time: Date, completion: @escaping P2PObjectCompletionBlock) {
         P2PManager.sharedInstance.sessionManager.request(SessionRouter.create(tutorID: tutor, time: time, location: location)).responseObject { (response: DataResponse<Session>) in
             completion(response.result.value! as Session, response.result.error)

@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09168ABC1DB4961F0075BD9F /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CC51DB4821600F231F3 /* login.json */; };
 		09E10C7B1DB40D1E00F231F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10C7A1DB40D1E00F231F3 /* AppDelegate.swift */; };
-		09E10C7D1DB40D1E00F231F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10C7C1DB40D1E00F231F3 /* ViewController.swift */; };
-		09E10C801DB40D1E00F231F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E10C7E1DB40D1E00F231F3 /* Main.storyboard */; };
 		09E10C821DB40D1E00F231F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E10C811DB40D1E00F231F3 /* Assets.xcassets */; };
 		09E10C851DB40D1E00F231F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E10C831DB40D1E00F231F3 /* LaunchScreen.storyboard */; };
 		09E10C901DB40D1F00F231F3 /* p2pTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10C8F1DB40D1F00F231F3 /* p2pTests.swift */; };
@@ -20,6 +19,22 @@
 		09E10CA41DB41D5B00F231F3 /* P2PManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CA31DB41D5B00F231F3 /* P2PManager.swift */; };
 		09E10CAA1DB4287500F231F3 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CA91DB4287500F231F3 /* Utility.swift */; };
 		09E10CAC1DB4325300F231F3 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CAB1DB4325300F231F3 /* Review.swift */; };
+		09E10CAE1DB4668E00F231F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CAD1DB4668E00F231F3 /* Main.storyboard */; };
+		09E10CB61DB466E900F231F3 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CB01DB466E900F231F3 /* RegisterViewController.swift */; };
+		09E10CB71DB466E900F231F3 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CB11DB466E900F231F3 /* RequestViewController.swift */; };
+		09E10CB81DB466E900F231F3 /* TutorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CB21DB466E900F231F3 /* TutorDetailViewController.swift */; };
+		09E10CB91DB466E900F231F3 /* TutorProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CB31DB466E900F231F3 /* TutorProfileViewController.swift */; };
+		09E10CBA1DB466E900F231F3 /* TutorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CB41DB466E900F231F3 /* TutorTableViewController.swift */; };
+		09E10CBB1DB466E900F231F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CB51DB466E900F231F3 /* ViewController.swift */; };
+		09E10CBE1DB466EF00F231F3 /* HomeTableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CBC1DB466EF00F231F3 /* HomeTableTableViewCell.swift */; };
+		09E10CBF1DB466EF00F231F3 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CBD1DB466EF00F231F3 /* HomeTableViewController.swift */; };
+		09E10CC11DB466F400F231F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CC01DB466F400F231F3 /* LoginViewController.swift */; };
+		09E10CC31DB4707300F231F3 /* MainTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CC21DB4707300F231F3 /* MainTextField.swift */; };
+		09E10CC61DB4821600F231F3 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CC51DB4821600F231F3 /* login.json */; };
+		09E10CC81DB4864500F231F3 /* create.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CC71DB4864500F231F3 /* create.json */; };
+		09E10CCA1DB486C700F231F3 /* session.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CC91DB486C700F231F3 /* session.json */; };
+		09E10CCC1DB487D400F231F3 /* tutor.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CCB1DB487D400F231F3 /* tutor.json */; };
+		09E10CCD1DB48DFD00F231F3 /* create.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CC71DB4864500F231F3 /* create.json */; };
 		96CD21C9093331747A660579 /* Pods_p2p.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50EA13756132EAFAEC7FDAE5 /* Pods_p2p.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,8 +51,6 @@
 /* Begin PBXFileReference section */
 		09E10C771DB40D1E00F231F3 /* p2p.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p2p.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09E10C7A1DB40D1E00F231F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		09E10C7C1DB40D1E00F231F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		09E10C7F1DB40D1E00F231F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		09E10C811DB40D1E00F231F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09E10C841DB40D1E00F231F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09E10C861DB40D1F00F231F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +64,21 @@
 		09E10CA31DB41D5B00F231F3 /* P2PManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = P2PManager.swift; sourceTree = "<group>"; };
 		09E10CA91DB4287500F231F3 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		09E10CAB1DB4325300F231F3 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		09E10CAD1DB4668E00F231F3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		09E10CB01DB466E900F231F3 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		09E10CB11DB466E900F231F3 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
+		09E10CB21DB466E900F231F3 /* TutorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorDetailViewController.swift; sourceTree = "<group>"; };
+		09E10CB31DB466E900F231F3 /* TutorProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorProfileViewController.swift; sourceTree = "<group>"; };
+		09E10CB41DB466E900F231F3 /* TutorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorTableViewController.swift; sourceTree = "<group>"; };
+		09E10CB51DB466E900F231F3 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		09E10CBC1DB466EF00F231F3 /* HomeTableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableTableViewCell.swift; sourceTree = "<group>"; };
+		09E10CBD1DB466EF00F231F3 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
+		09E10CC01DB466F400F231F3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		09E10CC21DB4707300F231F3 /* MainTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTextField.swift; sourceTree = "<group>"; };
+		09E10CC51DB4821600F231F3 /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
+		09E10CC71DB4864500F231F3 /* create.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = create.json; path = p2pTests/create.json; sourceTree = SOURCE_ROOT; };
+		09E10CC91DB486C700F231F3 /* session.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = session.json; sourceTree = "<group>"; };
+		09E10CCB1DB487D400F231F3 /* tutor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tutor.json; sourceTree = "<group>"; };
 		50EA13756132EAFAEC7FDAE5 /* Pods_p2p.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_p2p.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C8CF3FC0347B59ED44B8F7 /* Pods-p2p.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-p2p.release.xcconfig"; path = "Pods/Target Support Files/Pods-p2p/Pods-p2p.release.xcconfig"; sourceTree = "<group>"; };
 		B954E7F8D394E4072864802A /* Pods-p2p.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-p2p.debug.xcconfig"; path = "Pods/Target Support Files/Pods-p2p/Pods-p2p.debug.xcconfig"; sourceTree = "<group>"; };
@@ -99,11 +127,11 @@
 		09E10C791DB40D1E00F231F3 /* p2p */ = {
 			isa = PBXGroup;
 			children = (
+				09E10CA91DB4287500F231F3 /* Utility.swift */,
+				09E10CAF1DB466BC00F231F3 /* ViewControllers */,
 				09E10C9C1DB411C400F231F3 /* p2p API */,
 				09E10C7A1DB40D1E00F231F3 /* AppDelegate.swift */,
-				09E10C7C1DB40D1E00F231F3 /* ViewController.swift */,
-				09E10CA91DB4287500F231F3 /* Utility.swift */,
-				09E10C7E1DB40D1E00F231F3 /* Main.storyboard */,
+				09E10CAD1DB4668E00F231F3 /* Main.storyboard */,
 				09E10C811DB40D1E00F231F3 /* Assets.xcassets */,
 				09E10C831DB40D1E00F231F3 /* LaunchScreen.storyboard */,
 				09E10C861DB40D1F00F231F3 /* Info.plist */,
@@ -114,6 +142,10 @@
 		09E10C8E1DB40D1F00F231F3 /* p2pTests */ = {
 			isa = PBXGroup;
 			children = (
+				09E10CC71DB4864500F231F3 /* create.json */,
+				09E10CC51DB4821600F231F3 /* login.json */,
+				09E10CC91DB486C700F231F3 /* session.json */,
+				09E10CCB1DB487D400F231F3 /* tutor.json */,
 				09E10C8F1DB40D1F00F231F3 /* p2pTests.swift */,
 				09E10C911DB40D1F00F231F3 /* Info.plist */,
 			);
@@ -130,6 +162,31 @@
 				09E10CAB1DB4325300F231F3 /* Review.swift */,
 			);
 			name = "p2p API";
+			sourceTree = "<group>";
+		};
+		09E10CAF1DB466BC00F231F3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				09E10CB01DB466E900F231F3 /* RegisterViewController.swift */,
+				09E10CC01DB466F400F231F3 /* LoginViewController.swift */,
+				09E10CB11DB466E900F231F3 /* RequestViewController.swift */,
+				09E10CB21DB466E900F231F3 /* TutorDetailViewController.swift */,
+				09E10CB31DB466E900F231F3 /* TutorProfileViewController.swift */,
+				09E10CB41DB466E900F231F3 /* TutorTableViewController.swift */,
+				09E10CB51DB466E900F231F3 /* ViewController.swift */,
+				09E10CBC1DB466EF00F231F3 /* HomeTableTableViewCell.swift */,
+				09E10CBD1DB466EF00F231F3 /* HomeTableViewController.swift */,
+				09E10CC41DB4717F00F231F3 /* Views */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		09E10CC41DB4717F00F231F3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				09E10CC21DB4707300F231F3 /* MainTextField.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		AC3963201B8FCEF14F9ECB45 /* Pods */ = {
@@ -240,9 +297,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				09E10C9B1DB40D3F00F231F3 /* .gitignore in Resources */,
+				09E10CAE1DB4668E00F231F3 /* Main.storyboard in Resources */,
+				09E10CCD1DB48DFD00F231F3 /* create.json in Resources */,
 				09E10C851DB40D1E00F231F3 /* LaunchScreen.storyboard in Resources */,
 				09E10C821DB40D1E00F231F3 /* Assets.xcassets in Resources */,
-				09E10C801DB40D1E00F231F3 /* Main.storyboard in Resources */,
+				09168ABC1DB4961F0075BD9F /* login.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,6 +309,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E10CCC1DB487D400F231F3 /* tutor.json in Resources */,
+				09E10CC61DB4821600F231F3 /* login.json in Resources */,
+				09E10CCA1DB486C700F231F3 /* session.json in Resources */,
+				09E10CC81DB4864500F231F3 /* create.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,14 +371,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09E10CC31DB4707300F231F3 /* MainTextField.swift in Sources */,
 				09E10CA41DB41D5B00F231F3 /* P2PManager.swift in Sources */,
 				09E10CAC1DB4325300F231F3 /* Review.swift in Sources */,
 				09E10CA01DB414C600F231F3 /* Tutor.swift in Sources */,
-				09E10C7D1DB40D1E00F231F3 /* ViewController.swift in Sources */,
 				09E10CA21DB4174900F231F3 /* Session.swift in Sources */,
+				09E10CC11DB466F400F231F3 /* LoginViewController.swift in Sources */,
 				09E10C7B1DB40D1E00F231F3 /* AppDelegate.swift in Sources */,
+				09E10CB71DB466E900F231F3 /* RequestViewController.swift in Sources */,
+				09E10CBA1DB466E900F231F3 /* TutorTableViewController.swift in Sources */,
+				09E10CB91DB466E900F231F3 /* TutorProfileViewController.swift in Sources */,
+				09E10CBB1DB466E900F231F3 /* ViewController.swift in Sources */,
+				09E10CBF1DB466EF00F231F3 /* HomeTableViewController.swift in Sources */,
 				09E10CAA1DB4287500F231F3 /* Utility.swift in Sources */,
 				09E10C9E1DB4127100F231F3 /* User.swift in Sources */,
+				09E10CBE1DB466EF00F231F3 /* HomeTableTableViewCell.swift in Sources */,
+				09E10CB81DB466E900F231F3 /* TutorDetailViewController.swift in Sources */,
+				09E10CB61DB466E900F231F3 /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,14 +410,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		09E10C7E1DB40D1E00F231F3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				09E10C7F1DB40D1E00F231F3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		09E10C831DB40D1E00F231F3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

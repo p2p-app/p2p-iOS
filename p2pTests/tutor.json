@@ -1,0 +1,17 @@
+{
+    "id": "tutorID",
+    "name": "amarTutor",
+    "username": "amarjayrTutor",
+    "reviews": [{
+                "id": "idReviewValue",
+                "author": {
+                    "id": "authorID",
+                    "name": "authorName",
+                    "username": "authorUsername"
+                
+                },
+                "review": "Great teacher!"
+                }],
+    "subjects": ["English", "Math"],
+    "stars": 4.2
+}
