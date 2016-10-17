@@ -34,6 +34,7 @@ class Tutor: User {
     fileprivate(set) public var reviews: [Review]?
     fileprivate(set) public var subjects: [String]?
     fileprivate(set) public var stars: Double?
+    fileprivate(set) public var location: String?
     
     required init?(map: Map) {
         super.init(map: map)
@@ -45,6 +46,7 @@ class Tutor: User {
         reviews     <- map["reviews"]
         subjects    <- map["subjects"]
         stars       <- map["stars"]
+        location    <- map["location"]
     }
 }
 
@@ -55,8 +57,8 @@ extension Tutor {
         }
     }
     
-    static func getAll(at location: (Double, Double), for subject: String, completion: @escaping P2PObjectCompletionBlock) {
-        P2PManager.sharedInstance.sessionManager.request(TutorRouter.getAllWith(location: location, subject: subject)).responseObject { (response: DataResponse<Tutor>) in
+    static func getAll(at location: (Double, Double), for subject: String, completion: @escaping P2PArrayCompletionBlock) {
+        P2PManager.sharedInstance.sessionManager.request(TutorRouter.getAllWith(location: location, subject: subject)).responseArray { (response: DataResponse<[Tutor]>) in
             completion(response.result.value!, response.result.error);
         }
     }

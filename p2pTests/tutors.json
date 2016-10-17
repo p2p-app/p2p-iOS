@@ -1,0 +1,55 @@
+ [{
+  "id": "id1",
+  "name": "Arnav",
+  "username": "arnavDaTutor",
+  "reviews": [{
+              "id": "id1",
+              "author": {
+              "id": "student1",
+              "name": "James",
+              "username": "JamesUsername"
+              
+              },
+              "review": "Great teacher!"
+              }],
+  "subjects": ["Science", "Math"],
+  "stars": 4.1,
+  "location": "San Jose, CA"
+  },
+  {
+  "id": "id2",
+  "name": "Anuv",
+  "username": "AnuvTutoring",
+  "reviews": [{
+              "id": "id1",
+              "author": {
+              "id": "student1",
+              "name": "James",
+              "username": "JamesUsername"
+              
+              },
+              "review": "Love this guy!"
+              }],
+  "subjects": ["English", "History"],
+  "stars": 4.5,
+  "location": "Fremont, CA"
+  },
+  {
+  "id": "id3",
+  "name": "Amar",
+  "username": "AmarTheTeacher",
+  "reviews": [{
+              "id": "id1",
+              "author": {
+              "id": "student2",
+              "name": "Jack",
+              "username": "JackUsername"
+              
+              },
+              "review": "Cool teacher"
+              }],
+  "subjects": ["English", "Math", "Science"],
+  "stars": 4.2,
+  "location": "Los Altos, CA"
+  }
+  ]
