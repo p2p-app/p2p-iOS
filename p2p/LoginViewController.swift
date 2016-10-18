@@ -40,6 +40,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if error != nil {
                 switch error as! P2PErrors {
                 case .AuthenticationFailed(_):
+                    print(P2PManager.sharedInstance.user?.username)
+                    
                     let shake = POPSpringAnimation(propertyNamed: kPOPLayerPositionX)
                     shake?.springBounciness = 20
                     shake?.velocity = 2500
