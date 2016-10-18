@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TutorDetailViewController: UIViewController {
+class TutorDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tutorName: UILabel!
