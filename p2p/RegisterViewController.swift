@@ -16,6 +16,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameField: MainTextField!
     @IBOutlet weak var passwordField: MainTextField!
     @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var logo: UIImageView!
+    @IBOutlet weak var loginLabel: UIButton!
+    @IBOutlet weak var userRole: UISegmentedControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,5 +93,18 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
         
         return false
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 2.0, animations: {
+            self.nameField.alpha = 1.0
+            self.usernameField.alpha = 1.0
+            self.passwordField.alpha = 1.0
+            self.createButton.alpha = 1.0
+            self.logo.alpha = 1.0
+            self.loginLabel.alpha = 1.0
+            self.userRole.alpha = 1.0
+        })
     }
 }

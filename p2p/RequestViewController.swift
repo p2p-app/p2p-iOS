@@ -15,6 +15,7 @@ class RequestViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = false
         tutorMapView = MKMapView()
 
         // Do any additional setup after loading the view.

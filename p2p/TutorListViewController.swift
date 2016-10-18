@@ -17,7 +17,8 @@ class TutorListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = false
+        
         
         tutorTableView.delegate = self
         tutorTableView.dataSource = self
