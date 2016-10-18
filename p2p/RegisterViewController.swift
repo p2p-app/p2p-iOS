@@ -37,24 +37,19 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
         
         
-        OHHTTPStubs.removeAllStubs()
-
-        _ = stub(condition: isHost("p2p.anuv.me")) { _ in
-            // Stub it with our "wsresponse.json" stub file (which is in same bundle as self)
-            let stubPath = OHPathForFile("create.json", type(of: self))
-            return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
-        }
-        
         User.create(username: usernameField.text!, password: passwordField.text!, name: nameField.text!) { (user, error) in
             if error != nil {
-                P2PManager.sharedInstance.user = nil
-                
-                let shake = POPSpringAnimation(propertyNamed: kPOPLayerPositionX)
-                shake?.springBounciness = 20
-                shake?.velocity = 2500
-                
-                self.createButton.layer.pop_add(shake, forKey: "shake")
-                
+                switch error as! P2PErrors {
+                case .ResourceConflict:
+                    let shake = POPSpringAnimation(propertyNamed: kPOPLayerPositionX)
+                    shake?.springBounciness = 20
+                    shake?.velocity = 2500
+                    
+                    self.usernameField.layer.pop_add(shake, forKey: "shake")
+                    break
+                default:
+                    break
+                }
                 return
             }
             

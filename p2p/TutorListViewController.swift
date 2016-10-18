@@ -13,7 +13,7 @@ import pop
 class TutorListViewController: UIViewController {
     @IBOutlet weak var tutorTableView: UITableView!
     var tutors: [Tutor]?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,6 +59,11 @@ class TutorListViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toTutorDetail" {
+        }
+    }
 
 }
 
@@ -82,4 +87,5 @@ extension TutorListViewController: UITableViewDelegate, UITableViewDataSource {
         
         return (tutors?.count)!
     }
+
 }

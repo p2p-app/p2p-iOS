@@ -38,16 +38,33 @@ class P2PManager {
     }
     
     public func authorize(username: String, password: String, completion: @escaping P2PCompletionBlock) {
-        self.sessionManager.request("\(P2PBaseURL)/login", parameters: ["username": username, "password": password]).validate().responseJSON { response in
+        self.sessionManager.request("\(P2PBaseURL)/auth", method: .post, parameters: ["username": username, "password": password]).responseJSON { response in
+            switch (response.response?.statusCode)! {
+            case 200:
+                break
+            case 401:
+                completion(P2PErrors.AuthenticationFailed(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
+                return
+            default:
+                completion(P2PErrors.UknownError(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
+                return
+            }
+            
             switch response.result {
             case .success:
                 self.token = (response.result.value as! NSDictionary).object(forKey: "token") as! String?
             case .failure(let error):
-                print(error)
+                completion(P2PErrors.UknownError(original: error, description: nil))
+                return
             }
         }.responseObject(keyPath: "data") { (response: DataResponse<User>) in
-            self.user = response.result.value
-            completion(response.result.error)
+            switch response.result {
+            case .success:
+                self.user = response.result.value
+                completion(nil)
+            default:
+                break
+            }
         }
     }
 }

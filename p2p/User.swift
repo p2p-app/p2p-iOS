@@ -29,18 +29,34 @@ public class User: Mappable {
 
 extension User {
     static func create(username: String, password: String, name: String, completion: @escaping P2PObjectCompletionBlock) {
-        P2PManager.sharedInstance.sessionManager.request(UserRouter.create(username: username, password: password, name: name)).responseObject(keyPath: "data") { (response: DataResponse<User>) in
-            P2PManager.sharedInstance.user = response.result.value! as User
-            completion(response.result.value!, response.result.error)
-            }.responseJSON {  response in switch response.result {
-                case .success(let JSON):
-                    let response = JSON as! NSDictionary
-                
-                    P2PManager.sharedInstance.token = response.object(forKey: "token") as? String
-                case .failure(let error):
-                    print("Request failed with error: \(error)")
-                }
+        P2PManager.sharedInstance.sessionManager.request(UserRouter.create(username: username, password: password, name: name)).responseJSON {  response in
+            switch (response.response?.statusCode)! {
+            case 200:
+                break
+            case 500: //TODO: change to 409
+                completion(nil, P2PErrors.ResourceConflict(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
+                break
+            default:
+                completion(nil, P2PErrors.UknownError(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
             }
+            
+            switch response.result {
+            case .success:
+                P2PManager.sharedInstance.token = (response.result.value as! NSDictionary).object(forKey: "token") as! String?
+            case .failure(let error):
+                completion(nil, P2PErrors.UknownError(original: error, description: nil))
+                break
+            }
+            }.responseObject(keyPath: "data") { (response: DataResponse<User>) in
+                switch response.result {
+                case .success:
+                    P2PManager.sharedInstance.user = response.result.value
+                    completion(response.result.value!, nil)
+                case .failure(let error):
+                    completion(nil, P2PErrors.UknownError(original: error, description: nil))
+                    break
+                }
+        }
     }
 
     private enum UserRouter: URLRequestConvertible {
@@ -56,7 +72,7 @@ extension User {
         var path: String {
             switch self {
             case .create:
-                return "/users"
+                return "/students/create"
             }
         }
         
@@ -67,6 +83,11 @@ extension User {
             
             var urlRequest = URLRequest(url: url.appendingPathComponent(path))
             urlRequest.httpMethod = method.rawValue
+            
+            switch self {
+            case .create(let username, let password, let name):
+                urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username": username, "password": password, "fullname": name])
+            }
             
             return urlRequest
         }

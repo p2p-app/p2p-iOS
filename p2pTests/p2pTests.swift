@@ -28,15 +28,10 @@ class p2pTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let exp = expectation(description: "Test Login")
         
-        _ = stub(condition: isHost("p2p.anuv.me")) { _ in
-            // Stub it with our "wsresponse.json" stub file (which is in same bundle as self)
-            let stubPath = OHPathForFile("login.json", type(of: self))
-            return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
-        }
-        
-        P2PManager.sharedInstance.authorize(username: "amarjayr", password: "password") { (error: Error?) in
+        P2PManager.sharedInstance.authorize(username: "username", password: "password") { (error: Error?) in
             if error == nil {
-                XCTAssert(P2PManager.sharedInstance.user?.username == "amarjayr")
+                print(P2PManager.sharedInstance.token)
+                XCTAssert(P2PManager.sharedInstance.user?.username == "username")
                 
             } else {
                 fatalError()
@@ -57,13 +52,6 @@ class p2pTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let exp = expectation(description: "Test Create")
-        
-        _ = stub(condition: isHost("p2p.anuv.me")) { _ in
-            // Stub it with our "wsresponse.json" stub file (which is in same bundle as self)
-            let stubPath = OHPathForFile("create.json", type(of: self))
-            return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
-        }
-        
         
         User.create(username: "amarjayr", password: "password", name: "amar") { (user, error) in
             if error == nil {
