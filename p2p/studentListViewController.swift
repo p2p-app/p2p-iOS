@@ -10,6 +10,10 @@ import UIKit
 
 class studentListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var hoursAccumulated: UILabel!
+    @IBOutlet weak var studentsHelped: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = false
@@ -24,7 +28,7 @@ class studentListViewController: UIViewController, UITableViewDataSource, UITabl
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "studentCell", for: indexPath) as! TutorListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "studentCell", for: indexPath) as! StudentListTableViewCell
         
         return cell
     }

@@ -63,6 +63,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             
             self.performSegue(withIdentifier: "toNext", sender: self)
         }
+        
     }
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -97,7 +98,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        UIView.animate(withDuration: 2.0, animations: {
+        UIView.animate(withDuration: 2.2, animations: {
             self.nameField.alpha = 1.0
             self.usernameField.alpha = 1.0
             self.passwordField.alpha = 1.0

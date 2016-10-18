@@ -11,6 +11,11 @@ import UIKit
 class TutorDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tutorName: UILabel!
+    @IBOutlet weak var tutorLocation: UILabel!
+    @IBOutlet weak var tutorRating: UILabel!
+    @IBOutlet weak var tutorSubjects: UILabel!
+    @IBOutlet weak var tutorPicture: UIImageView!
     
     var tutorString = String()
     
@@ -23,6 +28,8 @@ class TutorDetailViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.dataSource = self
     }
     
+    @IBAction func didRequestTutor(_ sender: AnyObject) {
+    }
     
     // MARK: - UITextFieldDelegate Methods
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
