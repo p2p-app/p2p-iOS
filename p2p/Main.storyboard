@@ -77,7 +77,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="333" height="105"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yly-eU-dTH" id="MC1-eh-axx">
-                                                    <frame key="frameInset" width="333" height="104"/>
+                                                    <frame key="frameInset" width="333" height="104.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mike was very helpful. He explains difficult concepts well" lineBreakMode="characterWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NR2-yR-0WF">
@@ -174,68 +174,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SsV-WF-AgN">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="428" id="dLR-1K-j2R"/>
-                                </constraints>
-                            </mapView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="SsV-WF-AgN"/>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How Many Hours?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJF-74-a9q">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="9gN-gh-Bx6"/>
-                                    <constraint firstAttribute="height" constant="40" id="vQl-nf-o5q"/>
+                                    <constraint firstAttribute="height" constant="40" id="xWT-30-fDQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What Subject(s)?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmc-50-pg4">
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JWn-g8-XLo"/>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhS-Xu-8Ox"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7f-f8-vfD">
                                 <color key="backgroundColor" red="0.19215686269999999" green="0.69411764710000001" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="51" id="FhX-hZ-rvd"/>
+                                    <constraint firstAttribute="height" constant="51" id="xDH-Km-DrA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
                                 <state key="normal" title="Send Request">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="didSendRequest:" destination="QvD-tU-xMk" eventType="touchUpInside" id="BNJ-ma-Wej"/>
+                                    <action selector="didSendRequest:" destination="QvD-tU-xMk" eventType="touchUpInside" id="Ci0-ii-LvR"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hv-DR-2cK">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="119" id="u4G-Ii-4nY"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="B7f-f8-vfD" firstAttribute="top" secondItem="JWn-g8-XLo" secondAttribute="bottom" constant="30" id="2St-eA-yqB"/>
-                            <constraint firstItem="JWn-g8-XLo" firstAttribute="top" secondItem="IJF-74-a9q" secondAttribute="bottom" constant="8" symbolic="YES" id="5uJ-la-Av3"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Qmc-50-pg4" secondAttribute="trailing" constant="3" id="DCs-Wb-6bD"/>
-                            <constraint firstItem="IJF-74-a9q" firstAttribute="trailing" secondItem="JWn-g8-XLo" secondAttribute="trailing" id="FxX-h5-A3e"/>
-                            <constraint firstItem="SsV-WF-AgN" firstAttribute="bottom" secondItem="N7c-7P-gAe" secondAttribute="top" id="HWA-E1-niG"/>
-                            <constraint firstItem="IJF-74-a9q" firstAttribute="firstBaseline" secondItem="Qmc-50-pg4" secondAttribute="firstBaseline" id="HpI-I2-ShB"/>
-                            <constraint firstItem="IJF-74-a9q" firstAttribute="top" secondItem="nGk-zs-2XU" secondAttribute="bottom" constant="6" id="Mgq-ZU-bop"/>
-                            <constraint firstItem="JWn-g8-XLo" firstAttribute="top" secondItem="IhS-Xu-8Ox" secondAttribute="top" id="Mz5-u8-6Ys"/>
-                            <constraint firstItem="SsV-WF-AgN" firstAttribute="top" secondItem="B7f-f8-vfD" secondAttribute="bottom" constant="27" id="N1e-op-Hte"/>
-                            <constraint firstAttribute="trailing" secondItem="SsV-WF-AgN" secondAttribute="trailing" id="UVj-yf-AEt"/>
-                            <constraint firstItem="JWn-g8-XLo" firstAttribute="bottom" secondItem="IhS-Xu-8Ox" secondAttribute="bottom" id="UWa-5W-APi"/>
-                            <constraint firstItem="Qmc-50-pg4" firstAttribute="trailing" secondItem="IhS-Xu-8Ox" secondAttribute="trailing" id="ZZY-rV-TLq"/>
-                            <constraint firstItem="B7f-f8-vfD" firstAttribute="centerX" secondItem="SsV-WF-AgN" secondAttribute="centerX" id="aq9-9m-Hdv"/>
-                            <constraint firstItem="IJF-74-a9q" firstAttribute="baseline" secondItem="Qmc-50-pg4" secondAttribute="baseline" id="hUW-Tu-whH"/>
-                            <constraint firstItem="Qmc-50-pg4" firstAttribute="leading" secondItem="IhS-Xu-8Ox" secondAttribute="leading" id="lso-BL-i8i"/>
-                            <constraint firstItem="Qmc-50-pg4" firstAttribute="leading" secondItem="IJF-74-a9q" secondAttribute="trailing" constant="20" id="okW-eg-eQw"/>
-                            <constraint firstItem="IJF-74-a9q" firstAttribute="leading" secondItem="JWn-g8-XLo" secondAttribute="leading" id="qQa-gC-D1X"/>
-                            <constraint firstItem="JWn-g8-XLo" firstAttribute="leading" secondItem="B7f-f8-vfD" secondAttribute="leading" id="w1r-AP-NIj"/>
-                            <constraint firstItem="IJF-74-a9q" firstAttribute="leading" secondItem="PQk-IK-TQF" secondAttribute="leadingMargin" id="wdB-z3-0sR"/>
-                            <constraint firstItem="SsV-WF-AgN" firstAttribute="leading" secondItem="PQk-IK-TQF" secondAttribute="leading" id="yNC-Y9-8J6"/>
+                            <constraint firstAttribute="trailing" secondItem="IJF-74-a9q" secondAttribute="trailing" id="0Lw-ot-YAI"/>
+                            <constraint firstItem="9hv-DR-2cK" firstAttribute="trailing" secondItem="SsV-WF-AgN" secondAttribute="trailing" id="8YT-pb-ubi"/>
+                            <constraint firstItem="SsV-WF-AgN" firstAttribute="bottom" secondItem="N7c-7P-gAe" secondAttribute="top" id="IQJ-fl-ncr"/>
+                            <constraint firstItem="IJF-74-a9q" firstAttribute="top" secondItem="nGk-zs-2XU" secondAttribute="bottom" constant="35" id="IcS-C3-O8r"/>
+                            <constraint firstItem="9hv-DR-2cK" firstAttribute="centerX" secondItem="B7f-f8-vfD" secondAttribute="centerX" id="JVY-bV-tcw"/>
+                            <constraint firstItem="9hv-DR-2cK" firstAttribute="top" secondItem="IJF-74-a9q" secondAttribute="bottom" constant="8" symbolic="YES" id="JqI-R3-Tyy"/>
+                            <constraint firstItem="IJF-74-a9q" firstAttribute="leading" secondItem="PQk-IK-TQF" secondAttribute="leading" id="Mem-Yy-lyL"/>
+                            <constraint firstItem="IJF-74-a9q" firstAttribute="leading" secondItem="9hv-DR-2cK" secondAttribute="leading" id="YLd-z9-lXr"/>
+                            <constraint firstItem="SsV-WF-AgN" firstAttribute="top" secondItem="B7f-f8-vfD" secondAttribute="bottom" constant="27" id="cdn-I4-LPC"/>
+                            <constraint firstItem="B7f-f8-vfD" firstAttribute="top" secondItem="9hv-DR-2cK" secondAttribute="bottom" constant="8" symbolic="YES" id="q9R-Zx-czV"/>
+                            <constraint firstItem="9hv-DR-2cK" firstAttribute="leading" secondItem="SsV-WF-AgN" secondAttribute="leading" id="wQS-l1-fVb"/>
+                            <constraint firstItem="IJF-74-a9q" firstAttribute="trailing" secondItem="9hv-DR-2cK" secondAttribute="trailing" id="yTE-C4-tFm"/>
+                            <constraint firstItem="B7f-f8-vfD" firstAttribute="leading" secondItem="PQk-IK-TQF" secondAttribute="leadingMargin" id="zQ0-n9-HNu"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="hourScroll" destination="JWn-g8-XLo" id="Osa-lh-5n5"/>
-                        <outlet property="subjectScroll" destination="IhS-Xu-8Ox" id="BjS-nF-qqB"/>
+                        <outlet property="hourPickerView" destination="9hv-DR-2cK" id="fqs-Jd-bjA"/>
                         <outlet property="tutorMapView" destination="SsV-WF-AgN" id="m83-ol-5yl"/>
                     </connections>
                 </viewController>
