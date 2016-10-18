@@ -18,6 +18,8 @@
 		09168ACB1DB5565A0075BD9F /* TutorListQueryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09168ACA1DB556590075BD9F /* TutorListQueryBar.swift */; };
 		0938A33E1DB5D6B70020D619 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938A33D1DB5D6B70020D619 /* UserTests.swift */; };
 		0938A3401DB5D89D0020D619 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938A33F1DB5D89D0020D619 /* Errors.swift */; };
+		093E46F21DB6D89F003DBCAB /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E46F11DB6D89F003DBCAB /* CardView.swift */; };
+		093E46F41DB6DA2A003DBCAB /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E46F31DB6DA2A003DBCAB /* ReviewTableViewCell.swift */; };
 		09E10C7B1DB40D1E00F231F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10C7A1DB40D1E00F231F3 /* AppDelegate.swift */; };
 		09E10C821DB40D1E00F231F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E10C811DB40D1E00F231F3 /* Assets.xcassets */; };
 		09E10C851DB40D1E00F231F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E10C831DB40D1E00F231F3 /* LaunchScreen.storyboard */; };
@@ -67,6 +69,8 @@
 		09168ACA1DB556590075BD9F /* TutorListQueryBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorListQueryBar.swift; sourceTree = "<group>"; };
 		0938A33D1DB5D6B70020D619 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		0938A33F1DB5D89D0020D619 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		093E46F11DB6D89F003DBCAB /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		093E46F31DB6DA2A003DBCAB /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		09E10C771DB40D1E00F231F3 /* p2p.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p2p.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09E10C7A1DB40D1E00F231F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09E10C811DB40D1E00F231F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 				09168AC21DB4A0800075BD9F /* TutorListTableViewCell.swift */,
 				09E10CC21DB4707300F231F3 /* MainTextField.swift */,
 				09168ACA1DB556590075BD9F /* TutorListQueryBar.swift */,
+				093E46F11DB6D89F003DBCAB /* CardView.swift */,
+				093E46F31DB6DA2A003DBCAB /* ReviewTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -456,6 +462,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09E10CC31DB4707300F231F3 /* MainTextField.swift in Sources */,
+				093E46F41DB6DA2A003DBCAB /* ReviewTableViewCell.swift in Sources */,
 				09E10CA41DB41D5B00F231F3 /* P2PManager.swift in Sources */,
 				09168AC51DB4A1C70075BD9F /* TutorListViewController.swift in Sources */,
 				09168AC31DB4A0800075BD9F /* TutorListTableViewCell.swift in Sources */,
@@ -473,6 +480,7 @@
 				09E10CB91DB466E900F231F3 /* TutorProfileViewController.swift in Sources */,
 				09E10CAA1DB4287500F231F3 /* Utility.swift in Sources */,
 				89F6180A1DB5BDC50088842C /* studentListViewController.swift in Sources */,
+				093E46F21DB6D89F003DBCAB /* CardView.swift in Sources */,
 				09E10C9E1DB4127100F231F3 /* User.swift in Sources */,
 				09168ACB1DB5565A0075BD9F /* TutorListQueryBar.swift in Sources */,
 				09E10CB81DB466E900F231F3 /* TutorDetailViewController.swift in Sources */,

@@ -8,46 +8,49 @@
 
 import UIKit
 
-class TutorDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tutorName: UILabel!
-    @IBOutlet weak var tutorLocation: UILabel!
-    @IBOutlet weak var tutorRating: UILabel!
-    @IBOutlet weak var tutorSubjects: UILabel!
-    @IBOutlet weak var tutorPicture: UIImageView!
+class TutorDetailViewController: UIViewController {
     
-    var tutorString = String()
+    var tutor: Tutor?
     
-
-    let textCellIdentifier = "reviews"
+    @IBOutlet weak var reviewTableView: UITableView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var subjectLabel: UILabel!
+    @IBOutlet weak var iconImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationController?.isNavigationBarHidden = false
-        tableView.delegate = self
-        tableView.dataSource = self
+        
+        reviewTableView.delegate = self
+        reviewTableView.dataSource = self
+        
+        self.nameLabel.text = self.tutor!.name
+        self.ratingLabel.text = String(format:"%.1f", (self.tutor!.stars)!) + "/5"
+        self.locationLabel.text = self.tutor!.location
+        self.subjectLabel.text = self.tutor!.subjects?.joined(separator: ", ")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     @IBAction func didRequestTutor(_ sender: AnyObject) {
     }
-    
-    // MARK: - UITextFieldDelegate Methods
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath) as UITableViewCell
+}
+
+extension TutorDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reviewCell", for: indexPath) as! ReviewTableViewCell
         
-        let row = indexPath.row
-        //cell.textLabel?.text = ""
+        cell.review = tutor!.reviews![indexPath.row]
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (tutor?.reviews?.count)!
+    }
 }

@@ -11,8 +11,10 @@ import OHHTTPStubs
 import pop
 
 class TutorListViewController: UIViewController {
-    @IBOutlet weak var tutorTableView: UITableView!
+    
     var tutors: [Tutor]?
+    
+    @IBOutlet weak var tutorTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,23 +57,23 @@ class TutorListViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toTutorDetail" {
+        switch segue.identifier! {
+        case "toTutorDetail":
+            let destination = segue.destination as! TutorDetailViewController
+            destination.tutor = (sender as! TutorListTableViewCell).tutor
+        default:
+            break
         }
     }
-
-
 }
 
 extension TutorListViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "tutorCell", for: indexPath) as! TutorListTableViewCell
-        
-        cell.nameLabel.text = tutors?[indexPath.row].name
-        cell.ratingLabel.text = String(format:"%.1f", (tutors?[indexPath.row].stars)!) + "/5"
-        cell.locationLabel.text = tutors?[indexPath.row].location
-        cell.subjectLabel.text = tutors?[indexPath.row].subjects?.joined(separator: ", ")
-        
+
+        cell.tutor = tutors?[indexPath.row]
+
         return cell
     }
     
@@ -82,5 +84,4 @@ extension TutorListViewController: UITableViewDelegate, UITableViewDataSource {
         
         return (tutors?.count)!
     }
-
 }

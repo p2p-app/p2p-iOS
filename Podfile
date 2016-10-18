@@ -12,6 +12,8 @@ target 'p2p' do
     pod 'OHHTTPStubs/Swift' # Adds the Swiftier API wrapper too
     
     pod 'pop', '~> 1.0'
+    
+    pod 'SwiftDate', '~> 4.0'
 end
 
 target 'p2pTests' do
