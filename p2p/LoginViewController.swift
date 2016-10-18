@@ -16,6 +16,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: MainTextField!
     @IBOutlet weak var loginButton: UIButton!
     
+    @IBOutlet weak var logoTopConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,6 +73,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.view.layoutIfNeeded()
+        logoTopConstraint.constant = 0 - 49 - 20
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.view.layoutIfNeeded()
+        logoTopConstraint.constant = 80
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

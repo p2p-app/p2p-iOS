@@ -294,7 +294,7 @@
 				TargetAttributes = {
 					09E10C761DB40D1D00F231F3 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 644K27Q47A;
+						DevelopmentTeam = BW8E2XTFK5;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -607,11 +607,11 @@
 			baseConfigurationReference = B954E7F8D394E4072864802A /* Pods-p2p.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 644K27Q47A;
+				DEVELOPMENT_TEAM = BW8E2XTFK5;
 				INFOPLIST_FILE = p2p/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.arnav.gudibande.p2p;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amarjayr.p2p;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -622,11 +622,11 @@
 			baseConfigurationReference = 62C8CF3FC0347B59ED44B8F7 /* Pods-p2p.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 644K27Q47A;
+				DEVELOPMENT_TEAM = BW8E2XTFK5;
 				INFOPLIST_FILE = p2p/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.arnav.gudibande.p2p;
+				PRODUCT_BUNDLE_IDENTIFIER = com.amarjayr.p2p;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

@@ -1,10 +1,6 @@
 //
-//  NewAccountViewController.swift
-//  ui_stuff
-//
-//  Created by Arnav Gudibande on 10/16/16.
-//  Copyright © 2016 Arnav Gudibande. All rights reserved.
-//
+//  RegisterViewController.swift
+
 
 import UIKit
 import OHHTTPStubs
@@ -16,10 +12,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameField: MainTextField!
     @IBOutlet weak var passwordField: MainTextField!
     @IBOutlet weak var createButton: UIButton!
-    @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var loginLabel: UIButton!
-    @IBOutlet weak var userRole: UISegmentedControl!
+    @IBOutlet weak var userRoleSegmentedControl: UISegmentedControl!
 
+    @IBOutlet weak var logoTopConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -79,6 +76,22 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.view.layoutIfNeeded()
+        logoTopConstraint.constant = 0 - 49 - 20
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.view.layoutIfNeeded()
+        logoTopConstraint.constant = 80
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == passwordField {
             self.view.endEditing(true)
@@ -94,13 +107,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIView.animate(withDuration: 2.2, animations: {
-            self.nameField.alpha = 1.0
-            self.usernameField.alpha = 1.0
-            self.passwordField.alpha = 1.0
-            self.createButton.alpha = 1.0
-            self.logo.alpha = 1.0
-            self.loginLabel.alpha = 1.0
-            self.userRole.alpha = 1.0
+            self.view.subviews.forEach({ $0.alpha = 1.0 })
         })
     }
 }
