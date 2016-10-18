@@ -36,8 +36,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        
+        self.createButton.isEnabled = false
         User.create(username: usernameField.text!, password: passwordField.text!, name: nameField.text!) { (user, error) in
+            self.createButton.isEnabled = true
             if error != nil {
                 switch error as! P2PErrors {
                 case .ResourceConflict:

@@ -36,7 +36,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
+        self.loginButton.isEnabled = false
         P2PManager.sharedInstance.authorize(username: usernameField.text!, password: passwordField.text!) { (error) in
+            self.loginButton.isEnabled = true
             if error != nil {
                 switch error as! P2PErrors {
                 case .AuthenticationFailed(_):
