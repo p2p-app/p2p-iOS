@@ -43,6 +43,9 @@
 		09E10CCC1DB487D400F231F3 /* tutor.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CCB1DB487D400F231F3 /* tutor.json */; };
 		09E10CCD1DB48DFD00F231F3 /* create.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CC71DB4864500F231F3 /* create.json */; };
 		17E452444DCFC0F85B373053 /* Pods_p2pTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC05355B4E96DDAA225D7466 /* Pods_p2pTests.framework */; };
+		89327C991DB5D8A7007AA52C /* StudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89327C981DB5D8A7007AA52C /* StudentDetailViewController.swift */; };
+		89327C9B1DB5E09D007AA52C /* StudentListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89327C9A1DB5E09D007AA52C /* StudentListTableViewCell.swift */; };
+		89F6180A1DB5BDC50088842C /* studentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F618091DB5BDC50088842C /* studentListViewController.swift */; };
 		96CD21C9093331747A660579 /* Pods_p2p.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50EA13756132EAFAEC7FDAE5 /* Pods_p2p.framework */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +98,9 @@
 		4894CF1DB2351F0125F43A5B /* Pods-p2pTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-p2pTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-p2pTests/Pods-p2pTests.debug.xcconfig"; sourceTree = "<group>"; };
 		50EA13756132EAFAEC7FDAE5 /* Pods_p2p.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_p2p.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C8CF3FC0347B59ED44B8F7 /* Pods-p2p.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-p2p.release.xcconfig"; path = "Pods/Target Support Files/Pods-p2p/Pods-p2p.release.xcconfig"; sourceTree = "<group>"; };
+		89327C981DB5D8A7007AA52C /* StudentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDetailViewController.swift; sourceTree = "<group>"; };
+		89327C9A1DB5E09D007AA52C /* StudentListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentListTableViewCell.swift; sourceTree = "<group>"; };
+		89F618091DB5BDC50088842C /* studentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = studentListViewController.swift; sourceTree = "<group>"; };
 		B954E7F8D394E4072864802A /* Pods-p2p.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-p2p.debug.xcconfig"; path = "Pods/Target Support Files/Pods-p2p/Pods-p2p.debug.xcconfig"; sourceTree = "<group>"; };
 		DC05355B4E96DDAA225D7466 /* Pods_p2pTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_p2pTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -194,6 +200,8 @@
 				09E10CB21DB466E900F231F3 /* TutorDetailViewController.swift */,
 				09E10CB31DB466E900F231F3 /* TutorProfileViewController.swift */,
 				09E10CB41DB466E900F231F3 /* TutorTableViewController.swift */,
+				89F618091DB5BDC50088842C /* studentListViewController.swift */,
+				89327C981DB5D8A7007AA52C /* StudentDetailViewController.swift */,
 				09E10CC41DB4717F00F231F3 /* Views */,
 			);
 			name = ViewControllers;
@@ -202,6 +210,7 @@
 		09E10CC41DB4717F00F231F3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				89327C9A1DB5E09D007AA52C /* StudentListTableViewCell.swift */,
 				09168AC21DB4A0800075BD9F /* TutorListTableViewCell.swift */,
 				09E10CC21DB4707300F231F3 /* MainTextField.swift */,
 				09168ACA1DB556590075BD9F /* TutorListQueryBar.swift */,
@@ -285,7 +294,7 @@
 				TargetAttributes = {
 					09E10C761DB40D1D00F231F3 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = BW8E2XTFK5;
+						DevelopmentTeam = 644K27Q47A;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -452,8 +461,10 @@
 				09168AC31DB4A0800075BD9F /* TutorListTableViewCell.swift in Sources */,
 				09E10CAC1DB4325300F231F3 /* Review.swift in Sources */,
 				09E10CA01DB414C600F231F3 /* Tutor.swift in Sources */,
+				89327C9B1DB5E09D007AA52C /* StudentListTableViewCell.swift in Sources */,
 				09E10CA21DB4174900F231F3 /* Session.swift in Sources */,
 				0938A3401DB5D89D0020D619 /* Errors.swift in Sources */,
+				89327C991DB5D8A7007AA52C /* StudentDetailViewController.swift in Sources */,
 				09E10CC11DB466F400F231F3 /* LoginViewController.swift in Sources */,
 				09E10C7B1DB40D1E00F231F3 /* AppDelegate.swift in Sources */,
 				09E10CB71DB466E900F231F3 /* RequestViewController.swift in Sources */,
@@ -461,6 +472,7 @@
 				09E10CBA1DB466E900F231F3 /* TutorTableViewController.swift in Sources */,
 				09E10CB91DB466E900F231F3 /* TutorProfileViewController.swift in Sources */,
 				09E10CAA1DB4287500F231F3 /* Utility.swift in Sources */,
+				89F6180A1DB5BDC50088842C /* studentListViewController.swift in Sources */,
 				09E10C9E1DB4127100F231F3 /* User.swift in Sources */,
 				09168ACB1DB5565A0075BD9F /* TutorListQueryBar.swift in Sources */,
 				09E10CB81DB466E900F231F3 /* TutorDetailViewController.swift in Sources */,
@@ -595,10 +607,11 @@
 			baseConfigurationReference = B954E7F8D394E4072864802A /* Pods-p2p.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BW8E2XTFK5;
+				DEVELOPMENT_TEAM = 644K27Q47A;
 				INFOPLIST_FILE = p2p/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sfhacks.p2p;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arnav.gudibande.p2p;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -609,10 +622,11 @@
 			baseConfigurationReference = 62C8CF3FC0347B59ED44B8F7 /* Pods-p2p.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = BW8E2XTFK5;
+				DEVELOPMENT_TEAM = 644K27Q47A;
 				INFOPLIST_FILE = p2p/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sfhacks.p2p;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arnav.gudibande.p2p;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

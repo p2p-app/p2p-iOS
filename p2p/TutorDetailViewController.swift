@@ -11,6 +11,11 @@ import UIKit
 class TutorDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tutorName: UILabel!
+    @IBOutlet weak var tutorLocation: UILabel!
+    @IBOutlet weak var tutorRating: UILabel!
+    @IBOutlet weak var tutorSubjects: UILabel!
+    @IBOutlet weak var tutorPicture: UIImageView!
     
     var tutorString = String()
     
@@ -19,10 +24,30 @@ class TutorDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = false
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    @IBAction func didRequestTutor(_ sender: AnyObject) {
+    }
+    
+    // MARK: - UITextFieldDelegate Methods
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath) as UITableViewCell
         
-
-
-
+        let row = indexPath.row
+        //cell.textLabel?.text = ""
+        
+        return cell
     }
     
 }

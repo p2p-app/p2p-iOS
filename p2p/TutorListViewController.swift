@@ -17,7 +17,8 @@ class TutorListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = false
+        
         
         tutorTableView.delegate = self
         tutorTableView.dataSource = self
@@ -48,7 +49,6 @@ class TutorListViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
@@ -64,6 +64,7 @@ class TutorListViewController: UIViewController {
         if segue.identifier == "toTutorDetail" {
         }
     }
+
 
 }
 
