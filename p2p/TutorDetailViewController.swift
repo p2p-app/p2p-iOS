@@ -12,6 +12,7 @@ class TutorDetailViewController: UIViewController {
     
     var tutor: Tutor?
     
+    @IBOutlet weak var tutorView: UIView!
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -31,6 +32,11 @@ class TutorDetailViewController: UIViewController {
         self.ratingLabel.text = String(format:"%.1f", (self.tutor!.stars)!) + "/5"
         self.locationLabel.text = self.tutor!.location
         self.subjectLabel.text = self.tutor!.subjects?.joined(separator: ", ")
+        
+        self.tutorView.layer.shadowOpacity = 0.25
+        self.tutorView.layer.shadowRadius = 10.0
+        self.tutorView.layer.shadowColor = UIColor.black.cgColor
+        self.tutorView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
