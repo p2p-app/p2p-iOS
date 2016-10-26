@@ -9,6 +9,7 @@
 import UIKit
 import OHHTTPStubs
 import pop
+import CoreLocation
 
 class TutorListViewController: UIViewController {
     
@@ -37,6 +38,8 @@ class TutorListViewController: UIViewController {
             let stubPath = OHPathForFile("tutors.json", type(of: self))
             return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
         }*/
+        
+        UtilityManager.sharedInstance.locationManager.delegate = self
         
         Tutor.getAll(at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), for: "all") { (tutors, error) in
             if error != nil {
@@ -122,5 +125,27 @@ extension TutorListViewController: UITextFieldDelegate {
         
         self.view.endEditing(true)
         return false
+    }
+}
+
+extension TutorListViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation:CLLocation = locations[0]
+        let long = userLocation.coordinate.longitude;
+        let lat = userLocation.coordinate.latitude;
+        UtilityManager.sharedInstance.location = (long, lat)
+        
+        Tutor.getAll(at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), for: "all") { (tutors, error) in
+            if error != nil {
+                
+                return
+            }
+            
+            self.tutors = tutors as? [Tutor]
+            
+            self.tutorTableView.reloadData()
+        }
+        
+        UtilityManager.sharedInstance.locationManager.stopUpdatingLocation()
     }
 }

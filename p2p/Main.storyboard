@@ -10,7 +10,7 @@
         <!--Tutor Detail View Controller-->
         <scene sceneID="UZh-Zd-2e0">
             <objects>
-                <viewController storyboardIdentifier="tutorDetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="7hW-Bo-XMa" customClass="TutorDetailViewController" customModule="p2p" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tutorDetailViewController" id="7hW-Bo-XMa" customClass="TutorDetailViewController" customModule="p2p" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JtR-8e-Y2L"/>
                         <viewControllerLayoutGuide type="bottom" id="ak7-4H-sgO"/>
@@ -167,6 +167,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wqp-pu-tjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6100" y="-19.340329835082461"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="WmL-Bx-Srh">
+            <objects>
+                <viewController id="Th5-j6-tqT" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lvV-JW-ral"/>
+                        <viewControllerLayoutGuide type="bottom" id="XGS-da-6dV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="07R-GS-hVD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dp0-FW-rH5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6823" y="-19"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="e4K-ip-sgy">
@@ -596,18 +614,47 @@
                                     <action selector="logout:" destination="kzv-Lx-7Xw" eventType="touchUpInside" id="qjo-qT-FAd"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ngt-sY-NAK" customClass="CardView" customModule="p2p" customModuleProvider="target">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mike Chech" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGh-dH-AMr">
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8k-4n-Qt5">
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="K8k-4n-Qt5" firstAttribute="leading" secondItem="wGh-dH-AMr" secondAttribute="leading" id="ZQn-GX-1q4"/>
+                                    <constraint firstItem="K8k-4n-Qt5" firstAttribute="top" secondItem="wGh-dH-AMr" secondAttribute="bottom" id="nym-FG-ZI2"/>
+                                    <constraint firstAttribute="bottom" secondItem="K8k-4n-Qt5" secondAttribute="bottom" constant="10" id="ouj-lQ-wS4"/>
+                                    <constraint firstItem="wGh-dH-AMr" firstAttribute="leading" secondItem="Ngt-sY-NAK" secondAttribute="leading" constant="8" id="uzD-18-VPs"/>
+                                    <constraint firstItem="wGh-dH-AMr" firstAttribute="top" secondItem="Ngt-sY-NAK" secondAttribute="top" constant="8" id="yc2-Cx-OGL"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94509803921568625" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Ngt-sY-NAK" firstAttribute="top" secondItem="up9-B6-CJF" secondAttribute="bottom" constant="10" id="1d1-Qm-Wm7"/>
                             <constraint firstItem="obW-wl-VG4" firstAttribute="centerY" secondItem="u5q-4c-bUw" secondAttribute="centerY" id="6u6-1D-fEg"/>
+                            <constraint firstItem="Ngt-sY-NAK" firstAttribute="leading" secondItem="u5q-4c-bUw" secondAttribute="leadingMargin" constant="-8" id="G18-vs-1Q6"/>
                             <constraint firstItem="obW-wl-VG4" firstAttribute="centerX" secondItem="u5q-4c-bUw" secondAttribute="centerX" id="c3T-sk-1jj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ngt-sY-NAK" secondAttribute="trailing" constant="-8" id="c6L-MV-v4c"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Me" id="CcA-UC-EXq"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="wGh-dH-AMr" id="fPr-0C-RtZ"/>
+                        <outlet property="usernameLabel" destination="K8k-4n-Qt5" id="tAi-sF-aVg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5Y-15-5ae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3510" y="754"/>
+            <point key="canvasLocation" x="3509.5999999999999" y="753.37331334332839"/>
         </scene>
     </scenes>
     <resources>
@@ -615,6 +662,6 @@
         <image name="mike" width="225" height="225"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XaM-Bn-yIh"/>
+        <segue reference="rhL-Cg-aDu"/>
     </inferredMetricsTieBreakers>
 </document>

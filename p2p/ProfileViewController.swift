@@ -10,6 +10,8 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
     @IBAction func logout(_ sender: AnyObject) {
         let defaults = UserDefaults.standard
         let username = defaults.string(forKey: "username")
@@ -32,7 +34,8 @@ class ProfileViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        print("CURRENT USER: " + (P2PManager.sharedInstance.user?.username)!)
+        nameLabel.text = P2PManager.sharedInstance.user!.name!
+        usernameLabel.text = "@\(P2PManager.sharedInstance.user!.username!)"
     }
 
     override func didReceiveMemoryWarning() {
