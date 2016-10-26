@@ -1,6 +1,6 @@
 {
     "id": "tutorID",
-    "name": "amarTutor",
+    "fullname": "amarTutor",
     "username": "amarjayrTutor",
     "subjects": ["English", "Math"],
     "stars": 4.2

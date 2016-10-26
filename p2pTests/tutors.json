@@ -1,6 +1,6 @@
  [{
   "id": "id1",
-  "name": "Arnav",
+  "fullname": "Arnav",
   "username": "arnavDaTutor",
   "subjects": ["Science", "Math"],
   "stars": 4.1,
@@ -9,7 +9,7 @@
   },
   {
   "id": "id2",
-  "name": "Anuv",
+  "fullname": "Anuv",
   "username": "AnuvTutoring",
   "subjects": ["English", "History"],
   "stars": 4.5,
@@ -18,7 +18,7 @@
   },
   {
   "id": "id3",
-  "name": "Amar",
+  "fullname": "Amar",
   "username": "AmarTheTeacher",
   "subjects": ["English", "Math", "Science"],
   "stars": 4.2,

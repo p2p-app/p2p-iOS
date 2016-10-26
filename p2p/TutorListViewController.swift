@@ -21,23 +21,20 @@ class TutorListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.isNavigationBarHidden = true
-        
-        
+
         tutorTableView.delegate = self
         tutorTableView.dataSource = self
         
         locationField.delegate = self
         subjectField.delegate = self
         
-        /*OHHTTPStubs.removeAllStubs()
+        OHHTTPStubs.removeAllStubs()
         
         _ = stub(condition: isHost("p2p.anuv.me")) { _ in
             // Stub it with our "wsresponse.json" stub file (which is in same bundle as self)
             let stubPath = OHPathForFile("tutors.json", type(of: self))
             return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
-        }*/
+        }
         
         UtilityManager.sharedInstance.locationManager.delegate = self
         
@@ -56,7 +53,13 @@ class TutorListViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        super.viewWillDisappear(animated)
     }
     
     override func didReceiveMemoryWarning() {

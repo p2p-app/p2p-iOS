@@ -41,14 +41,14 @@ class TutorDetailViewController: UIViewController {
         self.tutorView.layer.shadowColor = UIColor.black.cgColor
         self.tutorView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)*/
         
-       /* OHHTTPStubs.removeAllStubs()
+        OHHTTPStubs.removeAllStubs()
         
         _ = stub(condition: isHost("p2p.anuv.me")) { _ in
             // Stub it with our "wsresponse.json" stub file (which is in same bundle as self)
             let stubPath = OHPathForFile("reviews.json", type(of: self))
             return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
         }
-        */
+        
         tutor!.getReviews { (error) in
             if error != nil {
                 
