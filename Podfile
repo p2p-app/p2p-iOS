@@ -14,6 +14,8 @@ target 'p2p' do
     pod 'pop', '~> 1.0'
     
     pod 'SwiftDate', '~> 4.0'
+    
+    pod 'Locksmith'
 end
 
 target 'p2pTests' do

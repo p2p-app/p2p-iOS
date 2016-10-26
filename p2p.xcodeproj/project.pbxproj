@@ -20,6 +20,9 @@
 		0938A3401DB5D89D0020D619 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938A33F1DB5D89D0020D619 /* Errors.swift */; };
 		093E46F21DB6D89F003DBCAB /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E46F11DB6D89F003DBCAB /* CardView.swift */; };
 		093E46F41DB6DA2A003DBCAB /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E46F31DB6DA2A003DBCAB /* ReviewTableViewCell.swift */; };
+		0991CC481DC026D000190F94 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0991CC471DC026D000190F94 /* CoreLocation.framework */; };
+		0991CC4A1DC02D9E00190F94 /* reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 0991CC491DC02D9E00190F94 /* reviews.json */; };
+		0991CC4B1DC02F8800190F94 /* reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 0991CC491DC02D9E00190F94 /* reviews.json */; };
 		09E10C7B1DB40D1E00F231F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10C7A1DB40D1E00F231F3 /* AppDelegate.swift */; };
 		09E10C821DB40D1E00F231F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E10C811DB40D1E00F231F3 /* Assets.xcassets */; };
 		09E10C851DB40D1E00F231F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E10C831DB40D1E00F231F3 /* LaunchScreen.storyboard */; };
@@ -71,6 +74,9 @@
 		0938A33F1DB5D89D0020D619 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		093E46F11DB6D89F003DBCAB /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		093E46F31DB6DA2A003DBCAB /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		0991CC471DC026D000190F94 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0991CC491DC02D9E00190F94 /* reviews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reviews.json; sourceTree = "<group>"; };
+		0991CC4C1DC036CF00190F94 /* p2p.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = p2p.entitlements; sourceTree = "<group>"; };
 		09E10C771DB40D1E00F231F3 /* p2p.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p2p.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09E10C7A1DB40D1E00F231F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09E10C811DB40D1E00F231F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -114,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0991CC481DC026D000190F94 /* CoreLocation.framework in Frameworks */,
 				96CD21C9093331747A660579 /* Pods_p2p.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,6 +160,7 @@
 		09E10C791DB40D1E00F231F3 /* p2p */ = {
 			isa = PBXGroup;
 			children = (
+				0991CC4C1DC036CF00190F94 /* p2p.entitlements */,
 				09E10CA91DB4287500F231F3 /* Utility.swift */,
 				09E10CAF1DB466BC00F231F3 /* ViewControllers */,
 				09E10C9C1DB411C400F231F3 /* p2p API */,
@@ -176,6 +184,7 @@
 				09E10C8F1DB40D1F00F231F3 /* p2pTests.swift */,
 				0938A33D1DB5D6B70020D619 /* UserTests.swift */,
 				09E10C911DB40D1F00F231F3 /* Info.plist */,
+				0991CC491DC02D9E00190F94 /* reviews.json */,
 			);
 			path = p2pTests;
 			sourceTree = "<group>";
@@ -196,12 +205,12 @@
 		09E10CAF1DB466BC00F231F3 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				09168AC61DB4AA8F0075BD9F /* MainNavigationController.swift */,
 				09E10CB01DB466E900F231F3 /* RegisterViewController.swift */,
 				09E10CC01DB466F400F231F3 /* LoginViewController.swift */,
 				09168AC41DB4A1C70075BD9F /* TutorListViewController.swift */,
-				09168AC61DB4AA8F0075BD9F /* MainNavigationController.swift */,
-				09E10CB11DB466E900F231F3 /* RequestViewController.swift */,
 				09E10CB21DB466E900F231F3 /* TutorDetailViewController.swift */,
+				09E10CB11DB466E900F231F3 /* RequestViewController.swift */,
 				09E10CB31DB466E900F231F3 /* TutorProfileViewController.swift */,
 				09E10CB41DB466E900F231F3 /* TutorTableViewController.swift */,
 				89F618091DB5BDC50088842C /* studentListViewController.swift */,
@@ -238,6 +247,7 @@
 		E0D868BD31C6AC6B43FFC8B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0991CC471DC026D000190F94 /* CoreLocation.framework */,
 				50EA13756132EAFAEC7FDAE5 /* Pods_p2p.framework */,
 				DC05355B4E96DDAA225D7466 /* Pods_p2pTests.framework */,
 			);
@@ -303,6 +313,11 @@
 						DevelopmentTeam = BW8E2XTFK5;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					09E10C8A1DB40D1F00F231F3 = {
 						CreatedOnToolsVersion = 8.0;
@@ -338,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09168AC01DB49F460075BD9F /* tutor.json in Resources */,
+				0991CC4B1DC02F8800190F94 /* reviews.json in Resources */,
 				09E10C9B1DB40D3F00F231F3 /* .gitignore in Resources */,
 				09E10CAE1DB4668E00F231F3 /* Main.storyboard in Resources */,
 				09E10CCD1DB48DFD00F231F3 /* create.json in Resources */,
@@ -356,6 +372,7 @@
 				09E10CCC1DB487D400F231F3 /* tutor.json in Resources */,
 				09E10CC61DB4821600F231F3 /* login.json in Resources */,
 				09E10CCA1DB486C700F231F3 /* session.json in Resources */,
+				0991CC4A1DC02D9E00190F94 /* reviews.json in Resources */,
 				09E10CC81DB4864500F231F3 /* create.json in Resources */,
 				09168ABE1DB49F3B0075BD9F /* tutors.json in Resources */,
 			);
@@ -618,6 +635,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = p2p/p2p.entitlements;
 				DEVELOPMENT_TEAM = BW8E2XTFK5;
 				INFOPLIST_FILE = p2p/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -634,6 +652,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = p2p/p2p.entitlements;
 				DEVELOPMENT_TEAM = BW8E2XTFK5;
 				INFOPLIST_FILE = p2p/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;

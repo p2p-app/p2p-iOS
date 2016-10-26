@@ -39,8 +39,8 @@ class TutorListQueryBar: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.subjectField.bottomBorder(color: #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1), width: 1.0)
-        self.locationField.bottomBorder(color: #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1), width: 1.0)
+        //self.subjectField.bottomBorder(color: #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1), width: 1.0)
+        //self.locationField.bottomBorder(color: #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1), width: 1.0)
     }
 }
 

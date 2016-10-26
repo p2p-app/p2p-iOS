@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreLocation
+import Locksmith
 
 extension Date {
     struct Formatter {
@@ -28,5 +30,47 @@ extension Date {
 extension String {
     var dateFromISO8601: Date? {
         return Date.Formatter.iso8601.date(from: self)
+    }
+}
+
+class UtilityManager: NSObject {
+    static let sharedInstance = UtilityManager()
+    let locationManager = CLLocationManager()
+    var location: (long: Double, lat: Double) = (0.0, 0.0)
+    
+    private override init() {
+        super.init()
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+    
+    func save(token: String, for user: String) {
+
+        
+        do {
+            //TODO: specific username in NSDefaults
+            try Locksmith.saveData(data: ["token": token], forUserAccount: user)
+        } catch {
+            fatalError("Unable to save token")
+        }
+    }
+    
+    func loadToken(for user: String) -> String? {
+        let dictionary = Locksmith.loadDataForUserAccount(userAccount: user)
+        
+        
+        return (dictionary!["token"] as! String?)
+    }
+}
+
+extension UtilityManager: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation:CLLocation = locations[0] 
+        let long = userLocation.coordinate.longitude;
+        let lat = userLocation.coordinate.latitude;
+        location = (long, lat)
     }
 }

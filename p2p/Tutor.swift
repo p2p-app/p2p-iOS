@@ -35,6 +35,7 @@ class Tutor: User {
     fileprivate(set) public var subjects: [String]?
     fileprivate(set) public var stars: Double?
     fileprivate(set) public var location: String?
+    fileprivate(set) public var bio: String?
     
     required init?(map: Map) {
         super.init(map: map)
@@ -47,42 +48,63 @@ class Tutor: User {
         subjects    <- map["subjects"]
         stars       <- map["stars"]
         location    <- map["location"]
+        bio         <- map["bio"]
     }
 }
 
 extension Tutor {
     static func get(tutor id: String, completion: @escaping P2PObjectCompletionBlock) {
         P2PManager.sharedInstance.sessionManager.request(TutorRouter.get(id: id)).responseObject { (response: DataResponse<Tutor>) in
-            completion(response.result.value!, response.result.error);
+            completion(response.result.value, response.result.error);
         }
     }
     
     static func getAll(at location: (Double, Double), for subject: String, completion: @escaping P2PArrayCompletionBlock) {
-        P2PManager.sharedInstance.sessionManager.request(TutorRouter.getAllWith(location: location, subject: subject)).responseArray { (response: DataResponse<[Tutor]>) in
-            completion(response.result.value!, response.result.error);
+        P2PManager.sharedInstance.sessionManager.request(TutorRouter.getAllAt(location: location, subject: subject)).responseArray { (response: DataResponse<[Tutor]>) in
+            completion(response.result.value, response.result.error);
+        }
+    }
+    
+    static func getAll(in city: String, for subject: String, completion: @escaping P2PArrayCompletionBlock) {
+        P2PManager.sharedInstance.sessionManager.request(TutorRouter.getAllIn(city: city, subject: subject)).responseArray { (response: DataResponse<[Tutor]>) in
+            completion(response.result.value, response.result.error);
         }
     }
     
     static func getReviews(for tutor: String, completion: @escaping P2PArrayCompletionBlock) {
         P2PManager.sharedInstance.sessionManager.request(TutorRouter.getReviews(id: tutor)).responseArray { (response: DataResponse<[Review]>) in
-            completion(response.result.value!, response.result.error);
+            completion(response.result.value, response.result.error);
         }
     }
     
-    func getReviews(completion: @escaping P2PArrayCompletionBlock) {
-        Tutor.getReviews(for: self.id!, completion: completion)
+    func getReviews(completion: @escaping P2PCompletionBlock) {
+        Tutor.getReviews(for: self.id!) { (reviews, error) in
+            if error != nil {
+                completion(error)
+                return
+            }
+            
+            self.reviews = reviews as! [Review]?
+            
+            completion(error)
+        }
+        
+            
     }
     
     private enum TutorRouter: URLRequestConvertible {
         case get(id: String)
-        case getAllWith(location: (Double, Double), subject: String)
+        case getAllAt(location: (Double, Double), subject: String)
+        case getAllIn(city: String, subject: String)
         case getReviews(id: String)
         
         var method: HTTPMethod {
             switch self {
             case .get:
                 return .get
-            case .getAllWith:
+            case .getAllAt:
+                return .get
+            case .getAllIn:
                 return .get
             case .getReviews:
                 return .get
@@ -93,7 +115,9 @@ extension Tutor {
             switch self {
             case .get(let id):
                 return "/tutors/\(id)"
-            case .getAllWith:
+            case .getAllAt:
+                return "/tutors"
+            case .getAllIn:
                 return "/tutors"
             case .getReviews(let id):
                 return "/tutors/\(id)/reviews"
@@ -109,8 +133,10 @@ extension Tutor {
             urlRequest.httpMethod = method.rawValue
             
             switch self {
-            case .getAllWith(let location, let subject):
-                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["long": location.0, "lat": location.1, "subject": subject])
+            case .getAllAt(let location, let subject):
+                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["long": location.0, "lat": location.1, "subjects": subject])
+            case .getAllIn(let city, let subject):
+                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["city": city, "subjects": subject])
             default:
                 break
             }

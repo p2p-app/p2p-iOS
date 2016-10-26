@@ -23,6 +23,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         nameField.delegate = self
         usernameField.delegate = self
         passwordField.delegate = self
+        
     }
 
     @IBAction func createUser(_ sender: AnyObject) {
@@ -54,6 +55,10 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
+            let defaults = UserDefaults.standard
+            defaults.set(P2PManager.sharedInstance.user!.username!, forKey: "username")
+            UtilityManager.sharedInstance.save(token: P2PManager.sharedInstance.token!, for: P2PManager.sharedInstance.user!.username!)
+            
             self.performSegue(withIdentifier: "toNext", sender: self)
         }
         
@@ -62,7 +67,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         switch identifier {
         case "toNext":
-            if P2PManager.sharedInstance.user != nil {
+            if P2PManager.sharedInstance.token != nil {
                 return true
             } else {
                 return false

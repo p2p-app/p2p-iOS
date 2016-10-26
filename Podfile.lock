@@ -3,6 +3,7 @@ PODS:
   - AlamofireObjectMapper (4.0.0):
     - Alamofire (~> 4.0)
     - ObjectMapper (~> 2.0)
+  - Locksmith (3.0.0)
   - ObjectMapper (2.1.0)
   - OHHTTPStubs (5.2.1):
     - OHHTTPStubs/Default (= 5.2.1)
@@ -25,6 +26,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - AlamofireObjectMapper (~> 4.0)
+  - Locksmith
   - ObjectMapper (~> 2.0)
   - OHHTTPStubs
   - OHHTTPStubs/Swift
@@ -34,11 +36,12 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
+  Locksmith: 310b4cc5031af5728bf4db5d4de547a5100c6a3b
   ObjectMapper: e5e0f8aef8590fc2ddcde7f27eddb255863ee6e9
   OHHTTPStubs: 3a42f25c00563b71355ac73112ba2324e9e6cef4
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   SwiftDate: a945bf4150ef977824df91116ca30a04604216d3
 
-PODFILE CHECKSUM: e855e3bdda5b003307720b9fa4ca046cd9aa3f91
+PODFILE CHECKSUM: e563bb444278f842e6178e4475ad3db575686a93
 
 COCOAPODS: 1.0.1

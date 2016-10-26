@@ -57,6 +57,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             
+            let defaults = UserDefaults.standard
+            defaults.set(P2PManager.sharedInstance.user!.username!, forKey: "username")
+            UtilityManager.sharedInstance.save(token: P2PManager.sharedInstance.token!, for: P2PManager.sharedInstance.user!.username!)
+            
             self.performSegue(withIdentifier: "toNext", sender: self)
         }
     }

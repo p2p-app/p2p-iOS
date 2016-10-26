@@ -14,6 +14,8 @@ class TutorListViewController: UIViewController {
     
     var tutors: [Tutor]?
     
+    @IBOutlet weak var subjectField: UITextField!
+    @IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var tutorTableView: UITableView!
     
     override func viewDidLoad() {
@@ -25,6 +27,9 @@ class TutorListViewController: UIViewController {
         tutorTableView.delegate = self
         tutorTableView.dataSource = self
         
+        locationField.delegate = self
+        subjectField.delegate = self
+        
         OHHTTPStubs.removeAllStubs()
         
         _ = stub(condition: isHost("p2p.anuv.me")) { _ in
@@ -33,7 +38,7 @@ class TutorListViewController: UIViewController {
             return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
         }
         
-        Tutor.getAll(at: (0, 0), for: "English") { (tutors, error) in
+        Tutor.getAll(at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), for: "all") { (tutors, error) in
             if error != nil {
                 
                 return
@@ -83,5 +88,39 @@ extension TutorListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return (tutors?.count)!
+    }
+}
+
+extension TutorListViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if locationField.text == "me" {
+            locationField.textColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
+            
+            Tutor.getAll(at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), for: (subjectField.text! == "all subjects" ? "all": subjectField.text!)) { (tutors, error) in
+                if error != nil {
+                    
+                    return
+                }
+                
+                self.tutors = tutors as? [Tutor]
+                
+                self.tutorTableView.reloadData()
+            }
+        } else {
+            locationField.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            Tutor.getAll(in: locationField.text!, for: (subjectField.text! == "all subjects" ? "all": subjectField.text!)) { (tutors, error) in
+                if error != nil {
+                    
+                    return
+                }
+                
+                self.tutors = tutors as? [Tutor]
+                
+                self.tutorTableView.reloadData()
+            }
+        }
+        
+        self.view.endEditing(true)
+        return false
     }
 }

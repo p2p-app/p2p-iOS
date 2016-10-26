@@ -2,57 +2,27 @@
   "id": "id1",
   "name": "Arnav",
   "username": "arnavDaTutor",
-  "reviews": [{
-              "id": "id1",
-              "author": {
-              "id": "student1",
-              "name": "James",
-              "username": "JamesUsername",
-              
-              },
-              "review": "Great teacher!",
-              "date": "2008-09-15T15:53:00"
-              }],
   "subjects": ["Science", "Math"],
   "stars": 4.1,
-  "location": "San Jose, CA"
+  "location": "San Jose, CA",
+  "bio": "Hi, my name is Arnav! I'm a great tutor!"
   },
   {
   "id": "id2",
   "name": "Anuv",
   "username": "AnuvTutoring",
-  "reviews": [{
-              "id": "id1",
-              "author": {
-              "id": "student1",
-              "name": "James",
-              "username": "JamesUsername"
-              
-              },
-              "review": "Love this guy!",
-              "date": "2008-09-15T15:53:00"
-              }],
   "subjects": ["English", "History"],
   "stars": 4.5,
-  "location": "Fremont, CA"
+  "location": "Fremont, CA",
+  "bio": "Hi, my name is Anuv! I'm a great tutor!"
   },
   {
   "id": "id3",
   "name": "Amar",
   "username": "AmarTheTeacher",
-  "reviews": [{
-              "id": "id1",
-              "author": {
-              "id": "student2",
-              "name": "Jack",
-              "username": "JackUsername"
-              
-              },
-              "review": "Cool teacher",
-              "date": "2008-09-15T15:53:00"
-              }],
   "subjects": ["English", "Math", "Science"],
   "stars": 4.2,
-  "location": "Los Altos, CA"
+  "location": "Los Altos, CA",
+  "bio": "Hi, my name is Amar! I'm a great tutor!"
   }
   ]
