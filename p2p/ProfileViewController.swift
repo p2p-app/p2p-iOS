@@ -12,6 +12,7 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    
     @IBAction func logout(_ sender: AnyObject) {
         let defaults = UserDefaults.standard
         let username = defaults.string(forKey: "username")
@@ -24,16 +25,16 @@ class ProfileViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "Register")
-        self.present(initialViewController, animated: false) { 
+        self.present(initialViewController, animated: false) {
             
         }
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         nameLabel.text = P2PManager.sharedInstance.user!.name!
         usernameLabel.text = "@\(P2PManager.sharedInstance.user!.username!)"
     }

@@ -6,7 +6,7 @@ import UIKit
 import OHHTTPStubs
 import pop
 
-class RegisterViewController: UIViewController, UITextFieldDelegate {
+class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
    
     @IBOutlet weak var nameField: MainTextField!
     @IBOutlet weak var usernameField: MainTextField!
@@ -16,6 +16,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userRoleSegmentedControl: UISegmentedControl!
 
     @IBOutlet weak var logoTopConstraint: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +76,21 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         default:
             return true
         }
+    }
+    
+    @IBAction func selectPhoto(_ sender: AnyObject) {
+        let myPickerController = UIImagePickerController()
+        myPickerController.delegate = self;
+        myPickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        self.present(myPickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        // profile pic is here
+        self.dismiss(animated: true, completion: nil)
+        
     }
     
     override func didReceiveMemoryWarning() {
