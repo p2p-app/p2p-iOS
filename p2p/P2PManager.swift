@@ -18,14 +18,29 @@ typealias P2PArrayCompletionBlock = ([AnyObject]?, Error?) -> ()
 
 class P2PManager {
     static let sharedInstance = P2PManager()
-    public let sessionManager: SessionManager
+    public var sessionManager: SessionManager
     public var user: User?
     
     fileprivate var _token: String?
     public var token: String? {
         set(value) {
             _token = value
-            sessionManager.session.configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(_token)"]
+
+            if token != nil {
+                var defaultHeaders = Alamofire.SessionManager.default.session.configuration.httpAdditionalHeaders ?? [:]
+                defaultHeaders["Authorization"] = "Bearer \(_token!)"
+            
+                let configuration = URLSessionConfiguration.default
+                configuration.httpAdditionalHeaders = defaultHeaders
+            
+                sessionManager = Alamofire.SessionManager(configuration: configuration)
+            
+            
+                updateUser { (error) in return}
+            } else {
+                sessionManager = SessionManager()
+                user = nil
+            }
         }
         
         get {
@@ -52,7 +67,7 @@ class P2PManager {
             
             switch response.result {
             case .success:
-                self.token = (response.result.value as! NSDictionary).object(forKey: "token") as! String?
+                self._token = (response.result.value as! NSDictionary).object(forKey: "token") as! String?
             case .failure(let error):
                 completion(P2PErrors.UknownError(original: error, description: nil))
                 return
@@ -66,5 +81,41 @@ class P2PManager {
                 break
             }
         }
+    }
+    
+    public func updateUser(completion: @escaping P2PCompletionBlock) {
+        self.sessionManager.request("\(P2PBaseURL)/auth", method: .get).responseJSON { response in
+            switch (response.response?.statusCode)! {
+            case 200:
+                break
+            case 401:
+                completion(P2PErrors.AuthenticationFailed(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
+                return
+            default:
+                completion(P2PErrors.UknownError(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
+                return
+            }
+            
+            switch response.result {
+            case .success:
+                break
+            case .failure(let error):
+                completion(P2PErrors.UknownError(original: error, description: nil))
+                return
+            }
+            }.responseObject { (response: DataResponse<User>) in
+                switch response.result {
+                case .success:
+                    self.user = response.result.value
+                    completion(nil)
+                default:
+                    break
+                }
+        }
+    }
+    
+    public func logout() {
+        self.token = nil
+        self.user = nil
     }
 }

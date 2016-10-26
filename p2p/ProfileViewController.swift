@@ -18,6 +18,8 @@ class ProfileViewController: UIViewController {
         
         defaults.removeObject(forKey: "username")
         
+        P2PManager.sharedInstance.logout()
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let initialViewController = storyboard.instantiateViewController(withIdentifier: "Register")
         self.present(initialViewController, animated: false) { 
@@ -29,6 +31,8 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        print("CURRENT USER: " + (P2PManager.sharedInstance.user?.username)!)
     }
 
     override func didReceiveMemoryWarning() {

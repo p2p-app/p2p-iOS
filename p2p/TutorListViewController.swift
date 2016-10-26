@@ -30,13 +30,13 @@ class TutorListViewController: UIViewController {
         locationField.delegate = self
         subjectField.delegate = self
         
-        OHHTTPStubs.removeAllStubs()
+        /*OHHTTPStubs.removeAllStubs()
         
         _ = stub(condition: isHost("p2p.anuv.me")) { _ in
             // Stub it with our "wsresponse.json" stub file (which is in same bundle as self)
             let stubPath = OHPathForFile("tutors.json", type(of: self))
             return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
-        }
+        }*/
         
         Tutor.getAll(at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), for: "all") { (tutors, error) in
             if error != nil {
