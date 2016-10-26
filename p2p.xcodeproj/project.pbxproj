@@ -23,6 +23,7 @@
 		0991CC481DC026D000190F94 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0991CC471DC026D000190F94 /* CoreLocation.framework */; };
 		0991CC4A1DC02D9E00190F94 /* reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 0991CC491DC02D9E00190F94 /* reviews.json */; };
 		0991CC4B1DC02F8800190F94 /* reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 0991CC491DC02D9E00190F94 /* reviews.json */; };
+		09BA58FB1DC03EEB00BA2027 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA58FA1DC03EEB00BA2027 /* ProfileViewController.swift */; };
 		09E10C7B1DB40D1E00F231F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10C7A1DB40D1E00F231F3 /* AppDelegate.swift */; };
 		09E10C821DB40D1E00F231F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E10C811DB40D1E00F231F3 /* Assets.xcassets */; };
 		09E10C851DB40D1E00F231F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E10C831DB40D1E00F231F3 /* LaunchScreen.storyboard */; };
@@ -77,6 +78,7 @@
 		0991CC471DC026D000190F94 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		0991CC491DC02D9E00190F94 /* reviews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reviews.json; sourceTree = "<group>"; };
 		0991CC4C1DC036CF00190F94 /* p2p.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = p2p.entitlements; sourceTree = "<group>"; };
+		09BA58FA1DC03EEB00BA2027 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		09E10C771DB40D1E00F231F3 /* p2p.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = p2p.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09E10C7A1DB40D1E00F231F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09E10C811DB40D1E00F231F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				09E10CB41DB466E900F231F3 /* TutorTableViewController.swift */,
 				89F618091DB5BDC50088842C /* studentListViewController.swift */,
 				89327C981DB5D8A7007AA52C /* StudentDetailViewController.swift */,
+				09BA58FA1DC03EEB00BA2027 /* ProfileViewController.swift */,
 				09E10CC41DB4717F00F231F3 /* Views */,
 			);
 			name = ViewControllers;
@@ -500,6 +503,7 @@
 				093E46F21DB6D89F003DBCAB /* CardView.swift in Sources */,
 				09E10C9E1DB4127100F231F3 /* User.swift in Sources */,
 				09168ACB1DB5565A0075BD9F /* TutorListQueryBar.swift in Sources */,
+				09BA58FB1DC03EEB00BA2027 /* ProfileViewController.swift in Sources */,
 				09E10CB81DB466E900F231F3 /* TutorDetailViewController.swift in Sources */,
 				09E10CB61DB466E900F231F3 /* RegisterViewController.swift in Sources */,
 			);

@@ -36,10 +36,10 @@ class TutorDetailViewController: UIViewController {
         self.subjectLabel.text = self.tutor!.subjects?.joined(separator: ", ")
         self.bioLabel.text = self.tutor!.bio
         
-        self.tutorView.layer.shadowOpacity = 0.25
+       /* self.tutorView.layer.shadowOpacity = 0.25
         self.tutorView.layer.shadowRadius = 10.0
         self.tutorView.layer.shadowColor = UIColor.black.cgColor
-        self.tutorView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
+        self.tutorView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)*/
         
         OHHTTPStubs.removeAllStubs()
         

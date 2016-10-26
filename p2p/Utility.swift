@@ -48,8 +48,6 @@ class UtilityManager: NSObject {
     }
     
     func save(token: String, for user: String) {
-
-        
         do {
             //TODO: specific username in NSDefaults
             try Locksmith.saveData(data: ["token": token], forUserAccount: user)
@@ -58,6 +56,14 @@ class UtilityManager: NSObject {
         }
     }
     
+    func clear(user: String) {
+        do {
+            try Locksmith.deleteDataForUserAccount(userAccount: user)
+        } catch {
+            fatalError("Unable to save token")
+        }
+    }
+
     func loadToken(for user: String) -> String? {
         let dictionary = Locksmith.loadDataForUserAccount(userAccount: user)
         
