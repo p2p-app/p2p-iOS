@@ -36,15 +36,8 @@ class TutorDetailViewController: UIViewController {
         self.subjectLabel.text = self.tutor!.subjects?.joined(separator: ", ")
         self.bioLabel.text = self.tutor!.bio
         
-       /* self.tutorView.layer.shadowOpacity = 0.25
-        self.tutorView.layer.shadowRadius = 10.0
-        self.tutorView.layer.shadowColor = UIColor.black.cgColor
-        self.tutorView.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)*/
-        
         OHHTTPStubs.removeAllStubs()
-        
         _ = stub(condition: isHost("p2p.anuv.me")) { _ in
-            // Stub it with our "wsresponse.json" stub file (which is in same bundle as self)
             let stubPath = OHPathForFile("reviews.json", type(of: self))
             return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
         }
@@ -64,6 +57,19 @@ class TutorDetailViewController: UIViewController {
     }
     
     @IBAction func didRequestTutor(_ sender: AnyObject) {
+        UtilityManager.sharedInstance.locationManager.delegate = UtilityManager.sharedInstance
+        UtilityManager.sharedInstance.locationManager.startUpdatingLocation()
+        
+        Session.createSession(with: tutor?.id, at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), on: Date()) { (session, error) in
+            UtilityManager.sharedInstance.locationManager.stopUpdatingLocation()
+            
+            if error != nil {
+            
+                return
+            }
+            
+            
+        }
     }
 }
 
