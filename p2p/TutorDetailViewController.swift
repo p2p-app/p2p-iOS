@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import SnapKit
 
 class TutorDetailViewController: UIViewController {
     
     var tutor: Tutor?
     
+    @IBOutlet var requestView: RequestView!
     @IBOutlet weak var tutorView: UIView!
     @IBOutlet weak var reviewTableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -49,6 +51,13 @@ class TutorDetailViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    @IBAction func cancelSession(_ sender: AnyObject) {
+        //UIApplication.shared.keyWindow?.willRemoveSubview(UIApplication.shared.keyWindow!.viewWithTag(0)!)
+        //UIApplication.shared.keyWindow?.willRemoveSubview(UIApplication.shared.keyWindow!.viewWithTag(1)!)
+        requestView.removeFromSuperview()
+        UIApplication.shared.keyWindow?.subviews[(UIApplication.shared.keyWindow?.subviews.count)!-1].removeFromSuperview()
+    }
+    
     @IBAction func didRequestTutor(_ sender: AnyObject) {
         UtilityManager.sharedInstance.locationManager.delegate = UtilityManager.sharedInstance
         UtilityManager.sharedInstance.locationManager.startUpdatingLocation()
@@ -61,7 +70,34 @@ class TutorDetailViewController: UIViewController {
                 return
             }
             
+            let bgOverlay = UIView(frame: self.view.frame)
+            bgOverlay.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.2549019608, blue: 0.2549019608, alpha: 1)
+            bgOverlay.alpha = 0.0
+            bgOverlay.tag = 0
             
+            UIApplication.shared.keyWindow?.addSubview(bgOverlay)
+            
+            
+            bgOverlay.snp.makeConstraints({ (make) in
+                make.height.equalTo(UIApplication.shared.keyWindow!)
+                make.width.equalTo(UIApplication.shared.keyWindow!)
+                make.center.equalTo(UIApplication.shared.keyWindow!)
+            })
+            
+            UIView.animate(withDuration: 0.2, animations: { 
+                bgOverlay.alpha = 0.7
+            })
+            
+            self.requestView.layer.cornerRadius = 5.0
+            self.requestView.clipsToBounds = true
+            UIApplication.shared.keyWindow?.addSubview(self.requestView)
+            self.requestView.tag = 1
+            self.requestView.snp.makeConstraints({ (make) in
+                make.center.equalTo(UIApplication.shared.keyWindow!)
+                make.width.equalTo(UIApplication.shared.keyWindow!.frame.size.width-40)
+                make.height.equalTo(180)
+            })
+
         }
     }
 }

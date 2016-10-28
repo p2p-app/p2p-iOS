@@ -21,6 +21,7 @@ PODS:
   - OHHTTPStubs/Swift (5.2.1):
     - OHHTTPStubs/Core
   - pop (1.0.9)
+  - SnapKit (3.0.2)
   - SwiftDate (4.0.5)
 
 DEPENDENCIES:
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - OHHTTPStubs
   - OHHTTPStubs/Swift
   - pop (~> 1.0)
+  - SnapKit (~> 3.0.2)
   - SwiftDate (~> 4.0)
 
 SPEC CHECKSUMS:
@@ -40,8 +42,9 @@ SPEC CHECKSUMS:
   ObjectMapper: e5e0f8aef8590fc2ddcde7f27eddb255863ee6e9
   OHHTTPStubs: 3a42f25c00563b71355ac73112ba2324e9e6cef4
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   SwiftDate: a945bf4150ef977824df91116ca30a04604216d3
 
-PODFILE CHECKSUM: e563bb444278f842e6178e4475ad3db575686a93
+PODFILE CHECKSUM: c890da484efde2dbfbaf695cc24f9caa359b30ce
 
 COCOAPODS: 1.0.1

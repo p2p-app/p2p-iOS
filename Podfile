@@ -16,6 +16,8 @@ target 'p2p' do
     pod 'SwiftDate', '~> 4.0'
     
     pod 'Locksmith'
+    
+    pod 'SnapKit', '~> 3.0.2'
 end
 
 target 'p2pTests' do
