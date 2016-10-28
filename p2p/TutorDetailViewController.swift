@@ -8,11 +8,13 @@
 
 import UIKit
 import SnapKit
+import NVActivityIndicatorView
 
 class TutorDetailViewController: UIViewController {
     
     var tutor: Tutor?
     
+    @IBOutlet weak var requestViewCardView: CardView!
     @IBOutlet var requestView: RequestView!
     @IBOutlet weak var tutorView: UIView!
     @IBOutlet weak var reviewTableView: UITableView!
@@ -45,6 +47,16 @@ class TutorDetailViewController: UIViewController {
             
             self.reviewTableView.reloadData()
         }
+        
+        let loading = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: NVActivityIndicatorType.ballTrianglePath, color: #colorLiteral(red: 0.2549019608, green: 0.2549019608, blue: 0.2549019608, alpha: 1), padding: 0)
+        self.requestView.addSubview(loading)
+        loading.startAnimating()
+        loading.snp.makeConstraints({ (make) in
+            make.center.equalTo(self.requestView)
+            make.height.equalTo(50)
+            make.width.equalTo(50)
+        })
+        self.requestViewCardView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,8 +64,6 @@ class TutorDetailViewController: UIViewController {
     }
     
     @IBAction func cancelSession(_ sender: AnyObject) {
-        //UIApplication.shared.keyWindow?.willRemoveSubview(UIApplication.shared.keyWindow!.viewWithTag(0)!)
-        //UIApplication.shared.keyWindow?.willRemoveSubview(UIApplication.shared.keyWindow!.viewWithTag(1)!)
         requestView.removeFromSuperview()
         UIApplication.shared.keyWindow?.subviews[(UIApplication.shared.keyWindow?.subviews.count)!-1].removeFromSuperview()
     }
@@ -97,7 +107,6 @@ class TutorDetailViewController: UIViewController {
                 make.width.equalTo(UIApplication.shared.keyWindow!.frame.size.width-40)
                 make.height.equalTo(180)
             })
-
         }
     }
 }

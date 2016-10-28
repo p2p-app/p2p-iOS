@@ -16,7 +16,6 @@
 		09168AC51DB4A1C70075BD9F /* TutorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09168AC41DB4A1C70075BD9F /* TutorListViewController.swift */; };
 		09168AC71DB4AA8F0075BD9F /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09168AC61DB4AA8F0075BD9F /* MainNavigationController.swift */; };
 		09168ACB1DB5565A0075BD9F /* TutorListQueryBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09168ACA1DB556590075BD9F /* TutorListQueryBar.swift */; };
-		0938A33E1DB5D6B70020D619 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938A33D1DB5D6B70020D619 /* UserTests.swift */; };
 		0938A3401DB5D89D0020D619 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0938A33F1DB5D89D0020D619 /* Errors.swift */; };
 		093E46F21DB6D89F003DBCAB /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E46F11DB6D89F003DBCAB /* CardView.swift */; };
 		093E46F41DB6DA2A003DBCAB /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E46F31DB6DA2A003DBCAB /* ReviewTableViewCell.swift */; };
@@ -28,7 +27,6 @@
 		09E10C7B1DB40D1E00F231F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10C7A1DB40D1E00F231F3 /* AppDelegate.swift */; };
 		09E10C821DB40D1E00F231F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09E10C811DB40D1E00F231F3 /* Assets.xcassets */; };
 		09E10C851DB40D1E00F231F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E10C831DB40D1E00F231F3 /* LaunchScreen.storyboard */; };
-		09E10C901DB40D1F00F231F3 /* p2pTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10C8F1DB40D1F00F231F3 /* p2pTests.swift */; };
 		09E10C9B1DB40D3F00F231F3 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 09E10C9A1DB40D3F00F231F3 /* .gitignore */; };
 		09E10C9E1DB4127100F231F3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10C9D1DB4127100F231F3 /* User.swift */; };
 		09E10CA01DB414C600F231F3 /* Tutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10C9F1DB414C600F231F3 /* Tutor.swift */; };
@@ -72,7 +70,6 @@
 		09168AC41DB4A1C70075BD9F /* TutorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorListViewController.swift; sourceTree = "<group>"; };
 		09168AC61DB4AA8F0075BD9F /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		09168ACA1DB556590075BD9F /* TutorListQueryBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorListQueryBar.swift; sourceTree = "<group>"; };
-		0938A33D1DB5D6B70020D619 /* UserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		0938A33F1DB5D89D0020D619 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		093E46F11DB6D89F003DBCAB /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		093E46F31DB6DA2A003DBCAB /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
@@ -87,7 +84,6 @@
 		09E10C841DB40D1E00F231F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09E10C861DB40D1F00F231F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09E10C8B1DB40D1F00F231F3 /* p2pTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = p2pTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		09E10C8F1DB40D1F00F231F3 /* p2pTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = p2pTests.swift; sourceTree = "<group>"; };
 		09E10C911DB40D1F00F231F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09E10C9A1DB40D3F00F231F3 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		09E10C9D1DB4127100F231F3 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -185,8 +181,6 @@
 				09E10CC91DB486C700F231F3 /* session.json */,
 				09E10CCB1DB487D400F231F3 /* tutor.json */,
 				09168ABD1DB49F3B0075BD9F /* tutors.json */,
-				09E10C8F1DB40D1F00F231F3 /* p2pTests.swift */,
-				0938A33D1DB5D6B70020D619 /* UserTests.swift */,
 				09E10C911DB40D1F00F231F3 /* Info.plist */,
 				0991CC491DC02D9E00190F94 /* reviews.json */,
 			);
@@ -517,8 +511,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0938A33E1DB5D6B70020D619 /* UserTests.swift in Sources */,
-				09E10C901DB40D1F00F231F3 /* p2pTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import OHHTTPStubs
 import pop
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
@@ -37,7 +36,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         
         self.loginButton.isEnabled = false
-        OHHTTPStubs.removeAllStubs()
+
         P2PManager.sharedInstance.authorize(username: usernameField.text!, password: passwordField.text!) { (error) in
             self.loginButton.isEnabled = true
             if error != nil {

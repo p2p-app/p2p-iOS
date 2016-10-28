@@ -3,7 +3,6 @@
 
 
 import UIKit
-import OHHTTPStubs
 import pop
 
 class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -39,7 +38,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         }
         
         self.createButton.isEnabled = false
-        OHHTTPStubs.removeAllStubs()
+
         User.create(username: usernameField.text!, password: passwordField.text!, name: nameField.text!) { (user, error) in
             self.createButton.isEnabled = true
             if error != nil {

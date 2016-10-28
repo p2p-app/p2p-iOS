@@ -161,6 +161,7 @@
                         <outlet property="nameLabel" destination="4Ol-XG-IPW" id="fqp-2x-Zrf"/>
                         <outlet property="ratingLabel" destination="Y9X-EK-feD" id="rxc-IX-cuf"/>
                         <outlet property="requestView" destination="rgE-4g-K2J" id="DFr-2h-Jhp"/>
+                        <outlet property="requestViewCardView" destination="eaa-Mu-65P" id="qY8-gO-d38"/>
                         <outlet property="reviewTableView" destination="gYQ-0m-mRm" id="zqp-cy-Tml"/>
                         <outlet property="subjectLabel" destination="N50-NV-5vV" id="WHW-Zg-hUH"/>
                         <outlet property="tutorView" destination="VRt-sN-rC9" id="7hf-8w-caW"/>
