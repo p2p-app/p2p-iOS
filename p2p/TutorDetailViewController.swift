@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import OHHTTPStubs
 
 class TutorDetailViewController: UIViewController {
     
@@ -31,17 +30,11 @@ class TutorDetailViewController: UIViewController {
         reviewTableView.dataSource = self
         
         self.nameLabel.text = self.tutor!.name
-        self.ratingLabel.text = String(format:"%.1f", (self.tutor!.stars)!) + "/5"
-        self.locationLabel.text = self.tutor!.location
-        self.subjectLabel.text = self.tutor!.subjects?.joined(separator: ", ")
+        self.ratingLabel.text = "\(self.tutor!.stars == nil ? "-":  String(describing: self.tutor!.stars!))/5"
+        self.locationLabel.text = self.tutor!.city
+        self.subjectLabel.text = self.tutor!.subjects?.joined(separator: ", ").capitalized
         self.bioLabel.text = self.tutor!.bio
-        
-        OHHTTPStubs.removeAllStubs()
-        _ = stub(condition: isHost("p2p.anuv.me")) { _ in
-            let stubPath = OHPathForFile("reviews.json", type(of: self))
-            return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
-        }
-        
+
         tutor!.getReviews { (error) in
             if error != nil {
                 

@@ -76,7 +76,7 @@ class P2PManager {
     }
     
     public func updateUser(completion: @escaping P2PCompletionBlock) {
-        self.sessionManager.request("\(P2PBaseURL)/auth", method: .get, headers: ["Authorization": "Bearer \(P2PManager.sharedInstance.token)"]).responseJSON { response in
+        self.sessionManager.request("\(P2PBaseURL)/auth", method: .get, headers: ["Authorization": "Bearer \(P2PManager.sharedInstance.token!)"]).responseJSON { response in
             switch (response.response?.statusCode)! {
             case 200:
                 break

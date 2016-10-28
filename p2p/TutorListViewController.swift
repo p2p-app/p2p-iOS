@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import OHHTTPStubs
 import pop
 import CoreLocation
 
@@ -27,14 +26,6 @@ class TutorListViewController: UIViewController {
         
         locationField.delegate = self
         subjectField.delegate = self
-        
-        OHHTTPStubs.removeAllStubs()
-        
-        _ = stub(condition: isHost("p2p.anuv.me")) { _ in
-            // Stub it with our "wsresponse.json" stub file (which is in same bundle as self)
-            let stubPath = OHPathForFile("tutors.json", type(of: self))
-            return fixture(filePath: stubPath!, headers: ["Content-Type" as NSObject:"application/json" as AnyObject])
-        }
         
         UtilityManager.sharedInstance.locationManager.delegate = self
         
@@ -99,10 +90,15 @@ extension TutorListViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension TutorListViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if subjectField.text == "" {
+            subjectField.text = "All Subjects"
+            return false
+        }
+        
         if locationField.text == "me" {
             locationField.textColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
             
-            Tutor.getAll(at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), for: (subjectField.text! == "all subjects" ? "all": subjectField.text!)) { (tutors, error) in
+            Tutor.getAll(at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), for: (subjectField.text!.lowercased() == "all subjects" ? "all": subjectField.text!)) { (tutors, error) in
                 if error != nil {
                     
                     return
@@ -114,7 +110,7 @@ extension TutorListViewController: UITextFieldDelegate {
             }
         } else {
             locationField.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            Tutor.getAll(in: locationField.text!, for: (subjectField.text! == "all subjects" ? "all": subjectField.text!)) { (tutors, error) in
+            Tutor.getAll(in: locationField.text!, for: (subjectField.text!.lowercased() == "all subjects" ? "all": subjectField.text!)) { (tutors, error) in
                 if error != nil {
                     
                     return

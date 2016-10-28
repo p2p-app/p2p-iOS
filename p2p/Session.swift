@@ -79,7 +79,7 @@ extension Session {
                 break
             }
             
-            urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token)", forHTTPHeaderField: "Authorization")
+            urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             
             return urlRequest
         }

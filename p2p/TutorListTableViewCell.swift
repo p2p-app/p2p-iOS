@@ -23,9 +23,9 @@ class TutorListTableViewCell: UITableViewCell {
             _tutor = value
             
             self.nameLabel.text = self.tutor!.name
-            self.ratingLabel.text = String(format:"%.1f", (self.tutor!.stars)!) + "/5"
-            self.locationLabel.text = self.tutor!.location
-            self.subjectLabel.text = self.tutor!.subjects?.joined(separator: ", ")
+            self.ratingLabel.text = "\(self.tutor!.stars == nil ? "-":  String(describing: self.tutor!.stars!))/5"
+            self.locationLabel.text = self.tutor!.city
+            self.subjectLabel.text = self.tutor!.subjects?.joined(separator: ", ").capitalized
         }
         get {
             return _tutor

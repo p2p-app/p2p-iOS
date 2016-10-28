@@ -34,8 +34,10 @@ class Tutor: User {
     fileprivate(set) public var reviews: [Review]?
     fileprivate(set) public var subjects: [String]?
     fileprivate(set) public var stars: Double?
-    fileprivate(set) public var location: String?
     fileprivate(set) public var bio: String?
+    fileprivate(set) public var school: String?
+    fileprivate(set) public var city: String?
+    fileprivate(set) public var location: (longitude: Double, latitude: Double) = (0, 0)
     
     required init?(map: Map) {
         super.init(map: map)
@@ -44,11 +46,20 @@ class Tutor: User {
     override func mapping(map: Map) {
         super.mapping(map: map)
         
-        reviews     <- map["reviews"]
-        subjects    <- map["subjects"]
-        stars       <- map["stars"]
-        location    <- map["location"]
-        bio         <- map["bio"]
+        let SubjectsTransform = TransformOf<[String], String>(fromJSON: { (value: String?) -> [String]? in
+            return value?.characters.split{$0 == ","}.map(String.init)
+            }, toJSON: { (value: [String]?) -> String? in
+                return value!.joined(separator: ",")
+        })
+        
+        reviews                 <- map["reviews"]
+        subjects                <- (map["subjects"], SubjectsTransform)
+        stars                   <- map["stars"]
+        location.longitude      <- map["location.0"]
+        location.latitude       <- map["location.1"]
+        bio                     <- map["bio"]
+        school                  <- map["school"]
+        city                    <- map["city"]
     }
 }
 
@@ -141,7 +152,7 @@ extension Tutor {
                 break
             }
             
-            urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token)", forHTTPHeaderField: "Authorization")
+            urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             
             return urlRequest
         }
