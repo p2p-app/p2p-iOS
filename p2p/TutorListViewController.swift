@@ -37,7 +37,7 @@ class TutorListViewController: UIViewController {
             
             self.tutors = tutors as? [Tutor]
             
-            self.tutorTableView.reloadData()
+            self.tutorTableView.reloadSections([0], with: UITableViewRowAnimation.middle)
         }
         
         // Do any additional setup after loading the view.
@@ -106,7 +106,7 @@ extension TutorListViewController: UITextFieldDelegate {
                 
                 self.tutors = tutors as? [Tutor]
                 
-                self.tutorTableView.reloadData()
+                self.tutorTableView.reloadSections([0], with: UITableViewRowAnimation.middle)
             }
         } else {
             locationField.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -118,7 +118,7 @@ extension TutorListViewController: UITextFieldDelegate {
                 
                 self.tutors = tutors as? [Tutor]
                 
-                self.tutorTableView.reloadData()
+                self.tutorTableView.reloadSections([0], with: UITableViewRowAnimation.middle)
             }
         }
         
