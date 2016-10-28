@@ -145,7 +145,7 @@ extension Tutor {
             
             switch self {
             case .getAllAt(let location, let subject):
-                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["long": location.0, "lat": location.1, "subjects": subject])
+                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["long": location.0, "lat": location.1, "subjects": subject, "range": 0.0005])
             case .getAllIn(let city, let subject):
                 urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["city": city, "subjects": subject])
             default:

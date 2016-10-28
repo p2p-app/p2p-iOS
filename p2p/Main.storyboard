@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ak7-4H-sgO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BFS-cq-HQi">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYn-53-VPz">
@@ -381,7 +381,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hd5-yl-WO1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dVr-U0-IcL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="150" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Irb-A8-aZ5">
@@ -389,10 +389,10 @@
                                 <color key="sectionIndexBackgroundColor" red="0.94901960784313721" green="0.94509803921568625" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="tutorCell" rowHeight="150" id="hsv-97-MQA" customClass="TutorListTableViewCell" customModule="p2p" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="1000" height="150"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hsv-97-MQA" id="Ee4-lC-hdv">
-                                            <frame key="frameInset" width="1000" height="150"/>
+                                            <frame key="frameInset" width="375" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x9g-e5-1Bi" customClass="CardView" customModule="p2p" customModuleProvider="target">
@@ -538,7 +538,9 @@
         <scene sceneID="QRp-A4-xGu">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fVZ-WM-Xxc" customClass="MainNavigationController" customModule="p2p" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Tutors" id="15s-oN-NA5"/>
+                    <tabBarItem key="tabBarItem" title="Tutors" image="gradIcon" selectedImage="gradIcon" id="15s-oN-NA5">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="cAz-aP-01y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -564,11 +566,12 @@
             <objects>
                 <tabBarController storyboardIdentifier="MainNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tOb-mq-8Lk" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="LTW-cI-Xzt">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="LTW-cI-Xzt">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.37254901959999998" green="0.76470588240000004" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.37254901959999998" green="0.76470588240000004" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="fVZ-WM-Xxc" kind="relationship" relationship="viewControllers" id="tdC-71-bBc"/>
@@ -588,7 +591,7 @@
                         <viewControllerLayoutGuide type="bottom" id="NiB-oa-671"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="u5q-4c-bUw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ngt-sY-NAK" customClass="CardView" customModule="p2p" customModuleProvider="target">
@@ -629,6 +632,7 @@
                                 <items>
                                     <navigationItem title="Account" id="ZWr-JC-OCM">
                                         <barButtonItem key="rightBarButtonItem" title="Logout" id="MRH-mn-4Mh">
+                                            <color key="tintColor" red="0.37254901959999998" green="0.76470588240000004" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="logout:" destination="kzv-Lx-7Xw" id="5Ah-EE-Iqt"/>
                                             </connections>
@@ -647,7 +651,7 @@
                             <constraint firstItem="zwe-b1-Y3t" firstAttribute="width" secondItem="u5q-4c-bUw" secondAttribute="width" id="z60-UF-RhB"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" id="CcA-UC-EXq"/>
+                    <tabBarItem key="tabBarItem" title="Me" image="userIcon" selectedImage="userIcon" id="CcA-UC-EXq"/>
                     <connections>
                         <outlet property="nameLabel" destination="wGh-dH-AMr" id="fPr-0C-RtZ"/>
                         <outlet property="usernameLabel" destination="K8k-4n-Qt5" id="tAi-sF-aVg"/>
@@ -659,8 +663,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gradIcon" width="30" height="30"/>
         <image name="logo" width="92" height="49"/>
         <image name="mike" width="225" height="225"/>
+        <image name="userIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XaM-Bn-yIh"/>
