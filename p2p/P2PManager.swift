@@ -18,27 +18,19 @@ typealias P2PArrayCompletionBlock = ([AnyObject]?, Error?) -> ()
 
 class P2PManager {
     static let sharedInstance = P2PManager()
-    public var sessionManager: SessionManager
-    public var user: User?
     
+    public var sessionManager: SessionManager
+    
+    public var user: User?
     fileprivate var _token: String?
+    
     public var token: String? {
         set(value) {
             _token = value
 
             if token != nil {
-                var defaultHeaders = Alamofire.SessionManager.default.session.configuration.httpAdditionalHeaders ?? [:]
-                defaultHeaders["Authorization"] = "Bearer \(_token!)"
-            
-                let configuration = URLSessionConfiguration.default
-                configuration.httpAdditionalHeaders = defaultHeaders
-            
-                sessionManager = Alamofire.SessionManager(configuration: configuration)
-            
-            
                 updateUser { (error) in return}
             } else {
-                sessionManager = SessionManager()
                 user = nil
             }
         }
@@ -84,7 +76,7 @@ class P2PManager {
     }
     
     public func updateUser(completion: @escaping P2PCompletionBlock) {
-        self.sessionManager.request("\(P2PBaseURL)/auth", method: .get).responseJSON { response in
+        self.sessionManager.request("\(P2PBaseURL)/auth", method: .get, headers: ["Authorization": "Bearer \(P2PManager.sharedInstance.token)"]).responseJSON { response in
             switch (response.response?.statusCode)! {
             case 200:
                 break

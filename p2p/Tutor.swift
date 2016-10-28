@@ -141,6 +141,8 @@ extension Tutor {
                 break
             }
             
+            urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token)", forHTTPHeaderField: "Authorization")
+            
             return urlRequest
         }
     }

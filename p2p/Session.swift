@@ -32,13 +32,13 @@ class Session: Mappable {
 extension Session {
     static func createSession(with tutor: String, at location: (Double, Double), on time: Date, completion: @escaping P2PObjectCompletionBlock) {
         P2PManager.sharedInstance.sessionManager.request(SessionRouter.create(tutorID: tutor, time: time, location: location)).responseObject { (response: DataResponse<Session>) in
-            completion(response.result.value! as Session, response.result.error)
+            completion(response.result.value as Session?, response.result.error)
         }
     }
     
     static func get(game id: String, completion: @escaping P2PObjectCompletionBlock) {
         P2PManager.sharedInstance.sessionManager.request(SessionRouter.get(id: id)).responseObject { (response: DataResponse<Session>) in
-            completion(response.result.value! as Session, response.result.error)
+            completion(response.result.value as Session?, response.result.error)
         }
     }
     
@@ -78,6 +78,8 @@ extension Session {
             default:
                 break
             }
+            
+            urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token)", forHTTPHeaderField: "Authorization")
             
             return urlRequest
         }

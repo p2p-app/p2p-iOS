@@ -60,7 +60,7 @@ class TutorDetailViewController: UIViewController {
         UtilityManager.sharedInstance.locationManager.delegate = UtilityManager.sharedInstance
         UtilityManager.sharedInstance.locationManager.startUpdatingLocation()
         
-        Session.createSession(with: tutor?.id, at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), on: Date()) { (session, error) in
+        Session.createSession(with: tutor!.id!, at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), on: Date()) { (session, error) in
             UtilityManager.sharedInstance.locationManager.stopUpdatingLocation()
             
             if error != nil {

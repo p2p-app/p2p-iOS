@@ -39,6 +39,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         }
         
         self.createButton.isEnabled = false
+        OHHTTPStubs.removeAllStubs()
         User.create(username: usernameField.text!, password: passwordField.text!, name: nameField.text!) { (user, error) in
             self.createButton.isEnabled = true
             if error != nil {
@@ -76,21 +77,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         default:
             return true
         }
-    }
-    
-    @IBAction func selectPhoto(_ sender: AnyObject) {
-        let myPickerController = UIImagePickerController()
-        myPickerController.delegate = self;
-        myPickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        
-        self.present(myPickerController, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        
-        // profile pic is here
-        self.dismiss(animated: true, completion: nil)
-        
     }
     
     override func didReceiveMemoryWarning() {
