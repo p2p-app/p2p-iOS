@@ -58,7 +58,7 @@ extension Session {
         var path: String {
             switch self {
             case .create:
-                return "/sessions"
+                return "/sessions/create"
             case .get(let id):
                 return "/sesions/\(id)"
             }

@@ -89,8 +89,6 @@ extension User {
                 urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username": username, "password": password, "fullname": name])
             }
             
-            urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
-            
             return urlRequest
         }
     }

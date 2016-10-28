@@ -16,6 +16,7 @@ class Review: Mappable {
     fileprivate(set) public var author: User?
     fileprivate(set) public var text: String?
     fileprivate(set) public var date: Date?
+    fileprivate(set) public var stars: Int?
     
     public required init?(map: Map) {
     }
@@ -23,8 +24,9 @@ class Review: Mappable {
     public func mapping(map: Map) {
         id                      <-  map["id"]
         author                  <-  map["author"]
-        text                    <-  map["review"]
+        text                    <-  map["reviewText"]
         date                    <-  (map["date"], DateTransform())
+        stars                   <-  map["stars"]
     }
     
 }
