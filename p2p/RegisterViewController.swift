@@ -7,12 +7,18 @@ import pop
 
 class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
    
+    @IBOutlet weak var registerScrollView: UIScrollView!
+    
     @IBOutlet weak var nameField: MainTextField!
     @IBOutlet weak var usernameField: MainTextField!
     @IBOutlet weak var passwordField: MainTextField!
+    @IBOutlet weak var schoolField: MainTextField!
+    @IBOutlet weak var bioField: MainTextField!
+    @IBOutlet weak var subjectsField: MainTextField!
+    @IBOutlet weak var cityField: MainTextField!
     @IBOutlet weak var createButton: UIButton!
     @IBOutlet weak var loginLabel: UIButton!
-    @IBOutlet weak var userRoleSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var accountTypeSegmentedControl: UISegmentedControl!
 
     @IBOutlet weak var logoTopConstraint: NSLayoutConstraint!
     
@@ -24,8 +30,27 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         usernameField.delegate = self
         passwordField.delegate = self
         
+        registerScrollView.isScrollEnabled = false
     }
 
+    @IBAction func changeAccountType(_ sender: AnyObject) {
+        registerScrollView.setContentOffset(CGPoint(x: 0, y: -registerScrollView.contentInset.top), animated: true)
+
+        if accountTypeSegmentedControl.selectedSegmentIndex == 0 {
+            registerScrollView.isScrollEnabled = false
+            schoolField.isHidden = true
+            bioField.isHidden = true
+            subjectsField.isHidden = true
+            cityField.isHidden = true
+        } else {
+            registerScrollView.isScrollEnabled = true
+            schoolField.isHidden = false
+            bioField.isHidden = false
+            subjectsField.isHidden = false
+            cityField.isHidden = false
+        }
+    }
+    
     @IBAction func createUser(_ sender: AnyObject) {
         if usernameField.text! == "" || passwordField.text! == "" || nameField.text! == "" {
             let shake = POPSpringAnimation(propertyNamed: kPOPLayerPositionX)

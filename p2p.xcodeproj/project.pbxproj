@@ -136,6 +136,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09D1C1801DC478AA005BD1FA /* Student */ = {
+			isa = PBXGroup;
+			children = (
+				09168AC41DB4A1C70075BD9F /* TutorListViewController.swift */,
+				09E10CB21DB466E900F231F3 /* TutorDetailViewController.swift */,
+			);
+			name = Student;
+			sourceTree = "<group>";
+		};
 		09E10C6E1DB40D1D00F231F3 = {
 			isa = PBXGroup;
 			children = (
@@ -206,14 +215,13 @@
 				09168AC61DB4AA8F0075BD9F /* MainNavigationController.swift */,
 				09E10CB01DB466E900F231F3 /* RegisterViewController.swift */,
 				09E10CC01DB466F400F231F3 /* LoginViewController.swift */,
-				09168AC41DB4A1C70075BD9F /* TutorListViewController.swift */,
-				09E10CB21DB466E900F231F3 /* TutorDetailViewController.swift */,
+				09BA58FA1DC03EEB00BA2027 /* ProfileViewController.swift */,
+				09D1C1801DC478AA005BD1FA /* Student */,
 				09E10CB11DB466E900F231F3 /* RequestViewController.swift */,
 				09E10CB31DB466E900F231F3 /* TutorProfileViewController.swift */,
 				09E10CB41DB466E900F231F3 /* TutorTableViewController.swift */,
 				89F618091DB5BDC50088842C /* studentListViewController.swift */,
 				89327C981DB5D8A7007AA52C /* StudentDetailViewController.swift */,
-				09BA58FA1DC03EEB00BA2027 /* ProfileViewController.swift */,
 				09E10CC41DB4717F00F231F3 /* Views */,
 			);
 			name = ViewControllers;

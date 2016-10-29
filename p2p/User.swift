@@ -33,7 +33,7 @@ extension User {
             switch (response.response?.statusCode)! {
             case 200:
                 break
-            case 500: //TODO: change to 409
+            case 409: 
                 completion(nil, P2PErrors.ResourceConflict(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
                 break
             default:

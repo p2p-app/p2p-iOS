@@ -64,6 +64,10 @@ class Tutor: User {
 }
 
 extension Tutor {
+    static func create(username: String, password: String, name: String, school: String, bio: String, city: String, completion: @escaping P2PObjectCompletionBlock) {
+        
+    }
+    
     static func get(tutor id: String, completion: @escaping P2PObjectCompletionBlock) {
         P2PManager.sharedInstance.sessionManager.request(TutorRouter.get(id: id)).responseObject { (response: DataResponse<Tutor>) in
             completion(response.result.value, response.result.error);
@@ -104,6 +108,7 @@ extension Tutor {
     }
     
     private enum TutorRouter: URLRequestConvertible {
+        case create(username: String, password: String, name: String, school: String, bio: String, city: String)
         case get(id: String)
         case getAllAt(location: (Double, Double), subject: String)
         case getAllIn(city: String, subject: String)
@@ -111,6 +116,8 @@ extension Tutor {
         
         var method: HTTPMethod {
             switch self {
+            case .create:
+                return .post
             case .get:
                 return .get
             case .getAllAt:
@@ -124,6 +131,8 @@ extension Tutor {
         
         var path: String {
             switch self {
+            case .create:
+                return "/tutors/create"
             case .get(let id):
                 return "/tutors/\(id)"
             case .getAllAt:
@@ -144,15 +153,17 @@ extension Tutor {
             urlRequest.httpMethod = method.rawValue
             
             switch self {
+            case .create(let username, let password, let name, let school, let bio, let city):
+                urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username": username, "password": password, "fullname": name, "school": school, "bio": bio, "city": city])
             case .getAllAt(let location, let subject):
                 urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["long": location.0, "lat": location.1, "subjects": subject, "range": 0.0005])
+                urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             case .getAllIn(let city, let subject):
                 urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["city": city, "subjects": subject])
+                urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             default:
                 break
             }
-            
-            urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             
             return urlRequest
         }
