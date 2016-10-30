@@ -64,8 +64,35 @@ class Tutor: User {
 }
 
 extension Tutor {
-    static func create(username: String, password: String, name: String, school: String, bio: String, city: String, completion: @escaping P2PObjectCompletionBlock) {
-        
+    static func create(username: String, password: String, name: String, school: String, bio: String, city: String, subjects: [String], completion: @escaping P2PObjectCompletionBlock) {
+        P2PManager.sharedInstance.sessionManager.request(TutorRouter.create(username: username, password: password, name: name, school: school, bio: bio, city: city, subjects: subjects)).responseJSON { response  in
+            switch (response.response?.statusCode)! {
+            case 200:
+                break
+            case 409:
+                completion(nil, P2PErrors.ResourceConflict(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
+                break
+            default:
+                completion(nil, P2PErrors.UknownError(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
+            }
+            
+            switch response.result {
+            case .success:
+                P2PManager.sharedInstance.token = (response.result.value as! NSDictionary).object(forKey: "token") as! String?
+            case .failure(let error):
+                completion(nil, P2PErrors.UknownError(original: error, description: nil))
+                break
+            }
+            }.responseObject(keyPath: "data") { (response: DataResponse<Tutor>) in
+                switch response.result {
+                case .success:
+                    P2PManager.sharedInstance.user = response.result.value
+                    completion(response.result.value!, nil)
+                case .failure(let error):
+                    completion(nil, P2PErrors.UknownError(original: error, description: nil))
+                    break
+                }
+            }
     }
     
     static func get(tutor id: String, completion: @escaping P2PObjectCompletionBlock) {
@@ -108,7 +135,7 @@ extension Tutor {
     }
     
     private enum TutorRouter: URLRequestConvertible {
-        case create(username: String, password: String, name: String, school: String, bio: String, city: String)
+        case create(username: String, password: String, name: String, school: String, bio: String, city: String, subjects: [String])
         case get(id: String)
         case getAllAt(location: (Double, Double), subject: String)
         case getAllIn(city: String, subject: String)
@@ -153,8 +180,8 @@ extension Tutor {
             urlRequest.httpMethod = method.rawValue
             
             switch self {
-            case .create(let username, let password, let name, let school, let bio, let city):
-                urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username": username, "password": password, "fullname": name, "school": school, "bio": bio, "city": city])
+            case .create(let username, let password, let name, let school, let bio, let city, let subjects):
+                urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username": username, "password": password, "fullname": name, "school": school, "bio": bio, "city": city, "subjects": subjects.joined(separator: ",")])
             case .getAllAt(let location, let subject):
                 urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["long": location.0, "lat": location.1, "subjects": subject, "range": 0.0005])
                 urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")

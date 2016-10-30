@@ -29,8 +29,28 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         nameField.delegate = self
         usernameField.delegate = self
         passwordField.delegate = self
+        schoolField.delegate = self
+        bioField.delegate = self
+        subjectsField.delegate = self
+        cityField.delegate = self
         
         registerScrollView.isScrollEnabled = false
+        
+        let viewTapGestureRec = UITapGestureRecognizer(target: self, action: #selector(handleViewTap(recognizer:)))
+        viewTapGestureRec.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(viewTapGestureRec)
+    }
+    
+    func handleViewTap(recognizer: UIGestureRecognizer) {
+        nameField.resignFirstResponder()
+        usernameField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        schoolField.resignFirstResponder()
+        bioField.resignFirstResponder()
+        subjectsField.resignFirstResponder()
+        bioField.resignFirstResponder()
+        subjectsField.resignFirstResponder()
+        cityField.resignFirstResponder()
     }
 
     @IBAction func changeAccountType(_ sender: AnyObject) {
@@ -42,12 +62,16 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
             bioField.isHidden = true
             subjectsField.isHidden = true
             cityField.isHidden = true
+            
+            passwordField.returnKeyType = .done
         } else {
             registerScrollView.isScrollEnabled = true
             schoolField.isHidden = false
             bioField.isHidden = false
             subjectsField.isHidden = false
             cityField.isHidden = false
+            
+            passwordField.returnKeyType = .next
         }
     }
     
@@ -64,28 +88,66 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
         
         self.createButton.isEnabled = false
 
-        User.create(username: usernameField.text!, password: passwordField.text!, name: nameField.text!) { (user, error) in
-            self.createButton.isEnabled = true
-            if error != nil {
-                switch error as! P2PErrors {
-                case .ResourceConflict:
-                    let shake = POPSpringAnimation(propertyNamed: kPOPLayerPositionX)
-                    shake?.springBounciness = 20
-                    shake?.velocity = 2500
-                    
-                    self.usernameField.layer.pop_add(shake, forKey: "shake")
-                    break
-                default:
-                    break
+        if accountTypeSegmentedControl.selectedSegmentIndex == 0 {
+            User.create(username: usernameField.text!, password: passwordField.text!, name: nameField.text!) { (user, error) in
+                self.createButton.isEnabled = true
+                if error != nil {
+                    switch error as! P2PErrors {
+                    case .ResourceConflict:
+                        let shake = POPSpringAnimation(propertyNamed: kPOPLayerPositionX)
+                        shake?.springBounciness = 20
+                        shake?.velocity = 2500
+                        
+                        self.usernameField.layer.pop_add(shake, forKey: "shake")
+                        break
+                    default:
+                        break
+                    }
+                    return
                 }
+                
+                let defaults = UserDefaults.standard
+                defaults.set(P2PManager.sharedInstance.user!.username!, forKey: "username")
+                UtilityManager.sharedInstance.save(token: P2PManager.sharedInstance.token!, for: P2PManager.sharedInstance.user!.username!)
+                
+                self.performSegue(withIdentifier: "toNext", sender: self)
+            }
+        } else {
+            if schoolField.text! == "" || bioField.text! == "" || cityField.text! == "" || subjectsField.text! == "" {
+                let shake = POPSpringAnimation(propertyNamed: kPOPLayerPositionX)
+                shake?.springBounciness = 20
+                shake?.velocity = 1500
+                
+                self.createButton.layer.pop_add(shake, forKey: "shake")
+                
+                self.createButton.isEnabled = true
+                
                 return
             }
             
-            let defaults = UserDefaults.standard
-            defaults.set(P2PManager.sharedInstance.user!.username!, forKey: "username")
-            UtilityManager.sharedInstance.save(token: P2PManager.sharedInstance.token!, for: P2PManager.sharedInstance.user!.username!)
-            
-            self.performSegue(withIdentifier: "toNext", sender: self)
+            Tutor.create(username: usernameField.text!, password: passwordField.text!, name: nameField.text!, school: schoolField.text!, bio: bioField.text!, city: cityField.text!, subjects: subjectsField.text!.components(separatedBy: ","), completion: { (user, error) in
+                self.createButton.isEnabled = true
+                if error != nil {
+                    switch error as! P2PErrors {
+                    case .ResourceConflict:
+                        let shake = POPSpringAnimation(propertyNamed: kPOPLayerPositionX)
+                        shake?.springBounciness = 20
+                        shake?.velocity = 2500
+                        
+                        self.usernameField.layer.pop_add(shake, forKey: "shake")
+                        break
+                    default:
+                        break
+                    }
+                    return
+                }
+                
+                let defaults = UserDefaults.standard
+                defaults.set(P2PManager.sharedInstance.user!.username!, forKey: "username")
+                UtilityManager.sharedInstance.save(token: P2PManager.sharedInstance.token!, for: P2PManager.sharedInstance.user!.username!)
+                
+                self.performSegue(withIdentifier: "toNext", sender: self)
+            })
         }
         
     }
@@ -125,15 +187,34 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePick
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == passwordField {
-            self.view.endEditing(true)
-        } else if textField == nameField {
-            usernameField.becomeFirstResponder()
-        } else if textField == usernameField {
-            passwordField.becomeFirstResponder()
+        if accountTypeSegmentedControl.selectedSegmentIndex == 0 {
+            if textField == passwordField {
+                self.view.endEditing(true)
+            } else if textField == nameField {
+                usernameField.becomeFirstResponder()
+            } else if textField == usernameField {
+                passwordField.becomeFirstResponder()
+            }
+        } else {
+            if textField == cityField {
+                self.view.endEditing(true)
+            } else if textField == nameField {
+                usernameField.becomeFirstResponder()
+            } else if textField == usernameField {
+                passwordField.becomeFirstResponder()
+            } else if textField == passwordField {
+                schoolField.becomeFirstResponder()
+            } else if textField == schoolField {
+                bioField.becomeFirstResponder()
+            } else if textField == bioField {
+                subjectsField.becomeFirstResponder()
+            } else if textField == subjectsField {
+                cityField.becomeFirstResponder()
+            }
         }
         
         return false
+            
     }
     
     override func viewDidAppear(_ animated: Bool) {
