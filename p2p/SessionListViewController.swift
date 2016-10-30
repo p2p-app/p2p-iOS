@@ -21,16 +21,18 @@ class SessionListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.title = "Sessions"
+        
         locationUpdateTimer = Timer.scheduledTimer(timeInterval: 60*3, target:self, selector: #selector(SessionListViewController.updateTutorLocation), userInfo: nil, repeats: true)
         switchView = UISwitch(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
         switchView.isOn = true
+        switchView.onTintColor = #colorLiteral(red: 0.2207909822, green: 0.7478784919, blue: 0.9191411138, alpha: 1)
         switchView.addTarget(self, action: #selector(switchSwitched(sender:)), for: .valueChanged)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: switchView!)
         
         sessionsTableview.delegate = self
         sessionsTableview.dataSource = self
         
-        updateSessions()
         updateTutorLocation()
     }
     
@@ -45,7 +47,8 @@ class SessionListViewController: UIViewController {
     }
     
     func updateTutorLocation() {
-        P2PManager.sharedInstance.updateUser { (error) in
+        UtilityManager.sharedInstance.locationManager.delegate = UtilityManager.sharedInstance
+        P2PManager.sharedInstance.updateLocation(location: (UtilityManager.sharedInstance.location.lat, UtilityManager.sharedInstance.location.long)) { (error) in
             if error != nil {
                 
                 return
@@ -62,10 +65,14 @@ class SessionListViewController: UIViewController {
             
             self.sessions = sessions as? [Session]
             
-            self.sessionsTableview.reloadSections([0], with: UITableViewRowAnimation.middle)
+            self.sessionsTableview.reloadSections([0], with: UITableViewRowAnimation.fade)
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        updateSessions()
+        sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 10, target:self, selector: #selector(SessionListViewController.updateSessions), userInfo: nil, repeats: true)
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
@@ -76,14 +83,7 @@ class SessionListViewController: UIViewController {
             break
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 30, target:self, selector: #selector(SessionListViewController.updateSessions), userInfo: nil, repeats: true)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        sessionUpdateTimer.invalidate()
-    }
+
 }
 
 
@@ -97,6 +97,7 @@ extension SessionListViewController: UITableViewDelegate, UITableViewDataSource 
         if !switchView.isOn {
             cell.isUserInteractionEnabled = false
             cell.alpha = 0.7
+            cell.contentView.alpha = 0.7
         }
         
         return cell

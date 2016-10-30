@@ -109,7 +109,7 @@ class P2PManager {
     public func updateLocation(location: (latitude: Double, longitude: Double), completion: @escaping P2PCompletionBlock) {
         _ = user as! Tutor
         
-        self.sessionManager.request("\(P2PBaseURL)/tutors/location", method: .post, parameters: ["lat": location.latitude, "long": location.longitude], headers: ["Authorization": "Bearer \(P2PManager.sharedInstance.token!)"]).responseJSON { response in
+        self.sessionManager.request("\(P2PBaseURL)/tutors/\(user!.id!)/location", method: .post, parameters: ["lat": location.latitude, "long": location.longitude], headers: ["Authorization": "Bearer \(P2PManager.sharedInstance.token!)"]).responseJSON { response in
             switch (response.response?.statusCode)! {
             case 200:
                 break

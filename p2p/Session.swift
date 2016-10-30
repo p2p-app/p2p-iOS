@@ -15,10 +15,20 @@ class Session: Mappable {
     
     enum State: String {
         case pending
-        case confirmed
-        case commenced
-        case completed
-        case canceled = "cancel"
+        case confirmed = "confirm"
+        case commenced = "commence"
+        case completed = "complete"
+        case cancelled = "cancel"
+        
+        init(rawValue: String) {
+            switch rawValue {
+            case "confirmed": self = .confirmed
+            case "commenced": self = .commenced
+            case "completed": self = .completed
+            case "cancelled": self = .cancelled
+            default: self = .pending
+            }
+        }
     }
     
     fileprivate(set) public var id: String?
@@ -146,7 +156,7 @@ extension Session {
     }
     
     static func cancel(session id: String, completion: @escaping P2PCompletionBlock) {
-        P2PManager.sharedInstance.sessionManager.request(SessionRouter.set(state: .canceled, id: id)).responseJSON { response in
+        P2PManager.sharedInstance.sessionManager.request(SessionRouter.set(state: .cancelled, id: id)).responseJSON { response in
             switch (response.response?.statusCode)! {
             case 200:
                 completion(nil)

@@ -30,17 +30,6 @@ class TutorListViewController: UIViewController {
         subjectField.delegate = self
         
         UtilityManager.sharedInstance.locationManager.delegate = self
-        
-        /*Tutor.getAll(at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), for: "all") { (tutors, error) in
-            if error != nil {
-                
-                return
-            }
-            
-            self.tutors = tutors as? [Tutor]
-            
-            self.tutorTableView.reloadSections([0], with: UITableViewRowAnimation.middle)
-        }*/
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -106,7 +95,7 @@ extension TutorListViewController: UITextFieldDelegate {
                 
                 self.tutors = tutors as? [Tutor]
                 
-                self.tutorTableView.reloadSections([0], with: UITableViewRowAnimation.middle)
+                self.tutorTableView.reloadSections([0], with: UITableViewRowAnimation.fade)
             }
         } else {
             locationField.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -118,7 +107,7 @@ extension TutorListViewController: UITextFieldDelegate {
                 
                 self.tutors = tutors as? [Tutor]
                 
-                self.tutorTableView.reloadSections([0], with: UITableViewRowAnimation.middle)
+                self.tutorTableView.reloadSections([0], with: UITableViewRowAnimation.fade)
             }
         }
         

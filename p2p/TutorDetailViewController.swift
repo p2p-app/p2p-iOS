@@ -15,6 +15,8 @@ class TutorDetailViewController: UIViewController {
     var tutor: Tutor?
     var session: Session?
     
+    @IBOutlet weak var requestCardViewLabel: UILabel!
+    @IBOutlet weak var requestCardViewProfileImage: UIImageView!
     @IBOutlet weak var requestViewCardView: CardView!
     @IBOutlet var requestView: RequestView!
     @IBOutlet weak var tutorView: UIView!
@@ -26,7 +28,7 @@ class TutorDetailViewController: UIViewController {
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var bioLabel: UILabel!
     
-    var timer = Timer()
+    var sessionUpdateTimer = Timer()
     
     var loadingView: NVActivityIndicatorView?
     
@@ -74,10 +76,6 @@ class TutorDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
     }
-
-    override func viewDidDisappear(_ animated: Bool) {
-        timer.invalidate()
-    }
 }
 
 extension TutorDetailViewController {
@@ -90,6 +88,8 @@ extension TutorDetailViewController {
             if error != nil {
                 return
             }
+            
+            self.sessionUpdateTimer.invalidate()
         })
     }
     
@@ -135,7 +135,7 @@ extension TutorDetailViewController {
                 make.height.equalTo(180)
             })
             
-            self.timer = Timer.scheduledTimer(timeInterval: 60, target:self, selector: #selector(TutorDetailViewController.updateSession), userInfo: nil, repeats: true)
+            self.sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 10, target:self, selector: #selector(TutorDetailViewController.updateSession), userInfo: nil, repeats: true)
         }
     }
 
@@ -145,15 +145,22 @@ extension TutorDetailViewController {
                 return
             }
             
-            if self.session!.state == .pending && (session as! Session).state == .commenced {
-                // Going from pending to commenced
+            if self.session!.state == .pending && (session as! Session).state == .confirmed {
+                // Going from pending to confirmed
                 self.loadingView!.removeFromSuperview()
                 self.loadingView!.stopAnimating()
+                
+                self.requestViewCardView.isHidden = false
+                self.requestCardViewProfileImage.image = self.iconImage.image
+                self.requestCardViewLabel.text = "\(self.session!.tutor!.name!) is on their way."
+                
             }
             
-            
-            
             self.session = session as! Session?
+            
+            if self.session!.state == .cancelled {
+                self.cancelSession(self)
+            }
         }
     }
 }

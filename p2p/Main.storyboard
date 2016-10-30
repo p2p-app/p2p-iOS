@@ -165,6 +165,8 @@
                         <outlet property="locationLabel" destination="RRB-8C-K7S" id="tCM-Na-wcI"/>
                         <outlet property="nameLabel" destination="4Ol-XG-IPW" id="fqp-2x-Zrf"/>
                         <outlet property="ratingLabel" destination="Y9X-EK-feD" id="rxc-IX-cuf"/>
+                        <outlet property="requestCardViewLabel" destination="unM-Rw-WBs" id="6jZ-g9-228"/>
+                        <outlet property="requestCardViewProfileImage" destination="1qi-of-DwZ" id="IWs-9i-2It"/>
                         <outlet property="requestView" destination="rgE-4g-K2J" id="DFr-2h-Jhp"/>
                         <outlet property="requestViewCardView" destination="eaa-Mu-65P" id="qY8-gO-d38"/>
                         <outlet property="reviewTableView" destination="gYQ-0m-mRm" id="zqp-cy-Tml"/>
@@ -199,7 +201,32 @@
                             </items>
                         </navigationBar>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaa-Mu-65P" customClass="CardView" customModule="p2p" customModuleProvider="target">
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="1qi-of-DwZ">
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="Y1L-ab-rH6"/>
+                                        <constraint firstAttribute="width" constant="50" id="ptc-5J-8MN"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
+                                            <integer key="value" value="25"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tutor is on their way" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unM-Rw-WBs">
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="1qi-of-DwZ" firstAttribute="centerX" secondItem="eaa-Mu-65P" secondAttribute="centerX" id="9QR-65-A56"/>
+                                <constraint firstItem="1qi-of-DwZ" firstAttribute="top" secondItem="eaa-Mu-65P" secondAttribute="top" constant="10" id="Ati-Xe-lZs"/>
+                                <constraint firstItem="unM-Rw-WBs" firstAttribute="leading" secondItem="eaa-Mu-65P" secondAttribute="leading" constant="20" id="Ecl-WH-7vW"/>
+                                <constraint firstItem="unM-Rw-WBs" firstAttribute="top" secondItem="1qi-of-DwZ" secondAttribute="bottom" constant="8" id="dEs-DZ-4uZ"/>
+                                <constraint firstAttribute="trailing" secondItem="unM-Rw-WBs" secondAttribute="trailing" constant="20" id="iwa-qc-hfp"/>
+                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" red="0.94901960780000005" green="0.94509803920000002" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -725,7 +752,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Palo Alto, CA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AsS-gK-ceB">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AsS-gK-ceB">
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -736,7 +763,7 @@
                                                                 <constraint firstAttribute="width" constant="100" id="QZc-cL-aYz"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmg-hJ-jtX">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kmg-hJ-jtX">
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -823,9 +850,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="accept:" destination="bTr-7e-4Xp" eventType="touchUpInside" id="eyn-Dd-4hm"/>
                                     <action selector="commence:" destination="bTr-7e-4Xp" eventType="touchUpInside" id="MI2-c2-GLx"/>
-                                    <action selector="didRequestTutor:" destination="7hW-Bo-XMa" eventType="touchUpInside" id="BQe-tt-XpJ"/>
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tee-ch-XLf">
@@ -843,9 +868,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="accept:" destination="bTr-7e-4Xp" eventType="touchUpInside" id="j9X-YO-gl5"/>
-                                    <action selector="commence:" destination="bTr-7e-4Xp" eventType="touchUpInside" id="C5j-vh-vJy"/>
-                                    <action selector="didRequestTutor:" destination="7hW-Bo-XMa" eventType="touchUpInside" id="Lzk-it-dK1"/>
                                     <action selector="end:" destination="bTr-7e-4Xp" eventType="touchUpInside" id="5Ax-0y-97y"/>
                                 </connections>
                             </button>
@@ -865,7 +887,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="accept:" destination="bTr-7e-4Xp" eventType="touchUpInside" id="3R6-Dh-Brd"/>
-                                    <action selector="didRequestTutor:" destination="7hW-Bo-XMa" eventType="touchUpInside" id="K7k-fP-CJ3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gE1-Ri-DX5">
@@ -884,7 +905,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="decline:" destination="bTr-7e-4Xp" eventType="touchUpInside" id="eBk-sr-Vv2"/>
-                                    <action selector="didRequestTutor:" destination="7hW-Bo-XMa" eventType="touchUpInside" id="Aa9-zy-U4v"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Or-jy-dZT" customClass="CardView" customModule="p2p" customModuleProvider="target">
@@ -894,7 +914,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Palo Alto, CA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZS-hH-cdm">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ZS-hH-cdm">
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -905,7 +925,7 @@
                                             <constraint firstAttribute="height" constant="100" id="Tin-cz-wzi"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNz-hr-FKP">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WNz-hr-FKP">
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1133,6 +1153,6 @@
         <image name="userIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XaM-Bn-yIh"/>
+        <segue reference="rhL-Cg-aDu"/>
     </inferredMetricsTieBreakers>
 </document>

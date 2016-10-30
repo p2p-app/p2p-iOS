@@ -25,10 +25,12 @@ class SessionDetailViewController: UIViewController {
     @IBOutlet weak var endButton: UIButton!
     
     let regionRadius: CLLocationDistance = 1000
+    
+    var sessionUpdateTimer = Timer()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.nameLabel.text = self.session!.student!.name
         
         UtilityManager.sharedInstance.address(for: self.session!.location) { (placemark, error) in
@@ -46,6 +48,19 @@ class SessionDetailViewController: UIViewController {
             self.locationLabel.text = "\(placemark![0].locality!)"
             self.addressButton.setTitle("\(placemark![0].subThoroughfare!) \(placemark![0].thoroughfare!), \(placemark![0].postalCode!) \(placemark![0].locality!), \(placemark![0].administrativeArea!) \(placemark![0].country!)", for: .normal)            
             self.distanceLabel.text = "\(Int(placemark![0].location!.distance(from: CLLocation(latitude: UtilityManager.sharedInstance.location.long, longitude: UtilityManager.sharedInstance.location.lat)) * 0.000621371)) mi"
+        }
+        
+        self.sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 10, target:self, selector: #selector(SessionDetailViewController.updateSession), userInfo: nil, repeats: true)
+    }
+    
+    func updateSession() {
+        Session.get(session: session!.id!) { (session, error) in
+            self.session = session as! Session?
+            
+            if self.session!.state == .cancelled {
+                _ = self.navigationController?.popViewController(animated: true)
+                self.sessionUpdateTimer.invalidate()
+            }
         }
     }
     
@@ -125,6 +140,7 @@ class SessionDetailViewController: UIViewController {
             }
             
             _ = self.navigationController?.popViewController(animated: true)
+            self.sessionUpdateTimer.invalidate()
         }
     }
 }
