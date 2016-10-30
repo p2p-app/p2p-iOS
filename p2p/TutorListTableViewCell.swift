@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class TutorListTableViewCell: UITableViewCell {
    
@@ -26,22 +27,16 @@ class TutorListTableViewCell: UITableViewCell {
             self.ratingLabel.text = "\(self.tutor!.stars == nil ? "-":  String(describing: self.tutor!.stars!))/5"
             self.locationLabel.text = self.tutor!.city
             self.subjectLabel.text = self.tutor!.subjects?.joined(separator: ", ").capitalized
+            
+            if self.tutor!.profileURL != nil {
+                self.iconImage.af_setImage(withURL: self.tutor!.profileURL!)
+                self.iconImage.layer.cornerRadius = self.iconImage.frame.width/2
+                self.iconImage.layer.masksToBounds = true
+            }
         }
         get {
             return _tutor
         }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

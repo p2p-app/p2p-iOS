@@ -39,8 +39,6 @@ class TutorListViewController: UIViewController {
             
             self.tutorTableView.reloadSections([0], with: UITableViewRowAnimation.middle)
         }
-        
-        // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -50,14 +48,12 @@ class TutorListViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
+        
+        UtilityManager.sharedInstance.locationManager.delegate = UtilityManager.sharedInstance
+        
         super.viewWillDisappear(animated)
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {
         case "toTutorDetail":
@@ -98,7 +94,7 @@ extension TutorListViewController: UITextFieldDelegate {
         if locationField.text == "me" {
             locationField.textColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
             
-            Tutor.getAll(at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), for: (subjectField.text!.lowercased() == "all subjects" ? "all": subjectField.text!)) { (tutors, error) in
+            Tutor.getAll(at: (UtilityManager.sharedInstance.location.lat, UtilityManager.sharedInstance.location.long), for: (subjectField.text!.lowercased() == "all subjects" ? "all": subjectField.text!)) { (tutors, error) in
                 if error != nil {
                     
                     return
@@ -134,7 +130,7 @@ extension TutorListViewController: CLLocationManagerDelegate {
         let lat = userLocation.coordinate.latitude;
         UtilityManager.sharedInstance.location = (long, lat)
         
-        Tutor.getAll(at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), for: "all") { (tutors, error) in
+        Tutor.getAll(at: (UtilityManager.sharedInstance.location.lat, UtilityManager.sharedInstance.location.long), for: "all") { (tutors, error) in
             if error != nil {
                 
                 return

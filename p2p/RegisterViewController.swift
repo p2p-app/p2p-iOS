@@ -5,7 +5,7 @@
 import UIKit
 import pop
 
-class RegisterViewController: UIViewController, UITextFieldDelegate {
+class RegisterViewController: UIViewController {
    
     @IBOutlet weak var registerScrollView: UIScrollView!
     
@@ -21,7 +21,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var accountTypeSegmentedControl: UISegmentedControl!
 
     @IBOutlet weak var logoTopConstraint: NSLayoutConstraint!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +52,83 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         cityField.resignFirstResponder()
     }
 
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        switch identifier {
+        case "toNext":
+            if P2PManager.sharedInstance.token != nil {
+                return true
+            } else {
+                return false
+            }
+        default:
+            return true
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 2.2, animations: {
+            self.view.subviews.forEach({ $0.alpha = 1.0 })
+        })
+    }
+}
+
+extension RegisterViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.view.layoutIfNeeded()
+        logoTopConstraint.constant = 0 - 49 - 20
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.view.layoutIfNeeded()
+        logoTopConstraint.constant = 80
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if accountTypeSegmentedControl.selectedSegmentIndex == 0 {
+            if textField == passwordField {
+                self.view.endEditing(true)
+            } else if textField == nameField {
+                usernameField.becomeFirstResponder()
+            } else if textField == usernameField {
+                passwordField.becomeFirstResponder()
+            }
+        } else {
+            if textField == cityField {
+                self.view.endEditing(true)
+            } else if textField == nameField {
+                usernameField.becomeFirstResponder()
+            } else if textField == usernameField {
+                passwordField.becomeFirstResponder()
+            } else if textField == passwordField {
+                schoolField.becomeFirstResponder()
+            } else if textField == schoolField {
+                bioField.becomeFirstResponder()
+            } else if textField == bioField {
+                subjectsField.becomeFirstResponder()
+            } else if textField == subjectsField {
+                cityField.becomeFirstResponder()
+            }
+        }
+        
+        return false
+        
+    }
+
+}
+
+extension RegisterViewController {
+    
     @IBAction func changeAccountType(_ sender: AnyObject) {
         registerScrollView.setContentOffset(CGPoint(x: 0, y: -registerScrollView.contentInset.top), animated: true)
-
+        
         if accountTypeSegmentedControl.selectedSegmentIndex == 0 {
             registerScrollView.isScrollEnabled = false
             schoolField.isHidden = true
@@ -87,7 +160,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
         
         self.createButton.isEnabled = false
-
+        
         if accountTypeSegmentedControl.selectedSegmentIndex == 0 {
             User.create(username: usernameField.text!, password: passwordField.text!, name: nameField.text!) { (user, error) in
                 self.createButton.isEnabled = true
@@ -152,75 +225,4 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
     }
 
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        switch identifier {
-        case "toNext":
-            if P2PManager.sharedInstance.token != nil {
-                return true
-            } else {
-                return false
-            }
-        default:
-            return true
-        }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.view.layoutIfNeeded()
-        logoTopConstraint.constant = 0 - 49 - 20
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.view.layoutIfNeeded()
-        logoTopConstraint.constant = 80
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if accountTypeSegmentedControl.selectedSegmentIndex == 0 {
-            if textField == passwordField {
-                self.view.endEditing(true)
-            } else if textField == nameField {
-                usernameField.becomeFirstResponder()
-            } else if textField == usernameField {
-                passwordField.becomeFirstResponder()
-            }
-        } else {
-            if textField == cityField {
-                self.view.endEditing(true)
-            } else if textField == nameField {
-                usernameField.becomeFirstResponder()
-            } else if textField == usernameField {
-                passwordField.becomeFirstResponder()
-            } else if textField == passwordField {
-                schoolField.becomeFirstResponder()
-            } else if textField == schoolField {
-                bioField.becomeFirstResponder()
-            } else if textField == bioField {
-                subjectsField.becomeFirstResponder()
-            } else if textField == subjectsField {
-                cityField.becomeFirstResponder()
-            }
-        }
-        
-        return false
-            
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        UIView.animate(withDuration: 2.2, animations: {
-            self.view.subviews.forEach({ $0.alpha = 1.0 })
-        })
-    }
 }

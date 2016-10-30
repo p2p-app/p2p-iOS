@@ -10,10 +10,26 @@ import Foundation
 import ObjectMapper
 import Alamofire
 
-public class User: Mappable {
+public class User: StaticMappable {
+
     fileprivate(set) public var id: String?
     fileprivate(set) public var name: String?
     fileprivate(set) public var username: String?
+    fileprivate(set) public var profileURL: URL?
+    
+    public static func objectForMapping(map: Map) -> BaseMappable? {
+        if let type: String = map["type"].value() {
+            switch type {
+            case "student":
+                return User(map: map)
+            case "tutor":
+                return Tutor(map: map)
+            default:
+                return nil
+            }
+        }
+        return nil
+    }
     
     public required init?(map: Map) {
     }
@@ -23,6 +39,7 @@ public class User: Mappable {
         id          <-  map["id"]
         name        <-  map["fullname"]
         username    <-  map["username"]
+        profileURL  <-  (map["profile"], TransformOf<URL, String>(fromJSON: { URL(string: $0!) }, toJSON: { $0!.path }))
     }
 }
 
@@ -58,14 +75,43 @@ extension User {
                 }
         }
     }
+    
+    static func getSessions(for user: String, state: Session.State, completion: @escaping P2PArrayCompletionBlock) {
+        if user != P2PManager.sharedInstance.user?.id {
+            fatalError("Trying to get sessions for an unauthenticated user")
+        }
+        
+        P2PManager.sharedInstance.sessionManager.request(UserRouter.getSessions(state: state)).responseArray { (response: DataResponse<[Session]>) in
+            completion(response.result.value, response.result.error);
+        }
+    }
+    
+    func getSessions(state: Session.State, completion: @escaping P2PArrayCompletionBlock) {
+        User.getSessions(for: self.id!, state: state, completion: completion)
+    }
+    
+    func set(picture: UIImage, completion: @escaping P2PCompletionBlock) {
+        if self.id != P2PManager.sharedInstance.user?.id {
+            fatalError("Setting image for unauthenticated user")
+        }
+        
+        // TODO: Complete
+        P2PManager.sharedInstance.sessionManager.upload(UIImagePNGRepresentation(picture)!, to: "").responseJSON { response in
+            self.profileURL = URL(string: (response.result.value as! NSDictionary).object(forKey: "message") as! String!)
+            debugPrint(response)
+        }
+    }
 
     private enum UserRouter: URLRequestConvertible {
         case create(username: String, password: String, name: String)
+        case getSessions(state: Session.State)
         
         var method: HTTPMethod {
             switch self {
             case .create:
                 return .post
+            case .getSessions:
+                return .get
             }
         }
         
@@ -73,6 +119,8 @@ extension User {
             switch self {
             case .create:
                 return "/students/create"
+            case .getSessions:
+                return "/sessions"
             }
         }
         
@@ -87,6 +135,10 @@ extension User {
             switch self {
             case .create(let username, let password, let name):
                 urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username": username, "password": password, "fullname": name])
+            case .getSessions(let state):
+                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["state": state.rawValue])
+                
+                urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             }
             
             return urlRequest

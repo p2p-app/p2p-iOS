@@ -37,7 +37,7 @@ class Tutor: User {
     fileprivate(set) public var bio: String?
     fileprivate(set) public var school: String?
     fileprivate(set) public var city: String?
-    fileprivate(set) public var location: (longitude: Double, latitude: Double) = (0, 0)
+    fileprivate(set) public var location: (latitude: Double, longitude: Double) = (0, 0)
     
     required init?(map: Map) {
         super.init(map: map)
@@ -131,7 +131,6 @@ extension Tutor {
             completion(error)
         }
         
-            
     }
     
     private enum TutorRouter: URLRequestConvertible {
@@ -183,10 +182,16 @@ extension Tutor {
             case .create(let username, let password, let name, let school, let bio, let city, let subjects):
                 urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username": username, "password": password, "fullname": name, "school": school, "bio": bio, "city": city, "subjects": subjects.joined(separator: ",")])
             case .getAllAt(let location, let subject):
-                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["long": location.0, "lat": location.1, "subjects": subject, "range": 0.0005])
+                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["lat": location.0, "long": location.1, "subjects": subject, "range": 0.0005])
+                urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
+            
                 urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             case .getAllIn(let city, let subject):
                 urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["city": city, "subjects": subject])
+                urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
+            
+                urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
+            case .getReviews:
                 urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             default:
                 break

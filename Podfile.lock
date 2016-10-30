@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.0.1)
+  - AlamofireImage (3.1.0):
+    - Alamofire (~> 4.0)
   - AlamofireObjectMapper (4.0.0):
     - Alamofire (~> 4.0)
     - ObjectMapper (~> 2.0)
@@ -12,6 +14,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - AlamofireImage (~> 3.1)
   - AlamofireObjectMapper (~> 4.0)
   - Locksmith
   - NVActivityIndicatorView
@@ -22,6 +25,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  AlamofireImage: bb8c8351c51cb1633bb6be69b6dbbaff37ce65b7
   AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
   Locksmith: 310b4cc5031af5728bf4db5d4de547a5100c6a3b
   NVActivityIndicatorView: 81953b5e65093ba79edf4fe7268e002039ca5268
@@ -30,6 +34,6 @@ SPEC CHECKSUMS:
   SnapKit: 2e456761aa92d4d4067a7a5594c18769d451a8ad
   SwiftDate: a945bf4150ef977824df91116ca30a04604216d3
 
-PODFILE CHECKSUM: 43fe28c089682390572bf4f322e65008ece8e41c
+PODFILE CHECKSUM: 66d39f9f19038d5ce3aed8bb1f210e3bec5200a0
 
 COCOAPODS: 1.0.1

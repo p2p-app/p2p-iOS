@@ -9,6 +9,7 @@
 import UIKit
 
 class MainTextField: UITextField {
+    
     let padding = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 5);
 
     required init(coder aDecoder: NSCoder) {

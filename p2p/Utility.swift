@@ -37,6 +37,7 @@ class UtilityManager: NSObject {
     static let sharedInstance = UtilityManager()
     let locationManager = CLLocationManager()
     var location: (long: Double, lat: Double) = (0.0, 0.0)
+    let geoCoder = CLGeocoder()
     
     private override init() {
         super.init()
@@ -69,6 +70,12 @@ class UtilityManager: NSObject {
         
         
         return (dictionary!["token"] as! String?)
+    }
+    
+    func address(for coords: (latitude: Double, longitude: Double), completion: @escaping CoreLocation.CLGeocodeCompletionHandler) {
+        let location = CLLocation(latitude: coords.latitude, longitude: coords.longitude)
+        
+        geoCoder.reverseGeocodeLocation(location, completionHandler: completion)
     }
 }
 

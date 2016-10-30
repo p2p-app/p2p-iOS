@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09168ABC1DB4961F0075BD9F /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CC51DB4821600F231F3 /* login.json */; };
-		09168ABE1DB49F3B0075BD9F /* tutors.json in Resources */ = {isa = PBXBuildFile; fileRef = 09168ABD1DB49F3B0075BD9F /* tutors.json */; };
-		09168ABF1DB49F430075BD9F /* tutors.json in Resources */ = {isa = PBXBuildFile; fileRef = 09168ABD1DB49F3B0075BD9F /* tutors.json */; };
-		09168AC01DB49F460075BD9F /* tutor.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CCB1DB487D400F231F3 /* tutor.json */; };
-		09168AC11DB49F480075BD9F /* session.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CC91DB486C700F231F3 /* session.json */; };
+		09024BF91DC5D9F700FCF983 /* SessionListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09024BF81DC5D9F700FCF983 /* SessionListTableViewCell.swift */; };
+		09024BFB1DC66CD900FCF983 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09024BFA1DC66CD900FCF983 /* MapKit.framework */; };
+		09024BFD1DC66E9B00FCF983 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09024BFC1DC66E9B00FCF983 /* SessionDetailViewController.swift */; };
+		09024BFF1DC66EA700FCF983 /* SessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09024BFE1DC66EA700FCF983 /* SessionListViewController.swift */; };
 		09168AC31DB4A0800075BD9F /* TutorListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09168AC21DB4A0800075BD9F /* TutorListTableViewCell.swift */; };
 		09168AC51DB4A1C70075BD9F /* TutorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09168AC41DB4A1C70075BD9F /* TutorListViewController.swift */; };
 		09168AC71DB4AA8F0075BD9F /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09168AC61DB4AA8F0075BD9F /* MainNavigationController.swift */; };
@@ -20,8 +19,6 @@
 		093E46F21DB6D89F003DBCAB /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E46F11DB6D89F003DBCAB /* CardView.swift */; };
 		093E46F41DB6DA2A003DBCAB /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 093E46F31DB6DA2A003DBCAB /* ReviewTableViewCell.swift */; };
 		0991CC481DC026D000190F94 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0991CC471DC026D000190F94 /* CoreLocation.framework */; };
-		0991CC4A1DC02D9E00190F94 /* reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 0991CC491DC02D9E00190F94 /* reviews.json */; };
-		0991CC4B1DC02F8800190F94 /* reviews.json in Resources */ = {isa = PBXBuildFile; fileRef = 0991CC491DC02D9E00190F94 /* reviews.json */; };
 		09BA58FB1DC03EEB00BA2027 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BA58FA1DC03EEB00BA2027 /* ProfileViewController.swift */; };
 		09D1C17F1DC30E50005BD1FA /* RequestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1C17E1DC30E50005BD1FA /* RequestView.swift */; };
 		09E10C7B1DB40D1E00F231F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10C7A1DB40D1E00F231F3 /* AppDelegate.swift */; };
@@ -36,21 +33,10 @@
 		09E10CAC1DB4325300F231F3 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CAB1DB4325300F231F3 /* Review.swift */; };
 		09E10CAE1DB4668E00F231F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CAD1DB4668E00F231F3 /* Main.storyboard */; };
 		09E10CB61DB466E900F231F3 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CB01DB466E900F231F3 /* RegisterViewController.swift */; };
-		09E10CB71DB466E900F231F3 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CB11DB466E900F231F3 /* RequestViewController.swift */; };
 		09E10CB81DB466E900F231F3 /* TutorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CB21DB466E900F231F3 /* TutorDetailViewController.swift */; };
-		09E10CB91DB466E900F231F3 /* TutorProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CB31DB466E900F231F3 /* TutorProfileViewController.swift */; };
-		09E10CBA1DB466E900F231F3 /* TutorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CB41DB466E900F231F3 /* TutorTableViewController.swift */; };
 		09E10CC11DB466F400F231F3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CC01DB466F400F231F3 /* LoginViewController.swift */; };
 		09E10CC31DB4707300F231F3 /* MainTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E10CC21DB4707300F231F3 /* MainTextField.swift */; };
-		09E10CC61DB4821600F231F3 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CC51DB4821600F231F3 /* login.json */; };
-		09E10CC81DB4864500F231F3 /* create.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CC71DB4864500F231F3 /* create.json */; };
-		09E10CCA1DB486C700F231F3 /* session.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CC91DB486C700F231F3 /* session.json */; };
-		09E10CCC1DB487D400F231F3 /* tutor.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CCB1DB487D400F231F3 /* tutor.json */; };
-		09E10CCD1DB48DFD00F231F3 /* create.json in Resources */ = {isa = PBXBuildFile; fileRef = 09E10CC71DB4864500F231F3 /* create.json */; };
 		17E452444DCFC0F85B373053 /* Pods_p2pTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC05355B4E96DDAA225D7466 /* Pods_p2pTests.framework */; };
-		89327C991DB5D8A7007AA52C /* StudentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89327C981DB5D8A7007AA52C /* StudentDetailViewController.swift */; };
-		89327C9B1DB5E09D007AA52C /* StudentListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89327C9A1DB5E09D007AA52C /* StudentListTableViewCell.swift */; };
-		89F6180A1DB5BDC50088842C /* studentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F618091DB5BDC50088842C /* studentListViewController.swift */; };
 		96CD21C9093331747A660579 /* Pods_p2p.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50EA13756132EAFAEC7FDAE5 /* Pods_p2p.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +51,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09168ABD1DB49F3B0075BD9F /* tutors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tutors.json; sourceTree = "<group>"; };
+		09024BF81DC5D9F700FCF983 /* SessionListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionListTableViewCell.swift; sourceTree = "<group>"; };
+		09024BFA1DC66CD900FCF983 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		09024BFC1DC66E9B00FCF983 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
+		09024BFE1DC66EA700FCF983 /* SessionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionListViewController.swift; sourceTree = "<group>"; };
 		09168AC21DB4A0800075BD9F /* TutorListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorListTableViewCell.swift; sourceTree = "<group>"; };
 		09168AC41DB4A1C70075BD9F /* TutorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorListViewController.swift; sourceTree = "<group>"; };
 		09168AC61DB4AA8F0075BD9F /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -74,7 +63,6 @@
 		093E46F11DB6D89F003DBCAB /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		093E46F31DB6DA2A003DBCAB /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		0991CC471DC026D000190F94 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		0991CC491DC02D9E00190F94 /* reviews.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = reviews.json; sourceTree = "<group>"; };
 		0991CC4C1DC036CF00190F94 /* p2p.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = p2p.entitlements; sourceTree = "<group>"; };
 		09BA58FA1DC03EEB00BA2027 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		09D1C17E1DC30E50005BD1FA /* RequestView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestView.swift; sourceTree = "<group>"; };
@@ -94,23 +82,13 @@
 		09E10CAB1DB4325300F231F3 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		09E10CAD1DB4668E00F231F3 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		09E10CB01DB466E900F231F3 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		09E10CB11DB466E900F231F3 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		09E10CB21DB466E900F231F3 /* TutorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorDetailViewController.swift; sourceTree = "<group>"; };
-		09E10CB31DB466E900F231F3 /* TutorProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorProfileViewController.swift; sourceTree = "<group>"; };
-		09E10CB41DB466E900F231F3 /* TutorTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorTableViewController.swift; sourceTree = "<group>"; };
 		09E10CC01DB466F400F231F3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		09E10CC21DB4707300F231F3 /* MainTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTextField.swift; sourceTree = "<group>"; };
-		09E10CC51DB4821600F231F3 /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
-		09E10CC71DB4864500F231F3 /* create.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = create.json; path = p2pTests/create.json; sourceTree = SOURCE_ROOT; };
-		09E10CC91DB486C700F231F3 /* session.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = session.json; sourceTree = "<group>"; };
-		09E10CCB1DB487D400F231F3 /* tutor.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tutor.json; sourceTree = "<group>"; };
 		47689542E4BD1CEAF54740D2 /* Pods-p2pTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-p2pTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-p2pTests/Pods-p2pTests.release.xcconfig"; sourceTree = "<group>"; };
 		4894CF1DB2351F0125F43A5B /* Pods-p2pTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-p2pTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-p2pTests/Pods-p2pTests.debug.xcconfig"; sourceTree = "<group>"; };
 		50EA13756132EAFAEC7FDAE5 /* Pods_p2p.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_p2p.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C8CF3FC0347B59ED44B8F7 /* Pods-p2p.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-p2p.release.xcconfig"; path = "Pods/Target Support Files/Pods-p2p/Pods-p2p.release.xcconfig"; sourceTree = "<group>"; };
-		89327C981DB5D8A7007AA52C /* StudentDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDetailViewController.swift; sourceTree = "<group>"; };
-		89327C9A1DB5E09D007AA52C /* StudentListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentListTableViewCell.swift; sourceTree = "<group>"; };
-		89F618091DB5BDC50088842C /* studentListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = studentListViewController.swift; sourceTree = "<group>"; };
 		B954E7F8D394E4072864802A /* Pods-p2p.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-p2p.debug.xcconfig"; path = "Pods/Target Support Files/Pods-p2p/Pods-p2p.debug.xcconfig"; sourceTree = "<group>"; };
 		DC05355B4E96DDAA225D7466 /* Pods_p2pTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_p2pTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -120,6 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09024BFB1DC66CD900FCF983 /* MapKit.framework in Frameworks */,
 				0991CC481DC026D000190F94 /* CoreLocation.framework in Frameworks */,
 				96CD21C9093331747A660579 /* Pods_p2p.framework in Frameworks */,
 			);
@@ -136,6 +115,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09024BF71DC5D14500FCF983 /* Tutor */ = {
+			isa = PBXGroup;
+			children = (
+				09024BFE1DC66EA700FCF983 /* SessionListViewController.swift */,
+				09024BFC1DC66E9B00FCF983 /* SessionDetailViewController.swift */,
+			);
+			name = Tutor;
+			sourceTree = "<group>";
+		};
 		09D1C1801DC478AA005BD1FA /* Student */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,13 +173,7 @@
 		09E10C8E1DB40D1F00F231F3 /* p2pTests */ = {
 			isa = PBXGroup;
 			children = (
-				09E10CC71DB4864500F231F3 /* create.json */,
-				09E10CC51DB4821600F231F3 /* login.json */,
-				09E10CC91DB486C700F231F3 /* session.json */,
-				09E10CCB1DB487D400F231F3 /* tutor.json */,
-				09168ABD1DB49F3B0075BD9F /* tutors.json */,
 				09E10C911DB40D1F00F231F3 /* Info.plist */,
-				0991CC491DC02D9E00190F94 /* reviews.json */,
 			);
 			path = p2pTests;
 			sourceTree = "<group>";
@@ -216,12 +198,8 @@
 				09E10CB01DB466E900F231F3 /* RegisterViewController.swift */,
 				09E10CC01DB466F400F231F3 /* LoginViewController.swift */,
 				09BA58FA1DC03EEB00BA2027 /* ProfileViewController.swift */,
+				09024BF71DC5D14500FCF983 /* Tutor */,
 				09D1C1801DC478AA005BD1FA /* Student */,
-				09E10CB11DB466E900F231F3 /* RequestViewController.swift */,
-				09E10CB31DB466E900F231F3 /* TutorProfileViewController.swift */,
-				09E10CB41DB466E900F231F3 /* TutorTableViewController.swift */,
-				89F618091DB5BDC50088842C /* studentListViewController.swift */,
-				89327C981DB5D8A7007AA52C /* StudentDetailViewController.swift */,
 				09E10CC41DB4717F00F231F3 /* Views */,
 			);
 			name = ViewControllers;
@@ -230,8 +208,8 @@
 		09E10CC41DB4717F00F231F3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				89327C9A1DB5E09D007AA52C /* StudentListTableViewCell.swift */,
 				09168AC21DB4A0800075BD9F /* TutorListTableViewCell.swift */,
+				09024BF81DC5D9F700FCF983 /* SessionListTableViewCell.swift */,
 				09E10CC21DB4707300F231F3 /* MainTextField.swift */,
 				09168ACA1DB556590075BD9F /* TutorListQueryBar.swift */,
 				093E46F11DB6D89F003DBCAB /* CardView.swift */,
@@ -255,6 +233,7 @@
 		E0D868BD31C6AC6B43FFC8B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09024BFA1DC66CD900FCF983 /* MapKit.framework */,
 				0991CC471DC026D000190F94 /* CoreLocation.framework */,
 				50EA13756132EAFAEC7FDAE5 /* Pods_p2p.framework */,
 				DC05355B4E96DDAA225D7466 /* Pods_p2pTests.framework */,
@@ -360,16 +339,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09168AC01DB49F460075BD9F /* tutor.json in Resources */,
-				0991CC4B1DC02F8800190F94 /* reviews.json in Resources */,
 				09E10C9B1DB40D3F00F231F3 /* .gitignore in Resources */,
 				09E10CAE1DB4668E00F231F3 /* Main.storyboard in Resources */,
-				09E10CCD1DB48DFD00F231F3 /* create.json in Resources */,
 				09E10C851DB40D1E00F231F3 /* LaunchScreen.storyboard in Resources */,
 				09E10C821DB40D1E00F231F3 /* Assets.xcassets in Resources */,
-				09168AC11DB49F480075BD9F /* session.json in Resources */,
-				09168ABC1DB4961F0075BD9F /* login.json in Resources */,
-				09168ABF1DB49F430075BD9F /* tutors.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,12 +350,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09E10CCC1DB487D400F231F3 /* tutor.json in Resources */,
-				09E10CC61DB4821600F231F3 /* login.json in Resources */,
-				09E10CCA1DB486C700F231F3 /* session.json in Resources */,
-				0991CC4A1DC02D9E00190F94 /* reviews.json in Resources */,
-				09E10CC81DB4864500F231F3 /* create.json in Resources */,
-				09168ABE1DB49F3B0075BD9F /* tutors.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,21 +461,18 @@
 				09168AC31DB4A0800075BD9F /* TutorListTableViewCell.swift in Sources */,
 				09E10CAC1DB4325300F231F3 /* Review.swift in Sources */,
 				09E10CA01DB414C600F231F3 /* Tutor.swift in Sources */,
-				89327C9B1DB5E09D007AA52C /* StudentListTableViewCell.swift in Sources */,
 				09E10CA21DB4174900F231F3 /* Session.swift in Sources */,
+				09024BF91DC5D9F700FCF983 /* SessionListTableViewCell.swift in Sources */,
+				09024BFF1DC66EA700FCF983 /* SessionListViewController.swift in Sources */,
 				0938A3401DB5D89D0020D619 /* Errors.swift in Sources */,
-				89327C991DB5D8A7007AA52C /* StudentDetailViewController.swift in Sources */,
 				09E10CC11DB466F400F231F3 /* LoginViewController.swift in Sources */,
 				09E10C7B1DB40D1E00F231F3 /* AppDelegate.swift in Sources */,
-				09E10CB71DB466E900F231F3 /* RequestViewController.swift in Sources */,
 				09168AC71DB4AA8F0075BD9F /* MainNavigationController.swift in Sources */,
-				09E10CBA1DB466E900F231F3 /* TutorTableViewController.swift in Sources */,
-				09E10CB91DB466E900F231F3 /* TutorProfileViewController.swift in Sources */,
 				09E10CAA1DB4287500F231F3 /* Utility.swift in Sources */,
-				89F6180A1DB5BDC50088842C /* studentListViewController.swift in Sources */,
 				093E46F21DB6D89F003DBCAB /* CardView.swift in Sources */,
 				09E10C9E1DB4127100F231F3 /* User.swift in Sources */,
 				09168ACB1DB5565A0075BD9F /* TutorListQueryBar.swift in Sources */,
+				09024BFD1DC66E9B00FCF983 /* SessionDetailViewController.swift in Sources */,
 				09BA58FB1DC03EEB00BA2027 /* ProfileViewController.swift in Sources */,
 				09E10CB81DB466E900F231F3 /* TutorDetailViewController.swift in Sources */,
 				09E10CB61DB466E900F231F3 /* RegisterViewController.swift in Sources */,

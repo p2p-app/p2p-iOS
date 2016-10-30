@@ -8,12 +8,52 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: UIViewController {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var profilePicture: UIImageView!
-    let myPickerController = UIImagePickerController()
+    @IBOutlet weak var profileSetButton: UIButton!
+    
+    let profileImagePicker = UIImagePickerController()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        nameLabel.text = P2PManager.sharedInstance.user!.name!
+        usernameLabel.text = "@\(P2PManager.sharedInstance.user!.username!)"
+        
+        profileImagePicker.delegate = self
+    }
+
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            P2PManager.sharedInstance.user!.set(picture: image, completion: { (error) in
+                if error != nil {
+                    
+                } else {
+                    self.profilePicture.af_setImage(withURL: P2PManager.sharedInstance.user!.profileURL!)
+                    self.profilePicture.layer.cornerRadius = self.profilePicture.frame.width/2
+                    self.profilePicture.layer.masksToBounds = true
+                }
+            })
+        }
+        
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ProfileViewController {
+    
+    @IBAction func setProfile(_ sender: AnyObject) {
+        profileImagePicker.allowsEditing = false
+        profileImagePicker.sourceType = .photoLibrary
+        
+        present(profileImagePicker, animated: true, completion: nil)
+    }
     
     @IBAction func logout(_ sender: AnyObject) {
         let defaults = UserDefaults.standard
@@ -32,48 +72,4 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        myPickerController.delegate = self;
-
-        // Do any additional setup after loading the view.
-        nameLabel.text = P2PManager.sharedInstance.user!.name!
-        usernameLabel.text = "@\(P2PManager.sharedInstance.user!.username!)"
-        
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func selectProfilePicture(_ sender: AnyObject) {
-        myPickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        self.present(myPickerController, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
-        
-    {
-        profilePicture.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        
-        self.dismiss(animated: true, completion: nil)
-        
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController)    {
-        dismiss(animated: true, completion: nil)
-    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

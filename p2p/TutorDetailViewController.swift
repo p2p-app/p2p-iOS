@@ -13,6 +13,7 @@ import NVActivityIndicatorView
 class TutorDetailViewController: UIViewController {
     
     var tutor: Tutor?
+    var session: Session?
     
     @IBOutlet weak var requestViewCardView: CardView!
     @IBOutlet var requestView: RequestView!
@@ -24,6 +25,10 @@ class TutorDetailViewController: UIViewController {
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var bioLabel: UILabel!
+    
+    var timer = Timer()
+    
+    var loadingView: NVActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,24 +53,44 @@ class TutorDetailViewController: UIViewController {
             self.reviewTableView.reloadData()
         }
         
-        let loading = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: NVActivityIndicatorType.ballTrianglePath, color: #colorLiteral(red: 0.2549019608, green: 0.2549019608, blue: 0.2549019608, alpha: 1), padding: 0)
-        self.requestView.addSubview(loading)
-        loading.startAnimating()
-        loading.snp.makeConstraints({ (make) in
+        loadingView = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50), type: NVActivityIndicatorType.ballTrianglePath, color: #colorLiteral(red: 0.2549019608, green: 0.2549019608, blue: 0.2549019608, alpha: 1), padding: 0)
+        self.requestView.addSubview(loadingView!)
+        loadingView!.startAnimating()
+        loadingView!.snp.makeConstraints({ (make) in
             make.center.equalTo(self.requestView)
             make.height.equalTo(50)
             make.width.equalTo(50)
         })
         self.requestViewCardView.isHidden = true
+        
+        if self.tutor!.profileURL != nil {
+            self.iconImage.af_setImage(withURL: self.tutor!.profileURL!)
+            self.iconImage.layer.cornerRadius = self.iconImage.frame.width/2
+            self.iconImage.layer.masksToBounds = true
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
     }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        timer.invalidate()
+    }
+}
+
+extension TutorDetailViewController {
     
     @IBAction func cancelSession(_ sender: AnyObject) {
         requestView.removeFromSuperview()
         UIApplication.shared.keyWindow?.subviews[(UIApplication.shared.keyWindow?.subviews.count)!-1].removeFromSuperview()
+        
+        self.session?.cancel(completion: { (error) in
+            if error != nil {
+                return
+            }
+        })
     }
     
     @IBAction func didRequestTutor(_ sender: AnyObject) {
@@ -73,10 +98,12 @@ class TutorDetailViewController: UIViewController {
         UtilityManager.sharedInstance.locationManager.startUpdatingLocation()
         
         Session.createSession(with: tutor!.id!, at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), on: Date()) { (session, error) in
+            self.session = session as! Session?
+            
             UtilityManager.sharedInstance.locationManager.stopUpdatingLocation()
             
             if error != nil {
-            
+                
                 return
             }
             
@@ -94,7 +121,7 @@ class TutorDetailViewController: UIViewController {
                 make.center.equalTo(UIApplication.shared.keyWindow!)
             })
             
-            UIView.animate(withDuration: 0.2, animations: { 
+            UIView.animate(withDuration: 0.2, animations: {
                 bgOverlay.alpha = 0.7
             })
             
@@ -107,6 +134,26 @@ class TutorDetailViewController: UIViewController {
                 make.width.equalTo(UIApplication.shared.keyWindow!.frame.size.width-40)
                 make.height.equalTo(180)
             })
+            
+            self.timer = Timer.scheduledTimer(timeInterval: 60, target:self, selector: #selector(TutorDetailViewController.updateSession), userInfo: nil, repeats: true)
+        }
+    }
+
+    func updateSession() {
+        Session.get(session: session!.id!) { (session, error) in
+            if error != nil {
+                return
+            }
+            
+            if self.session!.state == .pending && (session as! Session).state == .commenced {
+                // Going from pending to commenced
+                self.loadingView!.removeFromSuperview()
+                self.loadingView!.stopAnimating()
+            }
+            
+            
+            
+            self.session = session as! Session?
         }
     }
 }

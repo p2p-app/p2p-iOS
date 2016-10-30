@@ -7,6 +7,7 @@ target 'p2p' do
 	pod 'Alamofire', '~> 4.0'
 	pod 'ObjectMapper', '~> 2.0'
 	pod 'AlamofireObjectMapper', '~> 4.0'
+    pod 'AlamofireImage', '~> 3.1'
     
     pod 'pop', '~> 1.0'
     pod 'NVActivityIndicatorView'
