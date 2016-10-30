@@ -5,7 +5,7 @@
 import UIKit
 import pop
 
-class RegisterViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
    
     @IBOutlet weak var registerScrollView: UIScrollView!
     

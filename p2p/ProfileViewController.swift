@@ -8,10 +8,12 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var profilePicture: UIImageView!
+    let myPickerController = UIImagePickerController()
     
     @IBAction func logout(_ sender: AnyObject) {
         let defaults = UserDefaults.standard
@@ -30,13 +32,15 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        myPickerController.delegate = self;
 
         // Do any additional setup after loading the view.
         nameLabel.text = P2PManager.sharedInstance.user!.name!
         usernameLabel.text = "@\(P2PManager.sharedInstance.user!.username!)"
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +48,23 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func selectProfilePicture(_ sender: AnyObject) {
+        myPickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        self.present(myPickerController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+        
+    {
+        profilePicture.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController)    {
+        dismiss(animated: true, completion: nil)
+    }
 
     /*
     // MARK: - Navigation
