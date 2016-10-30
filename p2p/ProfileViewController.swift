@@ -66,7 +66,7 @@ extension ProfileViewController {
         P2PManager.sharedInstance.logout()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let initialViewController = storyboard.instantiateViewController(withIdentifier: "Register")
+        let initialViewController = storyboard.instantiateViewController(withIdentifier: "registerVC")
         self.present(initialViewController, animated: false) {
             
         }

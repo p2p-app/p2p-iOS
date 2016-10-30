@@ -13,11 +13,11 @@ class SessionDetailViewController: UIViewController {
     
     var session: Session?
     
+    @IBOutlet weak var addressButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var commenceButton: UIButton!
     @IBOutlet weak var acceptButton: UIButton!
@@ -43,27 +43,15 @@ class SessionDetailViewController: UIViewController {
             dropPin.coordinate = placemark![0].location!.coordinate
             self.mapView.addAnnotation(dropPin)
             
-            self.locationLabel.text = "\(placemark![0].locality)"
-            self.addressLabel.text = "\(placemark![0].subThoroughfare) \(placemark![0].thoroughfare), \(placemark![0].postalCode) \(placemark![0].locality), \(placemark![0].administrativeArea) \(placemark![0].country)"
+            self.locationLabel.text = "\(placemark![0].locality!)"
+            self.addressButton.setTitle("\(placemark![0].subThoroughfare!) \(placemark![0].thoroughfare!), \(placemark![0].postalCode!) \(placemark![0].locality!), \(placemark![0].administrativeArea!) \(placemark![0].country!)", for: .normal)            
+            self.distanceLabel.text = "\(Int(placemark![0].location!.distance(from: CLLocation(latitude: UtilityManager.sharedInstance.location.long, longitude: UtilityManager.sharedInstance.location.lat)) * 0.000621371)) mi"
+        }
+    }
+    
+    @IBAction func openMaps(_ sender: AnyObject) {
+        UIApplication.shared.open(URL(string: "http://maps.apple.com/?ll=\(self.session!.location.latitude),\(self.session!.location.longitude)")!, options: [:]) { (finished) in
             
-            let source = MKMapItem( placemark: MKPlacemark(
-                coordinate: CLLocationCoordinate2DMake(UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat),
-                addressDictionary: nil))
-            let destination = MKMapItem(placemark: MKPlacemark(
-                coordinate: placemark![0].location!.coordinate,
-                addressDictionary: nil))
-            
-            let directionsRequest = MKDirectionsRequest()
-            directionsRequest.source = source
-            directionsRequest.destination = destination
-            
-            let directions = MKDirections(request: directionsRequest)
-            
-            directions.calculate { (response, error) -> Void in
-                print(error)
-                let distance = Int((response!.routes.first?.distance)! * 0.000621371)
-                self.distanceLabel.text = "\(distance) mi"
-            }
         }
     }
 
@@ -135,6 +123,8 @@ class SessionDetailViewController: UIViewController {
                 
                 return
             }
+            
+            _ = self.navigationController?.popViewController(animated: true)
         }
     }
 }

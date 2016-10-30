@@ -18,6 +18,7 @@ class Session: Mappable {
         case confirmed
         case commenced
         case completed
+        case canceled = "cancel"
     }
     
     fileprivate(set) public var id: String?
@@ -88,6 +89,9 @@ extension Session {
             case 200:
                 completion(nil)
                 break
+            case 404:
+                completion(P2PErrors.ResourceNotFound(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
+                return
             case 500:
                 completion(P2PErrors.AuthenticationFailed(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
                 return
@@ -116,6 +120,9 @@ extension Session {
             case 200:
                 completion(nil)
                 break
+            case 404:
+                completion(P2PErrors.ResourceNotFound(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
+                return
             case 500:
                 completion(P2PErrors.AuthenticationFailed(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
                 return
@@ -138,12 +145,27 @@ extension Session {
         }
     }
     
-    static func cancel(completion: @escaping P2PCompletionBlock) {
-        
+    static func cancel(session id: String, completion: @escaping P2PCompletionBlock) {
+        P2PManager.sharedInstance.sessionManager.request(SessionRouter.set(state: .canceled, id: id)).responseJSON { response in
+            switch (response.response?.statusCode)! {
+            case 200:
+                completion(nil)
+                break
+            case 404:
+                completion(P2PErrors.ResourceNotFound(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
+                return
+            case 500:
+                completion(P2PErrors.AuthenticationFailed(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
+                return
+            default:
+                completion(P2PErrors.UknownError(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
+                return
+            }
+        }
     }
     
     func cancel(completion: @escaping P2PCompletionBlock) {
-        Session.cancel { (error) in
+        Session.cancel(session: self.id!) { (error) in
             completion(error)
         }
     }
@@ -169,9 +191,9 @@ extension Session {
             case .create:
                 return "/sessions/create"
             case .get(let id):
-                return "/sesions/\(id)"
+                return "/sessions/\(id)"
             case .set(_, let id):
-                return "/sesions/\(id)/state"
+                return "/sessions/\(id)/state"
             }
         }
         

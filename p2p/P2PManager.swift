@@ -95,7 +95,7 @@ class P2PManager {
                 completion(P2PErrors.UknownError(original: error, description: nil))
                 return
             }
-            }.responseObject(keyPath: "data") { (response: DataResponse<User>) in
+            }.responseObject { (response: DataResponse<User>) in
                 switch response.result {
                 case .success:
                     self.user = response.result.value
@@ -104,6 +104,32 @@ class P2PManager {
                     break
                 }
         }
+    }
+    
+    public func updateLocation(location: (latitude: Double, longitude: Double), completion: @escaping P2PCompletionBlock) {
+        _ = user as! Tutor
+        
+        self.sessionManager.request("\(P2PBaseURL)/tutors/location", method: .post, parameters: ["lat": location.latitude, "long": location.longitude], headers: ["Authorization": "Bearer \(P2PManager.sharedInstance.token!)"]).responseJSON { response in
+            switch (response.response?.statusCode)! {
+            case 200:
+                break
+            case 401:
+                completion(P2PErrors.AuthenticationFailed(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
+                return
+            default:
+                completion(P2PErrors.UknownError(original: response.result.error, description: (response.result.value as! NSDictionary).object(forKey: "message") as! String?))
+                return
+            }
+            
+            switch response.result {
+            case .success:
+                break
+            case .failure(let error):
+                completion(P2PErrors.UknownError(original: error, description: nil))
+                return
+            }
+        }
+
     }
     
     public func logout() {

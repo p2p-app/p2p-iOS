@@ -30,27 +30,9 @@ class SessionListTableViewCell: UITableViewCell {
                     return
                 }
                 
-                self.locationLabel.text = "\(placemark![0].locality)"
-                //self.locationLabel.text = "\(placemark![0].subThoroughfare) \(placemark![0].thoroughfare), \(placemark![0].postalCode) \(placemark![0].locality), \(placemark![0].administrativeArea) \(placemark![0].country)"
-            
-                let source = MKMapItem( placemark: MKPlacemark(
-                    coordinate: CLLocationCoordinate2DMake(UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat),
-                    addressDictionary: nil))
-                let destination = MKMapItem(placemark: MKPlacemark(
-                    coordinate: placemark![0].location!.coordinate,
-                    addressDictionary: nil))
+                self.locationLabel.text = "\(placemark![0].locality!)"
                 
-                let directionsRequest = MKDirectionsRequest()
-                directionsRequest.source = source
-                directionsRequest.destination = destination
-                
-                let directions = MKDirections(request: directionsRequest)
-                
-                directions.calculate { (response, error) -> Void in
-                    print(error)
-                    let distance = Int((response!.routes.first?.distance)! * 0.000621371)
-                    self.distanceLabel.text = "\(distance) mi"
-                }
+                self.distanceLabel.text = "\(Int(placemark![0].location!.distance(from: CLLocation(latitude: UtilityManager.sharedInstance.location.long, longitude: UtilityManager.sharedInstance.location.lat)) * 0.000621371)) mi"
             }
             
             if self.session!.student!.profileURL != nil {

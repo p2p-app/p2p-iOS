@@ -15,22 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let defaults = UserDefaults.standard
-        let username = defaults.string(forKey: "username")
-        
-        
-        if username != nil {
-            P2PManager.sharedInstance.token = UtilityManager.sharedInstance.loadToken(for: username!)
-            
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "MainNavigation")
-            self.window?.rootViewController = initialViewController
-            self.window?.makeKeyAndVisible()
-
-        }
-        
         return true
     }
 

@@ -11,5 +11,6 @@ import Foundation
 enum P2PErrors: Error {
     case AuthenticationFailed(original: Error?, description: String?)
     case ResourceConflict(original: Error?, description: String?)
+    case ResourceNotFound(original: Error?, description: String?)
     case UknownError(original: Error?, description: String?)
 }

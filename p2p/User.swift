@@ -18,6 +18,8 @@ public class User: StaticMappable {
     fileprivate(set) public var profileURL: URL?
     
     public static func objectForMapping(map: Map) -> BaseMappable? {
+        
+        
         if let type: String = map["type"].value() {
             switch type {
             case "student":
@@ -39,7 +41,7 @@ public class User: StaticMappable {
         id          <-  map["id"]
         name        <-  map["fullname"]
         username    <-  map["username"]
-        profileURL  <-  (map["profile"], TransformOf<URL, String>(fromJSON: { URL(string: $0!) }, toJSON: { $0!.path }))
+        profileURL  <-  (map["profile"], TransformOf<URL, String>(fromJSON: { if ($0 != nil) { return URL(string: $0!) } else { return nil } }, toJSON: { $0!.path }))
     }
 }
 
@@ -136,7 +138,7 @@ extension User {
             case .create(let username, let password, let name):
                 urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username": username, "password": password, "fullname": name])
             case .getSessions(let state):
-                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["state": state.rawValue])
+                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["state": state.rawValue, "tutorData": true, "studentData": true])
                 
                 urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             }

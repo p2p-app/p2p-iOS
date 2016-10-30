@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="467-eg-CFt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="C2l-QZ-mYe">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -304,10 +304,40 @@
             </objects>
             <point key="canvasLocation" x="4385" y="-819"/>
         </scene>
+        <!--Starting View Controller-->
+        <scene sceneID="qYN-Y9-BM5">
+            <objects>
+                <viewController id="C2l-QZ-mYe" customClass="StartingViewController" customModule="p2p" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rk1-2T-I8u"/>
+                        <viewControllerLayoutGuide type="bottom" id="xPp-Dn-VL6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Os-MQ-Nlh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="PvB-EB-ffi">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="gi9-By-wrL"/>
+                                    <constraint firstAttribute="width" constant="92" id="uXx-rD-tNT"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94509803921568625" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PvB-EB-ffi" firstAttribute="centerX" secondItem="6Os-MQ-Nlh" secondAttribute="centerX" id="EAG-0w-OVW"/>
+                            <constraint firstItem="PvB-EB-ffi" firstAttribute="centerY" secondItem="6Os-MQ-Nlh" secondAttribute="centerY" id="bUB-hd-RnW"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hU3-bv-vS3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2609" y="-819"/>
+        </scene>
         <!--Register View Controller-->
         <scene sceneID="wqN-Ef-wZZ">
             <objects>
-                <viewController storyboardIdentifier="Register" id="467-eg-CFt" customClass="RegisterViewController" customModule="p2p" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="registerVC" id="467-eg-CFt" customClass="RegisterViewController" customModule="p2p" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Krg-mp-Dxi"/>
                         <viewControllerLayoutGuide type="bottom" id="ssN-8Z-aDq"/>
@@ -717,6 +747,7 @@
                                                         <constraint firstItem="4bk-Ug-cE9" firstAttribute="centerY" secondItem="ioF-pR-60S" secondAttribute="centerY" id="5hT-Zt-xLe"/>
                                                         <constraint firstItem="kmg-hJ-jtX" firstAttribute="top" secondItem="AsS-gK-ceB" secondAttribute="bottom" constant="2" id="Jrx-yA-wzE"/>
                                                         <constraint firstAttribute="trailing" secondItem="4bk-Ug-cE9" secondAttribute="trailing" constant="10" id="QEp-ta-nVt"/>
+                                                        <constraint firstItem="4bk-Ug-cE9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mw9-Eq-fdg" secondAttribute="trailing" constant="10" id="bW2-pP-KkW"/>
                                                         <constraint firstItem="kmg-hJ-jtX" firstAttribute="leading" secondItem="AsS-gK-ceB" secondAttribute="leading" id="feO-cf-UL1"/>
                                                         <constraint firstItem="mw9-Eq-fdg" firstAttribute="top" secondItem="ioF-pR-60S" secondAttribute="top" constant="8" id="igE-uZ-3au"/>
                                                         <constraint firstItem="mw9-Eq-fdg" firstAttribute="leading" secondItem="ioF-pR-60S" secondAttribute="leading" constant="8" id="myn-LU-4Ud"/>
@@ -757,6 +788,9 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <connections>
+                        <outlet property="sessionsTableview" destination="Rbg-GD-Hth" id="YYL-VI-Cbn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YoW-K3-rLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -893,21 +927,24 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vae-pj-or5" customClass="CardView" customModule="p2p" customModuleProvider="target">
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vhD-yY-pFb"/>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lHo-oW-5Y8">
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s0s-Te-sdP">
+                                        <state key="normal" title="Loading">
+                                            <color key="titleColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="openMaps:" destination="bTr-7e-4Xp" eventType="touchUpInside" id="MSE-GW-3zT"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="lHo-oW-5Y8" firstAttribute="leading" secondItem="Vae-pj-or5" secondAttribute="leading" constant="8" id="3ox-5g-OD1"/>
-                                    <constraint firstAttribute="bottom" secondItem="lHo-oW-5Y8" secondAttribute="bottom" constant="5" id="760-Zr-diE"/>
                                     <constraint firstItem="vhD-yY-pFb" firstAttribute="top" secondItem="Vae-pj-or5" secondAttribute="top" id="7gA-MD-DYr"/>
-                                    <constraint firstItem="lHo-oW-5Y8" firstAttribute="top" secondItem="vhD-yY-pFb" secondAttribute="bottom" constant="8" id="VZZ-Fc-YrD"/>
+                                    <constraint firstItem="s0s-Te-sdP" firstAttribute="leading" secondItem="Vae-pj-or5" secondAttribute="leading" constant="8" id="Wu0-I3-HJt"/>
+                                    <constraint firstItem="s0s-Te-sdP" firstAttribute="top" secondItem="vhD-yY-pFb" secondAttribute="bottom" constant="2" id="ga2-tD-tim"/>
+                                    <constraint firstAttribute="trailing" secondItem="s0s-Te-sdP" secondAttribute="trailing" constant="8" id="jnj-D4-8rc"/>
                                     <constraint firstItem="vhD-yY-pFb" firstAttribute="leading" secondItem="Vae-pj-or5" secondAttribute="leading" id="mIW-it-Ibf"/>
-                                    <constraint firstAttribute="trailing" secondItem="lHo-oW-5Y8" secondAttribute="trailing" constant="8" id="moA-FU-dhO"/>
                                     <constraint firstAttribute="trailing" secondItem="vhD-yY-pFb" secondAttribute="trailing" id="p5Z-Yz-O53"/>
+                                    <constraint firstAttribute="bottom" secondItem="s0s-Te-sdP" secondAttribute="bottom" constant="-1" id="zz3-PT-nuv"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -936,12 +973,10 @@
                     </view>
                     <connections>
                         <outlet property="acceptButton" destination="fFy-lc-fVr" id="vMc-wk-vzc"/>
-                        <outlet property="addressLabel" destination="lHo-oW-5Y8" id="YIG-Oq-ko9"/>
-                        <outlet property="commence" destination="UcD-nK-6Lp" id="t19-67-gg4"/>
+                        <outlet property="addressButton" destination="s0s-Te-sdP" id="8xr-Aw-QdM"/>
                         <outlet property="commenceButton" destination="UcD-nK-6Lp" id="Rms-BD-dbw"/>
                         <outlet property="declineButton" destination="gE1-Ri-DX5" id="Zvn-8u-KIO"/>
                         <outlet property="distanceLabel" destination="WNz-hr-FKP" id="WGa-Ar-HpN"/>
-                        <outlet property="end" destination="tee-ch-XLf" id="IDg-PP-bE4"/>
                         <outlet property="endButton" destination="tee-ch-XLf" id="VAw-nK-53A"/>
                         <outlet property="iconImage" destination="HtT-g3-dZa" id="NXK-Ej-yhj"/>
                         <outlet property="locationLabel" destination="5ZS-hH-cdm" id="RIy-SG-mSU"/>
@@ -956,7 +991,7 @@
         <!--Tutors Navigation-->
         <scene sceneID="QRp-A4-xGu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fVZ-WM-Xxc" userLabel="Tutors Navigation" customClass="MainNavigationController" customModule="p2p" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fVZ-WM-Xxc" userLabel="Tutors Navigation" customClass="MainNavigationController" customModule="p2p" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Tutors" image="gradIcon" selectedImage="gradIcon" id="15s-oN-NA5">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
@@ -980,7 +1015,7 @@
         <!--Tutor Tab Scene-->
         <scene sceneID="PrT-64-yP5">
             <objects>
-                <tabBarController storyboardIdentifier="MainNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tOb-mq-8Lk" userLabel="Tutor Tab Scene" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainTabBar" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tOb-mq-8Lk" userLabel="Tutor Tab Scene" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="LTW-cI-Xzt">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

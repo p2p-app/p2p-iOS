@@ -18,6 +18,8 @@ class TutorListViewController: UIViewController {
     @IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var tutorTableView: UITableView!
     
+    var loadingData = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +31,7 @@ class TutorListViewController: UIViewController {
         
         UtilityManager.sharedInstance.locationManager.delegate = self
         
-        Tutor.getAll(at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), for: "all") { (tutors, error) in
+        /*Tutor.getAll(at: (UtilityManager.sharedInstance.location.long, UtilityManager.sharedInstance.location.lat), for: "all") { (tutors, error) in
             if error != nil {
                 
                 return
@@ -38,12 +40,14 @@ class TutorListViewController: UIViewController {
             self.tutors = tutors as? [Tutor]
             
             self.tutorTableView.reloadSections([0], with: UITableViewRowAnimation.middle)
-        }
+        }*/
     }
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         super.viewWillAppear(animated)
+        
+        UtilityManager.sharedInstance.locationManager.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -130,7 +134,14 @@ extension TutorListViewController: CLLocationManagerDelegate {
         let lat = userLocation.coordinate.latitude;
         UtilityManager.sharedInstance.location = (long, lat)
         
+        if long == 0 || lat == 0  || loadingData {
+            return
+        }
+        
+        loadingData = true
         Tutor.getAll(at: (UtilityManager.sharedInstance.location.lat, UtilityManager.sharedInstance.location.long), for: "all") { (tutors, error) in
+            self.loadingData = false
+            
             if error != nil {
                 
                 return
