@@ -1208,16 +1208,12 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ngt-sY-NAK" customClass="CardView" customModule="p2p" customModuleProvider="target">
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Mike Chech" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGh-dH-AMr">
-                                        <frame key="frameInset" minX="8" minY="8" width="116.5" height="26.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGh-dH-AMr">
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8k-4n-Qt5">
-                                        <frame key="frameInset" minX="8" minY="34.5" width="72" height="19.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8k-4n-Qt5">
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1240,11 +1236,17 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="ifK-1m-NrN" secondAttribute="bottom" constant="5" id="429-Tc-HB6"/>
+                                    <constraint firstItem="KQW-ao-rO1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="K8k-4n-Qt5" secondAttribute="trailing" constant="10" id="85i-P0-58M"/>
                                     <constraint firstItem="KQW-ao-rO1" firstAttribute="top" secondItem="Ngt-sY-NAK" secondAttribute="top" constant="16" id="Dlo-H2-nWb"/>
                                     <constraint firstItem="ifK-1m-NrN" firstAttribute="top" secondItem="KQW-ao-rO1" secondAttribute="bottom" constant="1" id="JBk-Si-L30"/>
+                                    <constraint firstItem="wGh-dH-AMr" firstAttribute="leading" secondItem="Ngt-sY-NAK" secondAttribute="leading" constant="8" id="LMw-YS-L2T"/>
                                     <constraint firstAttribute="trailing" secondItem="KQW-ao-rO1" secondAttribute="trailing" constant="10" id="Zue-8x-KNZ"/>
                                     <constraint firstItem="ifK-1m-NrN" firstAttribute="leading" secondItem="KQW-ao-rO1" secondAttribute="leading" id="ah7-Fw-hjk"/>
+                                    <constraint firstItem="K8k-4n-Qt5" firstAttribute="leading" secondItem="wGh-dH-AMr" secondAttribute="leading" id="fWZ-Wd-8kK"/>
+                                    <constraint firstItem="K8k-4n-Qt5" firstAttribute="top" secondItem="wGh-dH-AMr" secondAttribute="bottom" id="jrz-mL-YSU"/>
+                                    <constraint firstItem="wGh-dH-AMr" firstAttribute="top" secondItem="Ngt-sY-NAK" secondAttribute="top" constant="8" id="lcf-da-7gJ"/>
                                     <constraint firstItem="ifK-1m-NrN" firstAttribute="width" secondItem="KQW-ao-rO1" secondAttribute="width" id="sKE-Dj-er3"/>
+                                    <constraint firstItem="KQW-ao-rO1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="wGh-dH-AMr" secondAttribute="trailing" constant="10" id="sld-TF-QN9"/>
                                 </constraints>
                             </view>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwe-b1-Y3t">

@@ -26,6 +26,8 @@ class TutorListTableViewCell: UITableViewCell {
             self.nameLabel.text = self.tutor!.name
             if let stars = self.tutor?.stars {
                 self.ratingView.rating = stars
+                self.ratingView.filledColor = #colorLiteral(red: 0.2207909822, green: 0.7478784919, blue: 0.9191411138, alpha: 1)
+                self.ratingView.filledBorderColor = #colorLiteral(red: 0.2207909822, green: 0.7478784919, blue: 0.9191411138, alpha: 1)
             } else {
                 self.ratingView.alpha = 0.5
                 self.ratingView.rating = 5
@@ -45,5 +47,4 @@ class TutorListTableViewCell: UITableViewCell {
             return _tutor
         }
     }
-
 }
