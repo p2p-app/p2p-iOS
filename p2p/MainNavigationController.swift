@@ -21,7 +21,7 @@ class MainNavigationController: UINavigationController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "requestListVC")
             
-            if sessions!.count > 0 {
+            if sessions != nil && sessions!.count > 0 {
                 let secondary = storyboard.instantiateViewController(withIdentifier: "sessionDetailVC") as! SessionDetailViewController
                 secondary.session = sessions![0]
                 
@@ -34,7 +34,7 @@ class MainNavigationController: UINavigationController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "tutorListVC")
             
-            if sessions!.count > 0 {
+            if sessions != nil && sessions!.count > 0 {
                 let secondary = storyboard.instantiateViewController(withIdentifier: "tutorDetailViewController") as! TutorDetailViewController
                 secondary.tutor = sessions![0].tutor
                 secondary.session = sessions![0]
