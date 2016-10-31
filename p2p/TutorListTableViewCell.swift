@@ -17,6 +17,7 @@ class TutorListTableViewCell: UITableViewCell {
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var cardView: CardView!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     private var _tutor: Tutor? = nil
     var tutor: Tutor? {
@@ -24,6 +25,8 @@ class TutorListTableViewCell: UITableViewCell {
             _tutor = value
             
             self.nameLabel.text = self.tutor!.name
+            self.distanceLabel.text = ("\(self.tutor!.distance!) mi")
+            
             if let stars = self.tutor?.stars {
                 self.ratingView.rating = stars
                 self.ratingView.filledColor = #colorLiteral(red: 0.2207909822, green: 0.7478784919, blue: 0.9191411138, alpha: 1)
