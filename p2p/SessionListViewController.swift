@@ -73,6 +73,10 @@ class SessionListViewController: UIViewController {
         updateSessions()
         sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 10, target:self, selector: #selector(SessionListViewController.updateSessions), userInfo: nil, repeats: true)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        sessionUpdateTimer.invalidate()
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier! {

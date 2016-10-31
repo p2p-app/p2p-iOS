@@ -61,7 +61,7 @@ class UtilityManager: NSObject {
         do {
             try Locksmith.deleteDataForUserAccount(userAccount: user)
         } catch {
-            fatalError("Unable to save token")
+            fatalError("Unable to delete token")
         }
     }
 

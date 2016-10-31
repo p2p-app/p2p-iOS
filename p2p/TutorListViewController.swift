@@ -30,6 +30,17 @@ class TutorListViewController: UIViewController {
         subjectField.delegate = self
         
         UtilityManager.sharedInstance.locationManager.delegate = self
+        
+        Tutor.getAll(at: (UtilityManager.sharedInstance.location.lat, UtilityManager.sharedInstance.location.long), for: (subjectField.text!.lowercased() == "all subjects" ? "all": subjectField.text!)) { (tutors, error) in
+            if error != nil {
+                
+                return
+            }
+            
+            self.tutors = tutors as? [Tutor]
+            
+            self.tutorTableView.reloadSections([0], with: UITableViewRowAnimation.fade)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

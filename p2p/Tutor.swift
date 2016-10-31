@@ -97,25 +97,25 @@ extension Tutor {
     
     static func get(tutor id: String, completion: @escaping P2PObjectCompletionBlock) {
         P2PManager.sharedInstance.sessionManager.request(TutorRouter.get(id: id)).responseObject { (response: DataResponse<Tutor>) in
-            completion(response.result.value, response.result.error);
+            completion(response.result.value, response.result.error)
         }
     }
     
     static func getAll(at location: (Double, Double), for subject: String, completion: @escaping P2PArrayCompletionBlock) {
         P2PManager.sharedInstance.sessionManager.request(TutorRouter.getAllAt(location: location, subject: subject)).responseArray { (response: DataResponse<[Tutor]>) in
-            completion(response.result.value, response.result.error);
+            completion(response.result.value, response.result.error)
         }
     }
     
     static func getAll(in city: String, for subject: String, completion: @escaping P2PArrayCompletionBlock) {
         P2PManager.sharedInstance.sessionManager.request(TutorRouter.getAllIn(city: city, subject: subject)).responseArray { (response: DataResponse<[Tutor]>) in
-            completion(response.result.value, response.result.error);
+            completion(response.result.value, response.result.error)
         }
     }
     
     static func getReviews(for tutor: String, completion: @escaping P2PArrayCompletionBlock) {
         P2PManager.sharedInstance.sessionManager.request(TutorRouter.getReviews(id: tutor)).responseArray { (response: DataResponse<[Review]>) in
-            completion(response.result.value, response.result.error);
+            completion(response.result.value, response.result.error)
         }
     }
     
@@ -130,7 +130,16 @@ extension Tutor {
             
             completion(error)
         }
-        
+    }
+    
+    static func postReview(for tutor: String, rating: Double, text: String, completion: @escaping P2PObjectCompletionBlock) {
+        P2PManager.sharedInstance.sessionManager.request(TutorRouter.postReview(tutor: tutor, rating: rating, text: text)).responseObject { (response: DataResponse<Review>) in
+            completion(response.result.value, response.result.error)
+        }
+    }
+    
+    func postReview(rating: Double, text: String, completion: @escaping P2PObjectCompletionBlock) {
+        Tutor.postReview(for: self.id!, rating: rating, text: text, completion: completion)
     }
     
     private enum TutorRouter: URLRequestConvertible {
@@ -139,6 +148,7 @@ extension Tutor {
         case getAllAt(location: (Double, Double), subject: String)
         case getAllIn(city: String, subject: String)
         case getReviews(id: String)
+        case postReview(tutor: String, rating: Double, text: String)
         
         var method: HTTPMethod {
             switch self {
@@ -152,6 +162,8 @@ extension Tutor {
                 return .get
             case .getReviews:
                 return .get
+            case .postReview:
+                return .post
             }
         }
         
@@ -166,6 +178,8 @@ extension Tutor {
             case .getAllIn:
                 return "/tutors"
             case .getReviews(let id):
+                return "/tutors/\(id)/reviews"
+            case .postReview(let id, _, _):
                 return "/tutors/\(id)/reviews"
             }
         }
@@ -184,14 +198,13 @@ extension Tutor {
             case .getAllAt(let location, let subject):
                 urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["lat": location.0, "long": location.1, "subjects": subject, "range": 0.0005])
                 urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
-            
-                urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             case .getAllIn(let city, let subject):
                 urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["city": city, "subjects": subject])
                 urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
-            
-                urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             case .getReviews:
+                urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
+            case .postReview(_, let rating, let text):
+                urlRequest = try URLEncoding.default.encode(urlRequest, with: ["stars": rating, "text": text])
                 urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             default:
                 break

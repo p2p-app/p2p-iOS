@@ -46,7 +46,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="359" height="83"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Yly-eU-dTH" id="MC1-eh-axx">
-                                                    <frame key="frameInset" width="359" height="82.5"/>
+                                                    <frame key="frameInset" width="359" height="82"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6SP-L1-QfK" customClass="CosmosView" customModule="p2p" customModuleProvider="target">
@@ -231,7 +231,11 @@
                         <outlet property="requestCardViewProfileImage" destination="1qi-of-DwZ" id="IWs-9i-2It"/>
                         <outlet property="requestView" destination="rgE-4g-K2J" id="DFr-2h-Jhp"/>
                         <outlet property="requestViewCardView" destination="eaa-Mu-65P" id="qY8-gO-d38"/>
+                        <outlet property="requestViewNavigationBar" destination="Llb-P1-fCe" id="yrj-Fj-hCE"/>
+                        <outlet property="reviewCardView" destination="2Hh-jR-Nsv" id="Nh8-Xx-ThP"/>
+                        <outlet property="reviewRatingView" destination="bU6-zF-g0i" id="xtY-Qo-IOG"/>
                         <outlet property="reviewTableView" destination="gYQ-0m-mRm" id="zqp-cy-Tml"/>
+                        <outlet property="reviewTextView" destination="Gk2-cO-gss" id="rAo-WZ-yfI"/>
                         <outlet property="subjectLabel" destination="N50-NV-5vV" id="WHW-Zg-hUH"/>
                         <outlet property="tutorView" destination="VRt-sN-rC9" id="7hf-8w-caW"/>
                     </connections>
@@ -311,13 +315,45 @@
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bU6-zF-g0i" customClass="CosmosView" customModule="p2p" customModuleProvider="target">
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="130" id="rbC-Rx-8BH"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                    <color key="value" red="0.19215686269999999" green="0.69411764710000001" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                    <integer key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                    <real key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                    <color key="value" red="0.19215686269999999" green="0.69411764710000001" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
+                                    <color key="value" red="0.19215686269999999" green="0.69411764710000001" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="Gk2-cO-gss" firstAttribute="height" secondItem="2Hh-jR-Nsv" secondAttribute="height" id="5S1-NA-Cqq"/>
-                        <constraint firstItem="Gk2-cO-gss" firstAttribute="width" secondItem="2Hh-jR-Nsv" secondAttribute="width" id="5ZA-83-F4k"/>
-                        <constraint firstItem="Gk2-cO-gss" firstAttribute="centerY" secondItem="2Hh-jR-Nsv" secondAttribute="centerY" id="7UW-oD-JtX"/>
-                        <constraint firstItem="Gk2-cO-gss" firstAttribute="centerX" secondItem="2Hh-jR-Nsv" secondAttribute="centerX" id="nUX-hj-mZF"/>
+                        <constraint firstAttribute="trailing" secondItem="Gk2-cO-gss" secondAttribute="trailing" id="5BZ-bz-bI0"/>
+                        <constraint firstItem="Gk2-cO-gss" firstAttribute="leading" secondItem="2Hh-jR-Nsv" secondAttribute="leading" id="6Nq-Ej-h9J"/>
+                        <constraint firstItem="Gk2-cO-gss" firstAttribute="top" secondItem="bU6-zF-g0i" secondAttribute="bottom" id="BWd-MS-CLq"/>
+                        <constraint firstItem="bU6-zF-g0i" firstAttribute="leading" secondItem="2Hh-jR-Nsv" secondAttribute="leading" constant="5" id="Gpu-ep-Kcc"/>
+                        <constraint firstAttribute="bottom" secondItem="Gk2-cO-gss" secondAttribute="bottom" id="Vhp-82-deS"/>
+                        <constraint firstItem="bU6-zF-g0i" firstAttribute="top" secondItem="2Hh-jR-Nsv" secondAttribute="top" constant="5" id="a38-Dd-H9R"/>
                     </constraints>
                 </view>
             </objects>
