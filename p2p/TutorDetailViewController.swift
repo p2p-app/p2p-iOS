@@ -92,7 +92,7 @@ class TutorDetailViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         
         if self.session != nil && self.session!.state != .completed && self.session!.state != .cancelled {
-            self.sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 10, target:self, selector: #selector(TutorDetailViewController.updateSession), userInfo: nil, repeats: true)
+            self.sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 7, target:self, selector: #selector(TutorDetailViewController.updateSession), userInfo: nil, repeats: true)
         }
     }
     
@@ -158,7 +158,7 @@ extension TutorDetailViewController {
                 make.height.equalTo(180)
             })
             
-            self.sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 10, target:self, selector: #selector(TutorDetailViewController.updateSession), userInfo: nil, repeats: true)
+            self.sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 7, target:self, selector: #selector(TutorDetailViewController.updateSession), userInfo: nil, repeats: true)
         }
     }
 

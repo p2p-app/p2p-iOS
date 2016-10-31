@@ -29,7 +29,8 @@ class StartingViewController: UIViewController {
                 let initialViewController = storyboard.instantiateViewController(withIdentifier: "mainTabBar")
                     
                 self.present(initialViewController, animated: false)
-
+                
+                
             })
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

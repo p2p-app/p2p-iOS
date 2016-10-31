@@ -132,6 +132,23 @@ class P2PManager {
 
     }
     
+    func upload(picture: UIImage, completion: @escaping P2PCompletionBlock) {
+        P2PManager.sharedInstance.sessionManager.upload(multipartFormData: { (multipartFormData) in
+            if let imageData = UIImagePNGRepresentation(picture) {
+                multipartFormData.append(imageData, withName: "profile", fileName: "profile_picture.png", mimeType: "image/png")
+            }
+            }, to: "\(P2PBaseURL)/api/images/upload", method: .post, headers: ["Authorization": "Bearer \(P2PManager.sharedInstance.token!)"], encodingCompletion: { (result) in
+                switch result {
+                case .success(let upload, _, _):
+                    upload.responseJSON(completionHandler: { (response) in
+                        debugPrint(response)
+                    })
+                case .failure(let encodingError):
+                    print(encodingError)
+                }
+        })
+    }
+    
     public func logout() {
         self.token = nil
         self.user = nil

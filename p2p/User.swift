@@ -91,18 +91,6 @@ extension User {
     func getSessions(state: Session.State, completion: @escaping P2PArrayCompletionBlock) {
         User.getSessions(for: self.id!, state: state, completion: completion)
     }
-    
-    func set(picture: UIImage, completion: @escaping P2PCompletionBlock) {
-        if self.id != P2PManager.sharedInstance.user?.id {
-            fatalError("Setting image for unauthenticated user")
-        }
-        
-        // TODO: Complete
-        P2PManager.sharedInstance.sessionManager.upload(UIImagePNGRepresentation(picture)!, to: "").responseJSON { response in
-            self.profileURL = URL(string: (response.result.value as! NSDictionary).object(forKey: "message") as! String!)
-            debugPrint(response)
-        }
-    }
 
     private enum UserRouter: URLRequestConvertible {
         case create(username: String, password: String, name: String)

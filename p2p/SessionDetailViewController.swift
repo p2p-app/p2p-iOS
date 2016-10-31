@@ -69,7 +69,7 @@ class SessionDetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 10, target:self, selector: #selector(SessionDetailViewController.updateSession), userInfo: nil, repeats: true)
+        self.sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 7, target:self, selector: #selector(SessionDetailViewController.updateSession), userInfo: nil, repeats: true)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

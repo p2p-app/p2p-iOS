@@ -31,7 +31,7 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            P2PManager.sharedInstance.user!.set(picture: image, completion: { (error) in
+            /*P2PManager.sharedInstance.user!.set(picture: image, completion: { (error) in
                 if error != nil {
                     
                 } else {
@@ -39,7 +39,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
                     self.profilePicture.layer.cornerRadius = self.profilePicture.frame.width/2
                     self.profilePicture.layer.masksToBounds = true
                 }
-            })
+            })*/
         }
         
         dismiss(animated: true, completion: nil)
