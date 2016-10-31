@@ -49,8 +49,6 @@ class SessionDetailViewController: UIViewController {
             self.addressButton.setTitle("\(placemark![0].subThoroughfare!) \(placemark![0].thoroughfare!), \(placemark![0].postalCode!) \(placemark![0].locality!), \(placemark![0].administrativeArea!) \(placemark![0].country!)", for: .normal)            
             self.distanceLabel.text = "\(Int(placemark![0].location!.distance(from: CLLocation(latitude: UtilityManager.sharedInstance.location.long, longitude: UtilityManager.sharedInstance.location.lat)) * 0.000621371)) mi"
         }
-        
-        self.sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 10, target:self, selector: #selector(SessionDetailViewController.updateSession), userInfo: nil, repeats: true)
     }
     
     func updateSession() {
@@ -69,10 +67,13 @@ class SessionDetailViewController: UIViewController {
             
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 10, target:self, selector: #selector(SessionDetailViewController.updateSession), userInfo: nil, repeats: true)
+    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillDisappear(_ animated: Bool) {
+        self.sessionUpdateTimer.invalidate()
     }
     
     @IBAction func accept(_ sender: AnyObject) {
