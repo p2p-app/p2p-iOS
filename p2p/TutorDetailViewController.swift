@@ -88,6 +88,7 @@ class TutorDetailViewController: UIViewController {
         
         if self.session != nil {
             self.addOverlay()
+            self.updateSessionViews()
         }
         
     }
@@ -169,6 +170,64 @@ extension TutorDetailViewController {
             self.sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 7, target:self, selector: #selector(TutorDetailViewController.updateSession), userInfo: nil, repeats: true)
         }
     }
+    
+    func updateSessionViews() {
+        if self.session!.state == .confirmed {
+            self.loadingView!.removeFromSuperview()
+            self.loadingView!.stopAnimating()
+            
+            self.requestViewCardView.isHidden = false
+            self.requestCardViewProfileImage.image = self.iconImage.image
+            self.requestCardViewProfileImage.layer.cornerRadius = 25
+            self.requestCardViewProfileImage.layer.masksToBounds = true
+            self.requestCardViewLabel.text = "\(self.session!.tutor!.name!) is on their way."
+            
+        } else if self.session!.state == .commenced {
+            self.loadingView!.removeFromSuperview()
+            self.loadingView!.stopAnimating()
+            
+            self.requestViewCardView.isHidden = false
+            self.requestCardViewProfileImage.image = self.iconImage.image
+            self.requestCardViewProfileImage.layer.cornerRadius = 25
+            self.requestCardViewProfileImage.layer.masksToBounds = true
+            self.requestCardViewLabel.text = "\(self.session!.tutor!.name!) is here."
+        } else if self.session!.state == .cancelled {
+            self.loadingView!.removeFromSuperview()
+            self.loadingView!.stopAnimating()
+            
+            
+            self.cancelSession(self)
+        } else if self.session!.state == .completed {
+            self.loadingView!.removeFromSuperview()
+            self.loadingView!.stopAnimating()
+            
+            
+            self.requestView.addSubview(self.reviewCardView)
+            self.reviewCardView.snp.makeConstraints({ (make) in
+                make.center.equalTo(self.requestViewCardView)
+                make.width.equalTo(self.requestViewCardView)
+                make.height.equalTo(self.requestViewCardView)
+            })
+            
+            self.requestView.snp.removeConstraints()
+            self.requestView.snp.makeConstraints({ (make) in
+                make.topMargin.equalTo(20)
+                make.centerX.equalTo(self.view)
+                make.width.equalTo(UIApplication.shared.keyWindow!.frame.size.width-40)
+                make.height.equalTo(250)
+            })
+            
+            self.requestViewCardView.isHidden = true
+            
+            let barItem = UIBarButtonItem(title: "Post", style: .plain, target: self, action: #selector(TutorDetailViewController.postReview))
+            barItem.setTitlePositionAdjustment(UIOffset.init(horizontal: -15, vertical: 0), for: .default)
+            let navigationItem = UINavigationItem(title: "Review")
+            navigationItem.rightBarButtonItem = barItem
+            navigationItem.hidesBackButton = true
+            self.requestViewNavigationBar.pushItem(navigationItem, animated: false)
+            
+        }
+    }
 
     func updateSession() {
         Session.get(session: session!.id!) { (session, error) in
@@ -178,61 +237,7 @@ extension TutorDetailViewController {
             
             self.session = session as! Session?
             
-            if self.session!.state == .confirmed {
-                self.loadingView!.removeFromSuperview()
-                self.loadingView!.stopAnimating()
-                
-                self.requestViewCardView.isHidden = false
-                self.requestCardViewProfileImage.image = self.iconImage.image
-                self.requestCardViewProfileImage.layer.cornerRadius = 25
-                self.requestCardViewProfileImage.layer.masksToBounds = true
-                self.requestCardViewLabel.text = "\(self.session!.tutor!.name!) is on their way."
-                
-            } else if self.session!.state == .commenced {
-                self.loadingView!.removeFromSuperview()
-                self.loadingView!.stopAnimating()
-                
-                self.requestViewCardView.isHidden = false
-                self.requestCardViewProfileImage.image = self.iconImage.image
-                self.requestCardViewProfileImage.layer.cornerRadius = 25
-                self.requestCardViewProfileImage.layer.masksToBounds = true
-                self.requestCardViewLabel.text = "\(self.session!.tutor!.name!) is here."
-            } else if self.session!.state == .cancelled {
-                self.loadingView!.removeFromSuperview()
-                self.loadingView!.stopAnimating()
-                
-                
-                self.cancelSession(self)
-            } else if self.session!.state == .completed {
-                self.loadingView!.removeFromSuperview()
-                self.loadingView!.stopAnimating()
-                
-                
-                self.requestView.addSubview(self.reviewCardView)
-                self.reviewCardView.snp.makeConstraints({ (make) in
-                    make.center.equalTo(self.requestViewCardView)
-                    make.width.equalTo(self.requestViewCardView)
-                    make.height.equalTo(self.requestViewCardView)
-                })
-                
-                self.requestView.snp.removeConstraints()
-                self.requestView.snp.makeConstraints({ (make) in
-                    make.topMargin.equalTo(20)
-                    make.centerX.equalTo(self.view)
-                    make.width.equalTo(UIApplication.shared.keyWindow!.frame.size.width-40)
-                    make.height.equalTo(250)
-                })
-                
-                self.requestViewCardView.isHidden = true
-                
-                let barItem = UIBarButtonItem(title: "Post", style: .plain, target: self, action: #selector(TutorDetailViewController.postReview))
-                barItem.setTitlePositionAdjustment(UIOffset.init(horizontal: -15, vertical: 0), for: .default)
-                let navigationItem = UINavigationItem(title: "Review")
-                navigationItem.rightBarButtonItem = barItem
-                navigationItem.hidesBackButton = true
-                self.requestViewNavigationBar.pushItem(navigationItem, animated: false)
-                
-            }
+            self.updateSessionViews()
         }
     }
     

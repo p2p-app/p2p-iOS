@@ -92,15 +92,32 @@ extension User {
         User.getSessions(for: self.id!, state: state, completion: completion)
     }
 
+    static func getAllSessions(for user: String, completion: @escaping P2PArrayCompletionBlock) {
+        if user != P2PManager.sharedInstance.user?.id {
+            fatalError("Trying to get sessions for an unauthenticated user")
+        }
+        
+        P2PManager.sharedInstance.sessionManager.request(UserRouter.getAllSessions()).responseArray { (response: DataResponse<[Session]>) in
+            completion(response.result.value, response.result.error);
+        }
+    }
+    
+    func getAllSessions(completion: @escaping P2PArrayCompletionBlock) {
+        User.getAllSessions(for: self.id!, completion: completion)
+    }
+    
     private enum UserRouter: URLRequestConvertible {
         case create(username: String, password: String, name: String)
         case getSessions(state: Session.State)
+        case getAllSessions()
         
         var method: HTTPMethod {
             switch self {
             case .create:
                 return .post
             case .getSessions:
+                return .get
+            case .getAllSessions():
                 return .get
             }
         }
@@ -110,6 +127,8 @@ extension User {
             case .create:
                 return "/students/create"
             case .getSessions:
+                return "/sessions"
+            case .getAllSessions():
                 return "/sessions"
             }
         }
@@ -127,6 +146,10 @@ extension User {
                 urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username": username, "password": password, "fullname": name])
             case .getSessions(let state):
                 urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["state": state.rawValue, "tutorData": true, "studentData": true])
+                
+                urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
+            case .getAllSessions():
+                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["tutorData": true, "studentData": true])
                 
                 urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             }

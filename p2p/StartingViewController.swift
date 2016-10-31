@@ -24,7 +24,7 @@ class StartingViewController: UIViewController {
                     return
                 }
                 
-                P2PManager.sharedInstance.user?.getSessions(state: .pending, completion: { (sessions, error2) in
+                P2PManager.sharedInstance.user!.getAllSessions(completion: { (sessions, error2) in
                     if error2 != nil {
                         return
                     }
@@ -33,7 +33,7 @@ class StartingViewController: UIViewController {
                     let initialViewController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as! MainTabBarViewController
                     
                     if sessions != nil {
-                        initialViewController.sessions = sessions as! [Session]?
+                        initialViewController.sessions = (sessions as! [Session]?)?.filter { $0.state != .completed && $0.state != .cancelled }
                     }
                     
                     self.present(initialViewController, animated: false)

@@ -21,7 +21,14 @@ class MainNavigationController: UINavigationController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "requestListVC")
             
-            self.setViewControllers([initialViewController], animated: false)
+            if sessions!.count > 0 {
+                let secondary = storyboard.instantiateViewController(withIdentifier: "sessionDetailVC") as! SessionDetailViewController
+                secondary.session = sessions![0]
+                
+                self.setViewControllers([initialViewController, secondary], animated: false)
+            } else {
+                self.setViewControllers([initialViewController], animated: false)
+            }
             
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

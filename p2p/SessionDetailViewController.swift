@@ -57,6 +57,13 @@ class SessionDetailViewController: UIViewController {
         } else {
             self.iconImage.image = #imageLiteral(resourceName: "default")
         }
+        
+        switch session!.state! {
+        case .commenced:
+            self.setCommenceView()
+        default:
+            break
+        }
     }
     
     func updateSession() {
@@ -91,21 +98,25 @@ class SessionDetailViewController: UIViewController {
                 return
             }
             
-            UIView.animate(withDuration: 0.2, animations: { 
-                self.acceptButton.alpha = 0
-                self.declineButton.alpha = 0
-                }, completion: { finished in
-                    self.acceptButton.isHidden = true
-                    self.declineButton.isHidden = true
-                    
-                    self.commenceButton.alpha = 0
-                    self.commenceButton.isHidden = false
-                    
-                    UIView.animate(withDuration: 0.2, animations: { 
-                        self.commenceButton.alpha = 1
-                    })
-            })
+            self.setAcceptView()
 
+        })
+    }
+    
+    func setAcceptView() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.acceptButton.alpha = 0
+            self.declineButton.alpha = 0
+            }, completion: { finished in
+                self.acceptButton.isHidden = true
+                self.declineButton.isHidden = true
+                
+                self.commenceButton.alpha = 0
+                self.commenceButton.isHidden = false
+                
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.commenceButton.alpha = 1
+                })
         })
     }
     
@@ -120,6 +131,28 @@ class SessionDetailViewController: UIViewController {
         }
     }
     
+    func setCommenceView() {
+        self.acceptButton.isHidden = true
+        self.declineButton.isHidden = true
+        
+        self.commenceButton.alpha = 1
+        self.commenceButton.isHidden = false
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.commenceButton.alpha = 0
+            }, completion: { (finished) in
+                self.commenceButton.isHidden = true
+                
+                self.endButton.alpha = 0
+                self.endButton.isHidden = false
+                
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.endButton.alpha = 1
+                })
+                
+        })
+    }
+    
     @IBAction func commence(_ sender: AnyObject) {
         session!.commence { (error) in
             if error != nil {
@@ -127,19 +160,7 @@ class SessionDetailViewController: UIViewController {
                 return
             }
             
-            UIView.animate(withDuration: 0.2, animations: { 
-                self.commenceButton.alpha = 0
-                }, completion: { (finished) in
-                    self.commenceButton.isHidden = true
-                    
-                    self.endButton.alpha = 0
-                    self.endButton.isHidden = false
-                    
-                    UIView.animate(withDuration: 0.2, animations: { 
-                        self.endButton.alpha = 1
-                    })
-                    
-            })
+            self.setCommenceView()
         }
     }
     

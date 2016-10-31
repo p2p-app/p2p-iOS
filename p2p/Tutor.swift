@@ -196,7 +196,7 @@ extension Tutor {
             case .create(let username, let password, let name, let school, let bio, let city, let subjects):
                 urlRequest = try URLEncoding.default.encode(urlRequest, with: ["username": username, "password": password, "fullname": name, "school": school, "bio": bio, "city": city, "subjects": subjects.joined(separator: ",")])
             case .getAllAt(let location, let subject):
-                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["lat": location.0, "long": location.1, "subjects": subject, "range": 0.0005])
+                urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["lat": location.0, "long": location.1, "subjects": subject, "range": 0.11485])
                 urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             case .getAllIn(let city, let subject):
                 urlRequest = try URLEncoding.queryString.encode(urlRequest, with: ["city": city, "subjects": subject])
@@ -204,7 +204,7 @@ extension Tutor {
             case .getReviews:
                 urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             case .postReview(_, let rating, let text):
-                urlRequest = try URLEncoding.default.encode(urlRequest, with: ["stars": rating, "text": text])
+                urlRequest = try URLEncoding.default.encode(urlRequest, with: ["stars": String(rating), "text": text])
                 urlRequest.setValue("Bearer \(P2PManager.sharedInstance.token!)", forHTTPHeaderField: "Authorization")
             default:
                 break
