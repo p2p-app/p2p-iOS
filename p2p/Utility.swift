@@ -105,3 +105,15 @@ class EPKAutoLabel: UILabel {
         super.updateConstraints()
     }
 }
+
+extension UIImage {
+    static func scale(image: UIImage, to size: CGSize) -> UIImage {
+        UIGraphicsBeginImageContext(size)
+        image.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage!
+    }
+}
+

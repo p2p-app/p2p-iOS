@@ -86,9 +86,7 @@ extension LoginViewController {
             self.loginButton.isEnabled = true
             if error != nil {
                 switch error as! P2PErrors {
-                case .AuthenticationFailed(_):
-                    print(P2PManager.sharedInstance.user?.username)
-                    
+                case .AuthenticationFailed(_):                    
                     let shake = POPSpringAnimation(propertyNamed: kPOPLayerPositionX)
                     shake?.springBounciness = 20
                     shake?.velocity = 2500

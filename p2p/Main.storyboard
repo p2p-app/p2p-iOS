@@ -211,11 +211,14 @@
                             <constraint firstItem="ak7-4H-sgO" firstAttribute="top" secondItem="OYn-53-VPz" secondAttribute="bottom" constant="10" id="2CL-bG-Wfa"/>
                             <constraint firstItem="ggD-hl-Xzn" firstAttribute="top" secondItem="VRt-sN-rC9" secondAttribute="bottom" constant="10" id="5Pu-20-a4E"/>
                             <constraint firstItem="OYn-53-VPz" firstAttribute="top" secondItem="gYQ-0m-mRm" secondAttribute="bottom" constant="10" id="5o2-Sh-ekP"/>
+                            <constraint firstItem="ggD-hl-Xzn" firstAttribute="top" secondItem="BFS-cq-HQi" secondAttribute="top" constant="188" id="8Vg-C9-92v"/>
+                            <constraint firstItem="VRt-sN-rC9" firstAttribute="top" secondItem="JtR-8e-Y2L" secondAttribute="bottom" constant="10" id="LJb-qQ-gw3"/>
                             <constraint firstItem="OYn-53-VPz" firstAttribute="leading" secondItem="BFS-cq-HQi" secondAttribute="leadingMargin" constant="-8" id="NRN-6f-NCg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OYn-53-VPz" secondAttribute="trailing" constant="-8" id="TbA-4j-KH9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="VRt-sN-rC9" secondAttribute="trailing" constant="-8" id="YUG-Xo-TfD"/>
                             <constraint firstItem="VRt-sN-rC9" firstAttribute="leading" secondItem="BFS-cq-HQi" secondAttribute="leadingMargin" constant="-8" id="cDS-6n-gcO"/>
                             <constraint firstItem="ggD-hl-Xzn" firstAttribute="leading" secondItem="BFS-cq-HQi" secondAttribute="leadingMargin" constant="-8" id="eXC-fh-wfO"/>
+                            <constraint firstItem="ggD-hl-Xzn" firstAttribute="top" secondItem="VRt-sN-rC9" secondAttribute="bottom" constant="10" id="gL4-UF-hMl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ggD-hl-Xzn" secondAttribute="trailing" constant="-8" id="leZ-VY-rfc"/>
                             <constraint firstItem="VRt-sN-rC9" firstAttribute="top" secondItem="JtR-8e-Y2L" secondAttribute="bottom" constant="10" id="nT8-Of-MDV"/>
                         </constraints>
@@ -246,6 +249,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Llb-P1-fCe">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="kP6-l7-bhk"/>
+                            </constraints>
                             <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <textAttributes key="titleTextAttributes">
                                 <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -312,12 +318,16 @@
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Gk2-cO-gss">
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="103" id="0ko-S5-eba"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bU6-zF-g0i" customClass="CosmosView" customModule="p2p" customModuleProvider="target">
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
+                                <constraint firstAttribute="height" constant="20" id="lKo-Aj-RmS"/>
                                 <constraint firstAttribute="width" constant="130" id="rbC-Rx-8BH"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
@@ -766,6 +776,7 @@
                                                         <constraint firstItem="LAl-q6-N9q" firstAttribute="centerY" secondItem="x9g-e5-1Bi" secondAttribute="centerY" id="Tad-IK-VsL"/>
                                                         <constraint firstItem="AdA-Di-VaA" firstAttribute="top" secondItem="hFU-a9-T3e" secondAttribute="bottom" id="dPw-p3-ktn"/>
                                                         <constraint firstItem="AdA-Di-VaA" firstAttribute="leading" secondItem="hFU-a9-T3e" secondAttribute="leading" id="eAY-LO-Wqe"/>
+                                                        <constraint firstItem="Rbb-dl-xZQ" firstAttribute="top" secondItem="WgM-N7-Q0P" secondAttribute="bottom" constant="26" id="txf-Lj-dMd"/>
                                                         <constraint firstItem="WgM-N7-Q0P" firstAttribute="leading" secondItem="AdA-Di-VaA" secondAttribute="leading" id="zhf-aQ-ksh"/>
                                                     </constraints>
                                                 </view>
@@ -1176,7 +1187,7 @@
         <!--Tutor Tab Scene-->
         <scene sceneID="PrT-64-yP5">
             <objects>
-                <tabBarController storyboardIdentifier="mainTabBar" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tOb-mq-8Lk" userLabel="Tutor Tab Scene" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainTabBar" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tOb-mq-8Lk" userLabel="Tutor Tab Scene" customClass="MainTabBarViewController" customModule="p2p" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="LTW-cI-Xzt">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

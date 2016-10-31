@@ -82,8 +82,12 @@ class TutorDetailViewController: UIViewController {
         
         if self.tutor!.profileURL != nil {
             self.iconImage.af_setImage(withURL: self.tutor!.profileURL!)
-            self.iconImage.layer.cornerRadius = self.iconImage.frame.width/2
+            self.iconImage.layer.cornerRadius = 50
             self.iconImage.layer.masksToBounds = true
+        }
+        
+        if self.session != nil {
+            self.addOverlay()
         }
         
     }
@@ -116,6 +120,36 @@ extension TutorDetailViewController {
         })
     }
     
+    func addOverlay() {
+        let bgOverlay = UIView(frame: self.view.frame)
+        bgOverlay.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.2549019608, blue: 0.2549019608, alpha: 1)
+        bgOverlay.alpha = 0.0
+        bgOverlay.tag = 0
+        
+        UIApplication.shared.keyWindow?.addSubview(bgOverlay)
+        
+        
+        bgOverlay.snp.makeConstraints({ (make) in
+            make.height.equalTo(UIApplication.shared.keyWindow!)
+            make.width.equalTo(UIApplication.shared.keyWindow!)
+            make.center.equalTo(UIApplication.shared.keyWindow!)
+        })
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            bgOverlay.alpha = 0.7
+        })
+        
+        self.requestView.layer.cornerRadius = 5.0
+        self.requestView.clipsToBounds = true
+        UIApplication.shared.keyWindow?.addSubview(self.requestView)
+        self.requestView.tag = 1
+        self.requestView.snp.makeConstraints({ (make) in
+            make.center.equalTo(UIApplication.shared.keyWindow!)
+            make.width.equalTo(UIApplication.shared.keyWindow!.frame.size.width-40)
+            make.height.equalTo(180)
+        })
+    }
+    
     @IBAction func didRequestTutor(_ sender: AnyObject) {
         UtilityManager.sharedInstance.locationManager.delegate = UtilityManager.sharedInstance
         UtilityManager.sharedInstance.locationManager.startUpdatingLocation()
@@ -130,33 +164,7 @@ extension TutorDetailViewController {
                 return
             }
             
-            let bgOverlay = UIView(frame: self.view.frame)
-            bgOverlay.backgroundColor = #colorLiteral(red: 0.2549019608, green: 0.2549019608, blue: 0.2549019608, alpha: 1)
-            bgOverlay.alpha = 0.0
-            bgOverlay.tag = 0
-            
-            UIApplication.shared.keyWindow?.addSubview(bgOverlay)
-            
-            
-            bgOverlay.snp.makeConstraints({ (make) in
-                make.height.equalTo(UIApplication.shared.keyWindow!)
-                make.width.equalTo(UIApplication.shared.keyWindow!)
-                make.center.equalTo(UIApplication.shared.keyWindow!)
-            })
-            
-            UIView.animate(withDuration: 0.2, animations: {
-                bgOverlay.alpha = 0.7
-            })
-            
-            self.requestView.layer.cornerRadius = 5.0
-            self.requestView.clipsToBounds = true
-            UIApplication.shared.keyWindow?.addSubview(self.requestView)
-            self.requestView.tag = 1
-            self.requestView.snp.makeConstraints({ (make) in
-                make.center.equalTo(UIApplication.shared.keyWindow!)
-                make.width.equalTo(UIApplication.shared.keyWindow!.frame.size.width-40)
-                make.height.equalTo(180)
-            })
+            self.addOverlay()
             
             self.sessionUpdateTimer = Timer.scheduledTimer(timeInterval: 7, target:self, selector: #selector(TutorDetailViewController.updateSession), userInfo: nil, repeats: true)
         }
@@ -176,6 +184,8 @@ extension TutorDetailViewController {
                 
                 self.requestViewCardView.isHidden = false
                 self.requestCardViewProfileImage.image = self.iconImage.image
+                self.requestCardViewProfileImage.layer.cornerRadius = 25
+                self.requestCardViewProfileImage.layer.masksToBounds = true
                 self.requestCardViewLabel.text = "\(self.session!.tutor!.name!) is on their way."
                 
             } else if self.session!.state == .commenced {
@@ -184,6 +194,8 @@ extension TutorDetailViewController {
                 
                 self.requestViewCardView.isHidden = false
                 self.requestCardViewProfileImage.image = self.iconImage.image
+                self.requestCardViewProfileImage.layer.cornerRadius = 25
+                self.requestCardViewProfileImage.layer.masksToBounds = true
                 self.requestCardViewLabel.text = "\(self.session!.tutor!.name!) is here."
             } else if self.session!.state == .cancelled {
                 self.loadingView!.removeFromSuperview()
@@ -208,16 +220,17 @@ extension TutorDetailViewController {
                     make.topMargin.equalTo(20)
                     make.centerX.equalTo(self.view)
                     make.width.equalTo(UIApplication.shared.keyWindow!.frame.size.width-40)
-                    make.height.equalTo(300)
+                    make.height.equalTo(250)
                 })
                 
                 self.requestViewCardView.isHidden = true
                 
                 let barItem = UIBarButtonItem(title: "Post", style: .plain, target: self, action: #selector(TutorDetailViewController.postReview))
+                barItem.setTitlePositionAdjustment(UIOffset.init(horizontal: -15, vertical: 0), for: .default)
                 let navigationItem = UINavigationItem(title: "Review")
                 navigationItem.rightBarButtonItem = barItem
                 navigationItem.hidesBackButton = true
-                self.requestViewNavigationBar.pushItem(navigationItem, animated: true)
+                self.requestViewNavigationBar.pushItem(navigationItem, animated: false)
                 
             }
         }
@@ -234,6 +247,7 @@ extension TutorDetailViewController {
             self.requestView.removeFromSuperview()
             UIApplication.shared.keyWindow?.subviews[(UIApplication.shared.keyWindow?.subviews.count)!-1].removeFromSuperview()
             
+            self.sessionUpdateTimer.invalidate()
         })
     }
 }

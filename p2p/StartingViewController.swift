@@ -21,16 +21,23 @@ class StartingViewController: UIViewController {
             
             P2PManager.sharedInstance.updateUser(completion: { (error) in
                 if error != nil {
-                    
                     return
                 }
                 
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let initialViewController = storyboard.instantiateViewController(withIdentifier: "mainTabBar")
+                P2PManager.sharedInstance.user?.getSessions(state: .pending, completion: { (sessions, error2) in
+                    if error2 != nil {
+                        return
+                    }
                     
-                self.present(initialViewController, animated: false)
-                
-                
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let initialViewController = storyboard.instantiateViewController(withIdentifier: "mainTabBar") as! MainTabBarViewController
+                    
+                    if sessions != nil {
+                        initialViewController.sessions = sessions as! [Session]?
+                    }
+                    
+                    self.present(initialViewController, animated: false)
+                })
             })
         } else {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

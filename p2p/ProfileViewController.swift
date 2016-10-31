@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import DZNPhotoPickerController
+import AlamofireImage
 
 class ProfileViewController: UIViewController {
 
@@ -24,6 +26,16 @@ class ProfileViewController: UIViewController {
         usernameLabel.text = "@\(P2PManager.sharedInstance.user!.username!)"
         
         profileImagePicker.delegate = self
+        profileImagePicker.allowsEditing = true
+        profileImagePicker.cropMode = .circular
+                
+        if P2PManager.sharedInstance.user!.profileURL != nil {
+            self.profilePicture.af_setImage(withURL: P2PManager.sharedInstance.user!.profileURL!, placeholderImage: #imageLiteral(resourceName: "default"))
+            self.profilePicture.layer.cornerRadius = 50
+            self.profilePicture.layer.masksToBounds = true
+        } else {
+            self.profilePicture.image = #imageLiteral(resourceName: "default")
+        }
     }
 
 }
@@ -31,15 +43,16 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            /*P2PManager.sharedInstance.user!.set(picture: image, completion: { (error) in
+            P2PManager.sharedInstance.upload(picture: UIImage.scale(image: image, to: CGSize(width: 100, height: 100)), completion: { (error) in
                 if error != nil {
                     
-                } else {
-                    self.profilePicture.af_setImage(withURL: P2PManager.sharedInstance.user!.profileURL!)
-                    self.profilePicture.layer.cornerRadius = self.profilePicture.frame.width/2
-                    self.profilePicture.layer.masksToBounds = true
+                    return
                 }
-            })*/
+                
+                self.profilePicture.af_setImage(withURL: P2PManager.sharedInstance.user!.profileURL!)
+                self.profilePicture.layer.cornerRadius = self.profilePicture.frame.width/2
+                self.profilePicture.layer.masksToBounds = true
+            })
         }
         
         dismiss(animated: true, completion: nil)

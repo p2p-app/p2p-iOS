@@ -15,7 +15,7 @@ public class User: StaticMappable {
     fileprivate(set) public var id: String?
     fileprivate(set) public var name: String?
     fileprivate(set) public var username: String?
-    fileprivate(set) public var profileURL: URL?
+    public var profileURL: URL?
     
     public static func objectForMapping(map: Map) -> BaseMappable? {
         
@@ -41,7 +41,7 @@ public class User: StaticMappable {
         id          <-  map["id"]
         name        <-  map["fullname"]
         username    <-  map["username"]
-        profileURL  <-  (map["profile"], TransformOf<URL, String>(fromJSON: { if ($0 != nil) { return URL(string: $0!) } else { return nil } }, toJSON: { $0!.path }))
+        profileURL  <-  (map["profile"], TransformOf<URL, String>(fromJSON: { if ($0 != nil) { return URL(string: "\(P2PBaseURL)\($0!)") } else { return nil } }, toJSON: { $0!.path }))
     }
 }
 

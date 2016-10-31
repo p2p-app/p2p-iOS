@@ -41,8 +41,10 @@ class TutorListTableViewCell: UITableViewCell {
             
             if self.tutor!.profileURL != nil {
                 self.iconImage.af_setImage(withURL: self.tutor!.profileURL!)
-                self.iconImage.layer.cornerRadius = self.iconImage.frame.width/2
+                self.iconImage.layer.cornerRadius = 50
                 self.iconImage.layer.masksToBounds = true
+            } else {
+                self.iconImage.image = #imageLiteral(resourceName: "default")
             }
         }
         get {

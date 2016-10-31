@@ -49,6 +49,14 @@ class SessionDetailViewController: UIViewController {
             self.addressButton.setTitle("\(placemark![0].subThoroughfare!) \(placemark![0].thoroughfare!), \(placemark![0].postalCode!) \(placemark![0].locality!), \(placemark![0].administrativeArea!) \(placemark![0].country!)", for: .normal)            
             self.distanceLabel.text = "\(Int(placemark![0].location!.distance(from: CLLocation(latitude: UtilityManager.sharedInstance.location.long, longitude: UtilityManager.sharedInstance.location.lat)) * 0.000621371)) mi"
         }
+        
+        if self.session!.student!.profileURL != nil {
+            self.iconImage.af_setImage(withURL: self.session!.student!.profileURL!)
+            self.iconImage.layer.cornerRadius = 50
+            self.iconImage.layer.masksToBounds = true
+        } else {
+            self.iconImage.image = #imageLiteral(resourceName: "default")
+        }
     }
     
     func updateSession() {
