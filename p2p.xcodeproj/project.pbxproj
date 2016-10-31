@@ -12,6 +12,7 @@
 		09024BFD1DC66E9B00FCF983 /* SessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09024BFC1DC66E9B00FCF983 /* SessionDetailViewController.swift */; };
 		09024BFF1DC66EA700FCF983 /* SessionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09024BFE1DC66EA700FCF983 /* SessionListViewController.swift */; };
 		09024C011DC6A36900FCF983 /* StartingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09024C001DC6A36900FCF983 /* StartingViewController.swift */; };
+		09024C031DC6CDCA00FCF983 /* Cosmos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09024C021DC6CDCA00FCF983 /* Cosmos.swift */; };
 		09168AC31DB4A0800075BD9F /* TutorListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09168AC21DB4A0800075BD9F /* TutorListTableViewCell.swift */; };
 		09168AC51DB4A1C70075BD9F /* TutorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09168AC41DB4A1C70075BD9F /* TutorListViewController.swift */; };
 		09168AC71DB4AA8F0075BD9F /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09168AC61DB4AA8F0075BD9F /* MainNavigationController.swift */; };
@@ -57,6 +58,7 @@
 		09024BFC1DC66E9B00FCF983 /* SessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDetailViewController.swift; sourceTree = "<group>"; };
 		09024BFE1DC66EA700FCF983 /* SessionListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionListViewController.swift; sourceTree = "<group>"; };
 		09024C001DC6A36900FCF983 /* StartingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartingViewController.swift; sourceTree = "<group>"; };
+		09024C021DC6CDCA00FCF983 /* Cosmos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cosmos.swift; sourceTree = "<group>"; };
 		09168AC21DB4A0800075BD9F /* TutorListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorListTableViewCell.swift; sourceTree = "<group>"; };
 		09168AC41DB4A1C70075BD9F /* TutorListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorListViewController.swift; sourceTree = "<group>"; };
 		09168AC61DB4AA8F0075BD9F /* MainNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				093E46F11DB6D89F003DBCAB /* CardView.swift */,
 				093E46F31DB6DA2A003DBCAB /* ReviewTableViewCell.swift */,
 				09D1C17E1DC30E50005BD1FA /* RequestView.swift */,
+				09024C021DC6CDCA00FCF983 /* Cosmos.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -459,6 +462,7 @@
 				09D1C17F1DC30E50005BD1FA /* RequestView.swift in Sources */,
 				09E10CC31DB4707300F231F3 /* MainTextField.swift in Sources */,
 				093E46F41DB6DA2A003DBCAB /* ReviewTableViewCell.swift in Sources */,
+				09024C031DC6CDCA00FCF983 /* Cosmos.swift in Sources */,
 				09E10CA41DB41D5B00F231F3 /* P2PManager.swift in Sources */,
 				09168AC51DB4A1C70075BD9F /* TutorListViewController.swift in Sources */,
 				09168AC31DB4A0800075BD9F /* TutorListTableViewCell.swift in Sources */,

@@ -11,9 +11,9 @@ import AlamofireImage
 
 class TutorListTableViewCell: UITableViewCell {
    
+    @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var subjectLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var cardView: CardView!
@@ -24,7 +24,14 @@ class TutorListTableViewCell: UITableViewCell {
             _tutor = value
             
             self.nameLabel.text = self.tutor!.name
-            self.ratingLabel.text = "\(self.tutor!.stars == nil ? "-":  String(describing: self.tutor!.stars!))/5"
+            if let stars = self.tutor?.stars {
+                self.ratingView.rating = stars
+            } else {
+                self.ratingView.alpha = 0.5
+                self.ratingView.rating = 5
+                self.ratingView.filledColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
+                self.ratingView.filledBorderColor = #colorLiteral(red: 0.8039215686, green: 0.8039215686, blue: 0.8039215686, alpha: 1)
+            }
             self.locationLabel.text = self.tutor!.city
             self.subjectLabel.text = self.tutor!.subjects?.joined(separator: ", ").capitalized
             

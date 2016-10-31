@@ -96,8 +96,10 @@ extension SessionListViewController: UITableViewDelegate, UITableViewDataSource 
         
         if !switchView.isOn {
             cell.isUserInteractionEnabled = false
-            cell.alpha = 0.7
-            cell.contentView.alpha = 0.7
+            cell.cardView.alpha = 0.7
+        } else {
+            cell.isUserInteractionEnabled = true
+            cell.cardView.alpha = 1
         }
         
         return cell
