@@ -47,6 +47,10 @@ class TutorDetailViewController: UIViewController {
         self.nameLabel.text = self.tutor!.name
         if let stars = self.tutor?.stars {
             self.ratingView.rating = stars
+            self.ratingView.filledColor = #colorLiteral(red: 0.2207909822, green: 0.7478784919, blue: 0.9191411138, alpha: 1)
+            self.ratingView.filledBorderWidth = 0
+            self.ratingView.emptyColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1)
+            self.ratingView.emptyBorderWidth = 0
         } else {
             self.ratingView.alpha = 0.5
             self.ratingView.rating = 5
@@ -166,18 +170,37 @@ extension TutorDetailViewController {
                 self.requestCardViewProfileImage.image = self.iconImage.image
                 self.requestCardViewLabel.text = "\(self.session!.tutor!.name!) is on their way."
                 
+            } else if self.session!.state == .commenced {
+                self.loadingView!.removeFromSuperview()
+                self.loadingView!.stopAnimating()
+                
+                self.requestViewCardView.isHidden = false
+                self.requestCardViewProfileImage.image = self.iconImage.image
+                self.requestCardViewLabel.text = "\(self.session!.tutor!.name!) is here."
             } else if self.session!.state == .cancelled {
+                self.loadingView!.removeFromSuperview()
+                self.loadingView!.stopAnimating()
+                
+                
                 self.cancelSession(self)
             } else if self.session!.state == .completed {
-                self.view.addSubview(self.reviewCardView)
+                self.loadingView!.removeFromSuperview()
+                self.loadingView!.stopAnimating()
+                
+                
+                self.requestView.addSubview(self.reviewCardView)
                 self.reviewCardView.snp.makeConstraints({ (make) in
                     make.center.equalTo(self.requestViewCardView)
                     make.width.equalTo(self.requestViewCardView)
                     make.height.equalTo(self.requestViewCardView)
                 })
                 
+                self.requestView.snp.removeConstraints()
                 self.requestView.snp.makeConstraints({ (make) in
                     make.topMargin.equalTo(20)
+                    make.centerX.equalTo(self.view)
+                    make.width.equalTo(UIApplication.shared.keyWindow!.frame.size.width-40)
+                    make.height.equalTo(300)
                 })
                 
                 self.requestViewCardView.isHidden = true
@@ -201,6 +224,7 @@ extension TutorDetailViewController {
         
             self.requestView.removeFromSuperview()
             UIApplication.shared.keyWindow?.subviews[(UIApplication.shared.keyWindow?.subviews.count)!-1].removeFromSuperview()
+            _ = self.navigationController?.popViewController(animated: true)
         })
     }
 }

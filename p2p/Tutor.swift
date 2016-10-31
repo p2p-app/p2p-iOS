@@ -180,7 +180,7 @@ extension Tutor {
             case .getReviews(let id):
                 return "/tutors/\(id)/reviews"
             case .postReview(let id, _, _):
-                return "/tutors/\(id)/reviews"
+                return "/tutors/\(id)/reviews/create"
             }
         }
         

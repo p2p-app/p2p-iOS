@@ -106,6 +106,8 @@ class SessionDetailViewController: UIViewController {
                 
                 return
             }
+            
+            _ = self.navigationController?.popViewController(animated: true)
         }
     }
     

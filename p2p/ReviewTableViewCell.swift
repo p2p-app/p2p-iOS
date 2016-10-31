@@ -25,6 +25,10 @@ class ReviewTableViewCell: UITableViewCell {
             
             if let stars = self.review!.stars {
                 self.ratingView.rating = Double(stars)
+                self.ratingView.filledColor = #colorLiteral(red: 0.2207909822, green: 0.7478784919, blue: 0.9191411138, alpha: 1)
+                self.ratingView.filledBorderWidth = 0
+                self.ratingView.emptyColor = #colorLiteral(red: 0.9019607843, green: 0.9019607843, blue: 0.9019607843, alpha: 1)
+                self.ratingView.emptyBorderWidth = 0
             } else {
                 self.ratingView.alpha = 0.5
                 self.ratingView.rating = 5

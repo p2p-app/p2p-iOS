@@ -30,6 +30,13 @@ class TutorListViewController: UIViewController {
         subjectField.delegate = self
         
         UtilityManager.sharedInstance.locationManager.delegate = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        super.viewWillAppear(animated)
+        
+        UtilityManager.sharedInstance.locationManager.delegate = self
         
         Tutor.getAll(at: (UtilityManager.sharedInstance.location.lat, UtilityManager.sharedInstance.location.long), for: (subjectField.text!.lowercased() == "all subjects" ? "all": subjectField.text!)) { (tutors, error) in
             if error != nil {
@@ -41,13 +48,6 @@ class TutorListViewController: UIViewController {
             
             self.tutorTableView.reloadSections([0], with: UITableViewRowAnimation.fade)
         }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        super.viewWillAppear(animated)
-        
-        UtilityManager.sharedInstance.locationManager.delegate = self
     }
     
     override func viewWillDisappear(_ animated: Bool) {

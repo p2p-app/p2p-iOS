@@ -38,6 +38,7 @@ class SessionListViewController: UIViewController {
     
     func switchSwitched(sender: UISwitch!) {
         if switchView.isOn {
+            updateTutorLocation()
             locationUpdateTimer = Timer.scheduledTimer(timeInterval: 60*3, target:self, selector: #selector(SessionListViewController.updateTutorLocation), userInfo: nil, repeats: true)
         } else {
             locationUpdateTimer.invalidate()
