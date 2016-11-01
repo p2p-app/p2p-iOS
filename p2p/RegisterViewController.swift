@@ -77,7 +77,7 @@ extension RegisterViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.view.layoutIfNeeded()
-        logoTopConstraint.constant = 0 - 49 - 20
+        logoTopConstraint.constant = CGFloat(0 - 49 - 20)
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }

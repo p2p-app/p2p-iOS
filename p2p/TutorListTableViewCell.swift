@@ -28,6 +28,7 @@ class TutorListTableViewCell: UITableViewCell {
             self.distanceLabel.text = ("\(self.tutor!.distance!) mi")
             
             if let stars = self.tutor?.stars {
+                self.ratingView.alpha = 1
                 self.ratingView.rating = stars
                 self.ratingView.filledColor = #colorLiteral(red: 0.2207909822, green: 0.7478784919, blue: 0.9191411138, alpha: 1)
                 self.ratingView.filledBorderWidth = 0
@@ -42,12 +43,11 @@ class TutorListTableViewCell: UITableViewCell {
             self.locationLabel.text = self.tutor!.city
             self.subjectLabel.text = self.tutor!.subjects?.joined(separator: ", ").capitalized
             
+            self.iconImage.image = #imageLiteral(resourceName: "default")
             if self.tutor!.profileURL != nil {
                 self.iconImage.af_setImage(withURL: self.tutor!.profileURL!)
                 self.iconImage.layer.cornerRadius = 50
                 self.iconImage.layer.masksToBounds = true
-            } else {
-                self.iconImage.image = #imageLiteral(resourceName: "default")
             }
         }
         get {

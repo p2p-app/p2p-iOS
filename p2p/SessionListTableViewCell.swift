@@ -35,12 +35,11 @@ class SessionListTableViewCell: UITableViewCell {
                 self.distanceLabel.text = "\(Int(placemark![0].location!.distance(from: CLLocation(latitude: UtilityManager.sharedInstance.location.long, longitude: UtilityManager.sharedInstance.location.lat)) * 0.000621371)) mi"
             }
             
+            self.iconImage.image = #imageLiteral(resourceName: "default")
             if self.session!.student!.profileURL != nil {
                 self.iconImage.af_setImage(withURL: self.session!.student!.profileURL!)
                 self.iconImage.layer.cornerRadius = 50
                 self.iconImage.layer.masksToBounds = true
-            } else {
-                self.iconImage.image = #imageLiteral(resourceName: "default")
             }
         }
         get {
