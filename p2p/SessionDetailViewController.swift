@@ -78,7 +78,7 @@ class SessionDetailViewController: UIViewController {
     }
     
     @IBAction func openMaps(_ sender: AnyObject) {
-        UIApplication.shared.open(URL(string: "http://maps.apple.com/?ll=\(self.session!.location.latitude),\(self.session!.location.longitude)")!, options: [:]) { (finished) in
+        UIApplication.shared.open(URL(string: "http://maps.apple.com/?address=\(self.addressButton.titleLabel!.text!.replacingOccurrences(of: " ", with: "%20"))")!, options: [:]) { (finished) in
             
         }
     }
